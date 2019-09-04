@@ -169,41 +169,41 @@ Item {
 
 
     // Video preview
-    Component {
-      id: videoPreviewWrapper
-      Video {
-        source: game.assets.videos.length ? game.assets.videos[0] : ""
-        anchors.fill: parent
-        fillMode: VideoOutput.PreserveAspectCrop
-        muted: true
-        loops: MediaPlayer.Infinite
-        autoPlay: true
-      }
-
-    }
-
-    Loader {
-      id: videoPreviewLoader
-      asynchronous: true
-      anchors {
-        fill: parent
-        margins: vpx(4)
-      }
-      layer.enabled: true
-      layer.effect: OpacityMask {
-          maskSource: Item {
-              width: videoPreviewLoader.width
-              height: videoPreviewLoader.height
-              Rectangle {
-                  anchors.centerIn: parent
-                  width: videoPreviewLoader.width
-                  height: videoPreviewLoader.height
-                  radius: cornerradius - vpx(1)
-              }
-          }
-      }
-      //z: 3
-    }
+//    Component {
+//      id: videoPreviewWrapper
+//      Video {
+//        source: game.assets.videos.length ? game.assets.videos[0] : ""
+//        anchors.fill: parent
+//        fillMode: VideoOutput.PreserveAspectCrop
+//        muted: true
+//        loops: MediaPlayer.Infinite
+//        autoPlay: true
+//      }
+//
+//    }
+//
+//    Loader {
+//      id: videoPreviewLoader
+//      asynchronous: true
+//      anchors {
+//        fill: parent
+//        margins: vpx(4)
+//      }
+//      layer.enabled: true
+//      layer.effect: OpacityMask {
+//          maskSource: Item {
+//              width: videoPreviewLoader.width
+//              height: videoPreviewLoader.height
+//              Rectangle {
+//                  anchors.centerIn: parent
+//                  width: videoPreviewLoader.width
+//                  height: videoPreviewLoader.height
+//                  radius: cornerradius - vpx(1)
+//              }
+//          }
+//      }
+//      //z: 3
+//    }
 
     // Dim overlay
     Rectangle {
