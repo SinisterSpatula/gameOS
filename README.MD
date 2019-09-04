@@ -1,3 +1,7 @@
+## What is this Fork?
+
+I'm modifying the theme for small screen to work on Retroflag GPi case 320x240 / 4:3 aspect.
+
 # gameOS v0.5
 
 ![gameOS Pegasus theme](https://i.imgur.com/FeGjoC8.png)
