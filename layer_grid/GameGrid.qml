@@ -90,7 +90,7 @@ FocusScope {
     anchors.horizontalCenter: parent.horizontalCenter
 
     cellWidth: grid.width/numColumns
-    cellHeight: (numColumns == 2) ? vpx(300) : vpx(210)
+    cellHeight: (numColumns == 2) ? vpx(300) : vpx(300)
 
     //highlightFollowsCurrentItem: false
     preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(314)
