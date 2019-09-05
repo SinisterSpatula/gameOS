@@ -84,7 +84,7 @@ Item {
     width: vpx(850)
     text: gameData.title
     color: "white"
-    font.pixelSize: vpx(70)
+    font.pixelSize: vpx(100) //vpx(70)
     font.family: titleFont.name
     font.bold: true
     //font.capitalization: Font.AllUppercase
