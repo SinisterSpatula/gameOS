@@ -388,7 +388,7 @@ Item {
     width: itemcontainer.width - vpx(30)
     anchors { margins: vpx(10) }
     color: selected ? "orange" : "white"
-    font.pixelSize: vpx(18)
+    font.pixelSize: vpx(36) //vpx(18)
     //font.family: openSans
     font.bold: true
     style: Text.Outline; styleColor: "black"
