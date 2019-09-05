@@ -215,7 +215,7 @@ Item {
                 easing.period: 1.5
               }
             }
-            font.pixelSize: vpx(25)
+            font.pixelSize: vpx(50)
             font.family: globalFonts.sans
             //font.capitalization: Font.AllUppercase
             font.bold: selected
