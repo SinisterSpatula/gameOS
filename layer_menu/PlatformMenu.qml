@@ -131,7 +131,7 @@ Item {
         id: logo
 
         width: menubar.contentWidth
-        height: vpx(75)
+        height: vpx(175)
 
         fillMode: Image.PreserveAspectFit
         source: "../assets/images/logos/" + collection.shortName + ".svg"
