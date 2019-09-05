@@ -193,7 +193,7 @@ Item {
           id: menuitem
           readonly property bool selected: ListView.isCurrentItem
           width: menubar.width
-          height: vpx(50)
+          height: vpx(60)
 
           Text {
             text: {
