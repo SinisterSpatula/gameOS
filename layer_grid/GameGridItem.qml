@@ -266,8 +266,8 @@ Item {
       Image {
         id: favebg
         source: "../assets/images/favebg.svg"
-        width: vpx(32)
-        height: vpx(32)
+        width: vpx(64) //vpx(32)
+        height: vpx(64) //vpx(32)
         sourceSize { width: vpx(32); height: vpx(32)}
         anchors { top: parent.top; topMargin: vpx(0); right: parent.right; rightMargin: vpx(0) }
         visible: false
@@ -283,8 +283,8 @@ Item {
       Image {
         id: star
         source: "../assets/images/star.svg"
-        width: vpx(13)
-        height: vpx(13)
+        width: vpx(26) //vpx(13)
+        height: vpx(26) //vpx(13)
         sourceSize { width: vpx(32); height: vpx(32)}
         anchors { top: parent.top; topMargin: vpx(3); right: parent.right; rightMargin: vpx(3) }
         smooth: true
