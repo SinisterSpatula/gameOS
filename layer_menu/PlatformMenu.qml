@@ -149,7 +149,7 @@ Item {
           width: gameList.cellWidth; height: gameList.cellHeight
           color: "#FF9E12"
           x: gameList.currentItem.x
-          y: gameList.currentItem.y - vpx(8)
+          y: gameList.currentItem.y - vpx(75)
           Behavior on y { NumberAnimation {
             duration: 300;
             easing.type: Easing.OutQuart;
