@@ -101,15 +101,15 @@ Item {
       color: "white"
       radius: cornerradius + vpx(3)
 
-      // Looping colour animation
-      SequentialAnimation on opacity {
-        id: colorAnim
-        running: true
-        loops: Animation.Infinite
-        NumberAnimation { to: 1; duration: 200; }
-        NumberAnimation { to: 0; duration: 500; }
-        PauseAnimation { duration: 200 }
-      }
+//      // Looping colour animation
+//      SequentialAnimation on opacity {
+//        id: colorAnim
+//        running: true
+//        loops: Animation.Infinite
+//        NumberAnimation { to: 1; duration: 200; }
+//        NumberAnimation { to: 0; duration: 500; }
+//        PauseAnimation { duration: 200 }
+//      }
     }
 
 
