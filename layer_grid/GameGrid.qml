@@ -101,7 +101,7 @@ FocusScope {
     model: collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
       //if (api.currentCollection) api.currentCollection.games.index = currentIndex;
-      navSound.play()
+      //navSound.play()
       gameChanged(currentIndex)
 
     }
