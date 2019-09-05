@@ -46,7 +46,7 @@ Item {
         visible: gameData
         asynchronous: true
         source: bgImage1
-        sourceSize { width: 1920; height: 1080 }
+        sourceSize { width: 320; height: 240 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
     }
@@ -57,7 +57,7 @@ Item {
         visible: gameData
         asynchronous: true
         source: bgImage2
-        sourceSize { width: 1920; height: 1080 }
+        sourceSize { width: 320; height: 240 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
     }
