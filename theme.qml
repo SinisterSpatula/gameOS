@@ -175,7 +175,7 @@ FocusScope {
         width: parent.width
         //  text: (api.filters.current.enabled) ? api.currentCollection.name + " | Favorites" : api.currentCollection.name
         color: "white"
-        font.pixelSize: vpx(32); vpx(16)
+        font.pixelSize: vpx(32)
         font.family: globalFonts.sans
         //font.capitalization: Font.AllUppercase
         elide: Text.ElideRight
