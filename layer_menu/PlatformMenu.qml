@@ -106,7 +106,7 @@ Item {
       }
     }
 
-    width: vpx(350)
+    width: vpx(550)
     height: parent.height
     //source: "../assets/images/defaultbg.jpg"
     //fillMode: Image.PreserveAspectCrop
