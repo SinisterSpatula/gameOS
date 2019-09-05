@@ -152,14 +152,14 @@ FocusScope {
         }
       }
 
-//      Image {
-//        id: menuicon
-//        source: "assets/images/menuicon.svg"
-//        width: vpx(24)
-//        height: vpx(24)
-//        anchors { top: parent.top; topMargin: vpx(32); left: parent.left; leftMargin: vpx(32) }
-//        visible: gamegrid.focus
-//      }
+      Image {
+        id: menuicon
+        source: "assets/images/menuicon.svg"
+        width: vpx(24)
+        height: vpx(24)
+        anchors { top: parent.top; topMargin: vpx(32); left: parent.left; leftMargin: vpx(32) }
+        visible: false
+      }
 
       Text {
         id: collectiontitle
