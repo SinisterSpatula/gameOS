@@ -20,45 +20,45 @@ Item {
   // VIDEO STUFF //
   /////////////////
 
-  onSelectedChanged: {
-    if (selected) {
-      videoDelay.restart();
-    }
-    else {
-      videoPreviewLoader.sourceComponent = undefined;
-      fadescreenshot.stop();
-    }
-
-  }
-
-  onCollectionChanged: {
-    if (collection.shortName == "steam") {
-      steam = true
-    } else {
-      steam = false
-    }
-
-  }
-
-
-  Timer {
-    id: videoDelay
-    interval: 100
-    onTriggered: {
-      if (selected && game.assets.videos.length) {
-        videoPreviewLoader.sourceComponent = videoPreviewWrapper;
-        fadescreenshot.restart();
-      }
-    }
-  }
-
-  Timer {
-    id: fadescreenshot
-    interval: 1000
-    onTriggered: {
-      screenshot.opacity = 0;
-    }
-  }
+//  onSelectedChanged: {
+//    if (selected) {
+//      videoDelay.restart();
+//    }
+//    else {
+//      videoPreviewLoader.sourceComponent = undefined;
+//      fadescreenshot.stop();
+//    }
+//
+//  }
+//
+//  onCollectionChanged: {
+//    if (collection.shortName == "steam") {
+//      steam = true
+//    } else {
+//      steam = false
+//    }
+//
+//  }
+//
+//
+//  Timer {
+//    id: videoDelay
+//    interval: 100
+//    onTriggered: {
+//      if (selected && game.assets.videos.length) {
+//        videoPreviewLoader.sourceComponent = videoPreviewWrapper;
+//        fadescreenshot.restart();
+//      }
+//    }
+//  }
+//
+//  Timer {
+//    id: fadescreenshot
+//    interval: 1000
+//    onTriggered: {
+//      screenshot.opacity = 0;
+//    }
+//  }
 
   ////////////////////////
   // END OF VIDEO STUFF //
