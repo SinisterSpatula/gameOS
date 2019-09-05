@@ -170,7 +170,7 @@ Item {
 //      Layout.topMargin: vpx(-12)
 //      Layout.preferredWidth: parent.width
 //      font.capitalization: Font.AllUppercase
-    }
+//    }
 
 
     Item {
