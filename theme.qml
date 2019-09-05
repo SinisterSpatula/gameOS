@@ -200,8 +200,8 @@ FocusScope {
 
         gameData: currentGame
 
-        height: vpx(300)//vpx(200)
-        width: parent.width - vpx(60); //vpx(182)
+        height: vpx(200)
+        width: parent.width - vpx(182)
         anchors { top: menuicon.bottom; topMargin: vpx(-20)}
 
         // Text doesn't look so good blurred so fade it out when blurring
