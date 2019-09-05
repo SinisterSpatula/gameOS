@@ -81,7 +81,7 @@ Item {
     anchors {
       verticalCenter: parent.verticalCenter
     }
-    width: vpx(850)
+    width: vpx(950) //vpx(850)
     text: gameData.title
     color: "white"
     font.pixelSize: vpx(100) //vpx(70)
