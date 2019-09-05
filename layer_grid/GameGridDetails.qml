@@ -116,60 +116,60 @@ Item {
     spacing: vpx(4)
 
 
-    Image {
-      id: wreath
-      source: (gameData.rating > 0.89) ? "../assets/images/wreath-gold.svg" : "../assets/images/wreath.svg"
-      asynchronous: true
-      fillMode: Image.PreserveAspectFit
-      smooth: true
-      Layout.preferredWidth: vpx(100)
-      Layout.preferredHeight: vpx(100)
-
-      opacity: (gameData.rating != "") ? 1 : 0.3
-      //visible: (gameData.rating != "") ? 1 : 0
-      Layout.alignment: Qt.AlignCenter
-      sourceSize.width: vpx(128)
-      sourceSize.height: vpx(128)
-
-      Text {
-        id: metarating
-        text: (gameData.rating == "") ? "NA" : Math.round(gameData.rating * 100)
-        color: (gameData.rating > 0.89) ? "#FFCE00" : "white"
-        font.pixelSize: vpx(45)
-        font.family: globalFonts.condensed
-        font.bold: true
-        horizontalAlignment: Text.AlignHCenter
-        anchors { top: parent.top; topMargin: vpx(20) }
-        width: parent.width
-        font.capitalization: Font.AllUppercase
-
-      }
-
-      // DropShadow
-      layer.enabled: true
-      layer.effect: DropShadow {
-          horizontalOffset: 0
-          verticalOffset: 0
-          radius: 10.0
-          samples: 17
-          color: "#80000000"
-          transparentBorder: true
-
-      }
-    }
-
-
-    Text {
-      id: ratingtext
-      text: (gameData.rating == "") ? "No Rating" : "Rating"
-      color: "white"
-      font.pixelSize: vpx(16)
-      font.family: globalFonts.condensed
-      font.bold: true
-      horizontalAlignment: Text.AlignHCenter
-      Layout.topMargin: vpx(-12)
-      Layout.preferredWidth: parent.width
-      font.capitalization: Font.AllUppercase
+//    Image {
+//      id: wreath
+//      source: (gameData.rating > 0.89) ? "../assets/images/wreath-gold.svg" : "../assets/images/wreath.svg"
+//      asynchronous: true
+//      fillMode: Image.PreserveAspectFit
+//      smooth: true
+//      Layout.preferredWidth: vpx(100)
+//      Layout.preferredHeight: vpx(100)
+//
+//      opacity: (gameData.rating != "") ? 1 : 0.3
+//      //visible: (gameData.rating != "") ? 1 : 0
+//      Layout.alignment: Qt.AlignCenter
+//      sourceSize.width: vpx(128)
+//      sourceSize.height: vpx(128)
+//
+//      Text {
+//        id: metarating
+//        text: (gameData.rating == "") ? "NA" : Math.round(gameData.rating * 100)
+//        color: (gameData.rating > 0.89) ? "#FFCE00" : "white"
+//        font.pixelSize: vpx(45)
+//        font.family: globalFonts.condensed
+//        font.bold: true
+//        horizontalAlignment: Text.AlignHCenter
+//        anchors { top: parent.top; topMargin: vpx(20) }
+//        width: parent.width
+//        font.capitalization: Font.AllUppercase
+//
+//      }
+//
+//      // DropShadow
+//      layer.enabled: true
+//      layer.effect: DropShadow {
+//          horizontalOffset: 0
+//          verticalOffset: 0
+//          radius: 10.0
+//          samples: 17
+//          color: "#80000000"
+//          transparentBorder: true
+//
+//      }
+//    }
+//
+//
+//    Text {
+//      id: ratingtext
+//      text: (gameData.rating == "") ? "No Rating" : "Rating"
+//      color: "white"
+//      font.pixelSize: vpx(16)
+//      font.family: globalFonts.condensed
+//      font.bold: true
+//      horizontalAlignment: Text.AlignHCenter
+//      Layout.topMargin: vpx(-12)
+//      Layout.preferredWidth: parent.width
+//      font.capitalization: Font.AllUppercase
     }
 
 
