@@ -47,7 +47,7 @@ Item {
         asynchronous: true
         source: bgImage1
         sourceSize { width: 320; height: 240 }
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.Stretch //Image.PreserveAspectCrop
         smooth: false
     }
 
@@ -58,7 +58,7 @@ Item {
         asynchronous: true
         source: bgImage2
         sourceSize { width: 320; height: 240 }
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.Stretch //Image.PreserveAspectCrop
         smooth: false
     }
 
