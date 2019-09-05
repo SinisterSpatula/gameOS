@@ -1,6 +1,6 @@
 ## What is this Fork?
 
-I'm modifying the theme for small screen to work on Retroflag GPi case 320x240 / 4:3 aspect.
+I'm modifying the theme for small screen to work on Retroflag GPi case 320x240 / 4:3 aspect. (Or trying at least)
 
 # gameOS v0.5
 
