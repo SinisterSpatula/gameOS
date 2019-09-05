@@ -220,7 +220,7 @@ Item {
             //font.capitalization: Font.AllUppercase
             font.bold: selected
             //width: ListView.view.width
-            height: vpx(40)
+            height: vpx(80)
             verticalAlignment: Text.AlignVCenter
             elide: Text.ElideRight
 
