@@ -137,7 +137,6 @@ Item {
         verticalCenter: parent.verticalCenter
       }
       width: parent.width - vpx(182)
-      //height: boxAvailable ? (boxart.height*2) + (padding*4) + navigationbox.height : vpx(400)
       height: boxAvailable ? vpx(700) : vpx(500)
       color: "#1a1a1a"//"#ee1a1a1a"
       radius: cornerradius
@@ -160,7 +159,6 @@ Item {
       // Background art
       Item {
         id: bgart
-        //width: vpx(500)
         width: vpx(700)
         height: parent.height - navigationbox.height
         anchors.right: parent.right
@@ -403,7 +401,7 @@ Item {
             id: gameDescription
             width: parent.width
             //height: (boxart.height*2.4) - y//parent.height - navigationbox.height
-            height: (boxAvailable) ? vpx(400) : vpx(100)
+            height: vpx(400)
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
             }
