@@ -134,7 +134,7 @@ Item {
         verticalCenter: parent.verticalCenter
       }
       width: parent.width - vpx(182)
-      height: boxAvailable ? boxart.height + (padding*2) + navigationbox.height : vpx(400)
+      height: boxAvailable ? (boxart.height*2) + (padding*4) + navigationbox.height : vpx(400)
       color: "#1a1a1a"//"#ee1a1a1a"
       radius: cornerradius
       opacity: 0
@@ -156,7 +156,8 @@ Item {
       // Background art
       Item {
         id: bgart
-        width: vpx(500)
+        //width: vpx(500)
+        width: vpx(700)
         height: parent.height - navigationbox.height
         anchors.right: parent.right
 
@@ -201,7 +202,7 @@ Item {
           id: screenshot
           width: parent.width
           height: parent.height
-          source: gameData.assets.screenshots[0] || ""
+          source: gameData.assets.screenshots[0] || gameData.assets.boxFront
           fillMode: Image.PreserveAspectCrop
           anchors {
             top: parent.top;
@@ -264,11 +265,11 @@ Item {
         Image {
           id: boxart
           width: vpx(300)
-          source: gameData.assets.boxFront
+          source: gameData.assets.boxFront || gameData.assets.screenshots[0]
           sourceSize { width: vpx(512); height: vpx(512) }
           fillMode: Image.PreserveAspectFit
           asynchronous: true
-          visible: gameData.assets.boxFront || ""
+          visible: gameData.assets.boxFront || gameData.assets.screenshots[0]
           smooth: true
           Behavior on opacity { NumberAnimation { duration: 100 } }
           Behavior on x { NumberAnimation { duration: 100;  easing.type: Easing.InQuad } }
@@ -325,10 +326,8 @@ Item {
               }
             }
           }
-
         }
-
-
+	
         // NOTE: Details section
         Item {
           id: details
@@ -344,70 +343,16 @@ Item {
           Text {
             id: gameTitle
 
-            anchors { top: parent.top; }
+            anchors { top: parent.top; topMargin: vpx(15) }
 
             width: parent.width - wreath.width
             text: gameData.title
             color: "white"
-            font.pixelSize: vpx(50)
+            font.pixelSize: vpx(60)
             font.family: titleFont.name
             font.bold: true
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
-          }
-
-          RowLayout {
-            id: metadata
-            anchors { top: gameTitle.bottom; topMargin: vpx(0) }
-            height: vpx(1)
-            spacing: vpx(6)
-
-            // Developer
-            GameGridMetaBox {
-              metatext: (gameData.developerList[0] != undefined) ? gameData.developerList[0] : "Unknown"
-            }
-
-            // Release year
-            GameGridMetaBox {
-              metatext: (gameData.release != "" ) ? gameData.release.getFullYear() : ""
-            }
-
-            // Players
-            GameGridMetaBox {
-              metatext: if (gameData.players > 1)
-                gameData.players + " players"
-              else
-                gameData.players + " player"
-            }
-
-            // Spacer
-            Item {
-              Layout.preferredWidth: vpx(5)
-            }
-
-            Rectangle {
-              id: spacer2
-              Layout.preferredWidth: vpx(2)
-              Layout.fillHeight: true
-              opacity: 0.5
-            }
-
-            Item {
-              Layout.preferredWidth: vpx(5)
-            }
-
-            // Times played
-            GameGridMetaBox {
-              metatext: (gameData.playCount > 0) ? gameData.playCount + " times" : "Never played"
-              icon: "../assets/images/gamepad.svg"
-            }
-
-            // Play time (if it has been played)
-            GameGridMetaBox {
-              metatext: Utils.formatPlayTime(gameData.playTime)
-              icon: "../assets/images/clock.svg"
-              visible: (gameData.playTime > 0)
-            }
           }
 
           Image {
@@ -417,8 +362,8 @@ Item {
             asynchronous: false
             fillMode: Image.PreserveAspectFit
             smooth: true
-            width: vpx(75)
-            height: vpx(75)
+            width: vpx(100)
+            height: vpx(100)
 
             opacity: (gameData.rating != "" && !showVideo) ? 1 : 0.1
             Behavior on opacity { NumberAnimation { duration: 100 } }
@@ -427,7 +372,7 @@ Item {
               id: metarating
               text: (gameData.rating == "") ? "NA" : Math.round(gameData.rating * 100)
               color: (gameData.rating > 0.89) ? "#FFCE00" : "white"
-              font.pixelSize: vpx(35)
+              font.pixelSize: vpx(55)
               font.family: globalFonts.condensed
               font.bold: true
               horizontalAlignment: Text.AlignHCenter
@@ -453,13 +398,13 @@ Item {
           Text {
             id: gameDescription
             width: parent.width
-            height: boxart.height - y//parent.height - navigationbox.height
+            height: (boxart.height*2.4) - y//parent.height - navigationbox.height
             anchors {
-              top: metadata.bottom; topMargin: vpx(60);
+              top: gameTitle.bottom; topMargin: vpx(60);
             }
             horizontalAlignment: Text.AlignJustify
             text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
-            font.pixelSize: vpx(22)
+            font.pixelSize: vpx(30)
             font.family: "Open Sans"
             //textFormat: Text.RichText
             color: "#fff"
@@ -488,7 +433,7 @@ Item {
           }
           color: "#16ffffff"
           width: parent.width
-          height: vpx(60)
+          height: vpx(80)
 
           // Buttons
           Row {
