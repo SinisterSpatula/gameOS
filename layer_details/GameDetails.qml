@@ -16,7 +16,7 @@ Item {
   property bool showVideo: false
   property bool boxAvailable: gameData.assets.boxFront
   property int videooffset: vpx(330)
-  property int numbuttons: (gameData.assets.screenshots.length) ? 4 : 3
+  property int numbuttons: (gameData.assets.videos.length) ? 4 : 3
 
   signal launchRequested
   signal detailsCloseRequested
@@ -91,15 +91,12 @@ Item {
     id: fadescreenshot
     interval: 500
     onTriggered: {
-      if (gameData.assets.videos.length) {
-          screenshot.opacity = 0;
-      }
+      screenshot.opacity = 0;
     }
   }
 
   function toggleVideo() {
-    //if (gameData.assets.videos.length && (boxart.opacity == 0 || boxart.opacity == 1)) {
-    if (gameData.assets.screenshots.length && (boxart.opacity == 0 || boxart.opacity == 1)) {
+    if (gameData.assets.videos.length && (boxart.opacity == 0 || boxart.opacity == 1)) {
       if (showVideo) {
         // BOXART
         showVideo = false
@@ -137,8 +134,7 @@ Item {
         verticalCenter: parent.verticalCenter
       }
       width: parent.width - vpx(182)
-      //height: boxAvailable ? (boxart.height*2) + (padding*4) + navigationbox.height : vpx(400)
-      height: boxAvailable ? vpx(700) : vpx(400)
+      height: boxAvailable ? (boxart.height*2) + (padding*4) + navigationbox.height : vpx(400)
       color: "#1a1a1a"//"#ee1a1a1a"
       radius: cornerradius
       opacity: 0
@@ -527,7 +523,7 @@ Item {
             GamePanelButton {
               id: faveBtn
               property bool isFavorite: (gameData && gameData.favorite) || false
-              text: isFavorite ? "Unfavorite" : "Favorite"
+              text: isFavorite ? "Unfavorite" : "Add to Favorites"
               width: parent.width/numbuttons
               height: parent.height
 
