@@ -14,9 +14,9 @@ Item {
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
   property bool showVideo: false
-  property bool boxAvailable: gameData.assets.boxFront
+  property bool boxAvailable: gameData.assets.boxFront || gameData.assets.screenshots[0]
   property int videooffset: vpx(330)
-  property int numbuttons: (gameData.assets.videos.length) ? 4 : 3
+  property int numbuttons: boxAvailable ? 4 : 3
 
   signal launchRequested
   signal detailsCloseRequested
@@ -91,12 +91,15 @@ Item {
     id: fadescreenshot
     interval: 500
     onTriggered: {
-      screenshot.opacity = 0;
+      if (gameData.assets.videos.length) {
+          screenshot.opacity = 0;
+      }
     }
   }
 
   function toggleVideo() {
-    if (gameData.assets.videos.length && (boxart.opacity == 0 || boxart.opacity == 1)) {
+    //if (gameData.assets.videos.length && (boxart.opacity == 0 || boxart.opacity == 1)) {
+    if (boxAvailable && (boxart.opacity == 0 || boxart.opacity == 1)) {
       if (showVideo) {
         // BOXART
         showVideo = false
@@ -134,7 +137,8 @@ Item {
         verticalCenter: parent.verticalCenter
       }
       width: parent.width - vpx(182)
-      height: boxAvailable ? (boxart.height*2) + (padding*4) + navigationbox.height : vpx(400)
+      //height: boxAvailable ? (boxart.height*2) + (padding*4) + navigationbox.height : vpx(400)
+      height: boxAvailable ? vpx(700) : vpx(500)
       color: "#1a1a1a"//"#ee1a1a1a"
       radius: cornerradius
       opacity: 0
@@ -398,9 +402,10 @@ Item {
           Text {
             id: gameDescription
             width: parent.width
-            height: (boxart.height*2.4) - y//parent.height - navigationbox.height
+            //height: (boxart.height*2.4) - y//parent.height - navigationbox.height
+            height: (boxAvailable) ? vpx(400) : vpx(100)
             anchors {
-              top: gameTitle.bottom; topMargin: vpx(60);
+              top: gameTitle.bottom; topMargin: vpx(50);
             }
             horizontalAlignment: Text.AlignJustify
             text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
@@ -523,7 +528,7 @@ Item {
             GamePanelButton {
               id: faveBtn
               property bool isFavorite: (gameData && gameData.favorite) || false
-              text: isFavorite ? "Unfavorite" : "Add Favorite"
+              text: isFavorite ? "Unfavorite" : "Favorite"
               width: parent.width/numbuttons
               height: parent.height
 
