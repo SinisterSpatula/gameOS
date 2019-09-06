@@ -41,7 +41,7 @@ Rectangle {
           }
         }
         font {
-            pixelSize: root.focus ? vpx(28) : vpx(25)
+            pixelSize: root.focus ? vpx(38) : vpx(35) //vpx(28) : vpx(25)
             family: globalFonts.sans
             bold: root.focus
         }
