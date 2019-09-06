@@ -202,7 +202,7 @@ Item {
           id: screenshot
           width: parent.width
           height: parent.height
-          source: gameData.assets.screenshots[0] || gameData.assets.boxFront
+          source: gameData.assets.screenshots[0] || gameData.assets.boxFront || ""
           fillMode: Image.PreserveAspectCrop
           anchors {
             top: parent.top;
@@ -265,7 +265,7 @@ Item {
         Image {
           id: boxart
           width: vpx(300)
-          source: gameData.assets.boxFront || gameData.assets.screenshots[0]
+          source: gameData.assets.boxFront || gameData.assets.screenshots[0] || ""
           sourceSize { width: vpx(512); height: vpx(512) }
           fillMode: Image.PreserveAspectFit
           asynchronous: true
@@ -523,7 +523,7 @@ Item {
             GamePanelButton {
               id: faveBtn
               property bool isFavorite: (gameData && gameData.favorite) || false
-              text: isFavorite ? "Unfavorite" : "Add Favorite"
+              text: isFavorite ? "Unfavorite" : "Add to Favorites"
               width: parent.width/numbuttons
               height: parent.height
 
