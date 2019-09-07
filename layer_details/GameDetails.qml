@@ -418,10 +418,9 @@ Item {
             width: parent.width
             height: parent.height
             contentWidth: parent.width
-            contentHeight: parent.height
+            contentHeight: parent.height - vpx(100);
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
-	                bottom: panelbuttons.top + vpx(30);
                     }
             
 	        TextEdit {
@@ -431,7 +430,7 @@ Item {
                 font.pixelSize: vpx(60) //vpx(30)
                 font.family: "Open Sans"
 		width: parent.width
-		height: parent.height
+		height: gameDescription.height
                 //textFormat: Text.RichText
                 color: "#fff"
                 //elide: Text.ElideRight
