@@ -407,7 +407,7 @@ Item {
             width:200
             height:200
             contentWidth: 500
-            contentHeight: textBox.paintedHeight
+            contentHeight: 500
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
 	      bottom: parent.bottom;
@@ -430,7 +430,7 @@ Item {
             //textFormat: Text.RichText
             color: "#fff"
             elide: Text.ElideRight
-            wrapMode: Text.WordWrap
+            wrapMode: "Text.WordWrap"
             opacity: showVideo ? 0.1 : 1.0
             Behavior on opacity { NumberAnimation { duration: 100 } }
 	    }
