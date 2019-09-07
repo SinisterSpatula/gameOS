@@ -400,11 +400,15 @@ Item {
           }
 
           // description
-          Text {
+          Flickable {
             id: gameDescription
+            boundsBehavior: gameDescription.StopAtBounds
+            clip:true
             width: parent.width
             //height: (boxart.height*2.4) - y//parent.height - navigationbox.height
             height: vpx(400)
+            contentHeight: textBox.paintedHeight
+            contentWidth: textBox.paintedWidth
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
             }
@@ -418,6 +422,16 @@ Item {
             wrapMode: Text.WordWrap
             opacity: showVideo ? 0.1 : 1.0
             Behavior on opacity { NumberAnimation { duration: 100 } }
+	    
+	    Keys.onPressed: {
+            if(event.key == Qt.Key_Down){
+                testFlick.flick(0,-500);
+            }
+            else if(event.key == Qt.Key_Up){
+                testFlick.flick(0,500);
+            }
+        }
+	    
           }
 
         }
