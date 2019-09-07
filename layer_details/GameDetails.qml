@@ -369,7 +369,8 @@ Item {
             font.bold: true
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
-            opacity: (gameData.rating != "" && !showVideo) ? 1 : 0.05
+            opacity: showVideo ? 0.05 : 1
+            Behavior on opacity { NumberAnimation { duration: 100 } }
 	    wrapMode: Text.WordWrap
     	    lineHeightMode: Text.FixedHeight
     	    lineHeight: vpx(50)
