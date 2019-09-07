@@ -42,6 +42,18 @@ Item {
   }
 
   Keys.onPressed: {
+    
+    //Scroll the gameDescription
+    if(event.key == Qt.Key_Down){
+        gameDescription.flick(0,-500);
+            
+        return;
+    }
+    if(event.key == Qt.Key_Up) {
+        gameDescription.flick(0,500);
+    }
+    
+    
     if (event.isAutoRepeat)
       return;
 
@@ -75,15 +87,6 @@ Item {
       return;
     }
     
-        //Scroll the gameDescription
-    if(event.key == Qt.Key_Down){
-        gameDescription.flick(0,-500);
-            
-        return;
-    }
-    if(event.key == Qt.Key_Up) {
-        gameDescription.flick(0,500);
-    }
     
   }
 
