@@ -31,7 +31,7 @@ BorderImage {
       Layout.maximumWidth: vpx(25)
       Layout.maximumHeight: vpx(15)
       opacity: 0.75
-      visible: icon
+      visible: false; //icon
     }
 
     Text {
