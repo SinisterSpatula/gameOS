@@ -22,7 +22,8 @@ Rectangle {
   Image {
     id: logo
 
-    width: vpx(600)
+    width: parent.width //vpx(600)
+    height: parent.height
     sourceSize { width: 512; height: 512 }
     fillMode: Image.PreserveAspectFit
     source: "../assets/images/logos/" + collection.shortName + ".svg"
