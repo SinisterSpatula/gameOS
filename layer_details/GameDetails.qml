@@ -44,7 +44,6 @@ Item {
   Keys.onPressed: {
     if (event.isAutoRepeat)
       return;
-  
 
     if (api.keys.isAccept(event)) {
       event.accepted = true;
@@ -75,8 +74,8 @@ Item {
 
       return;
     }
-  
-    //Scroll the gameDescription
+    
+        //Scroll the gameDescription
     if(event.key == Qt.Key_Down){
         gameDescription.flick(0,-500);
             
@@ -85,7 +84,7 @@ Item {
     if(event.key == Qt.Key_Up) {
         gameDescription.flick(0,500);
     }
-
+    
   }
 
   Timer {
@@ -264,7 +263,7 @@ Item {
             }
           }
         }
-      
+      }
 
       Item {
         id: infobox
@@ -367,7 +366,7 @@ Item {
             font.bold: true
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
-	        wrapMode: Text.WordWrap
+	    wrapMode: Text.WordWrap
     	    lineHeightMode: Text.FixedHeight
     	    lineHeight: vpx(50)
           }
@@ -411,7 +410,7 @@ Item {
             }
           }
 
-          // description
+ 	// description
           Flickable {
             id: gameDescription
             boundsBehavior: gameDescription.StopAtBounds
@@ -424,7 +423,6 @@ Item {
                     top: gameTitle.bottom; topMargin: vpx(50);
 	                bottom: parent.bottom;
                     }
-
             
 	        Text {
 	        id: textBox
@@ -438,8 +436,14 @@ Item {
                 wrapMode: Text.WordWrap
                 opacity: showVideo ? 0.1 : 1.0
                 Behavior on opacity { NumberAnimation { duration: 100 } }
-	        }
-        
+
+
+          }
+
+        }
+
+      }
+
       // NOTE: Navigation
       Item {
         id: navigation
@@ -619,14 +623,14 @@ Item {
             }
 
           }
-        
+        }
 
 
 
-            // Round those corners!
-            layer.enabled: true
-            layer.effect: OpacityMask {
-            maskSource: Item {
+        // Round those corners!
+        layer.enabled: true
+        layer.effect: OpacityMask {
+          maskSource: Item {
             width: navigation.width
             height: navigation.height
             Rectangle {
@@ -652,7 +656,7 @@ Item {
 
       }
 
-      }
+    }
 
     function intro() {
         backgroundbox.opacity = 1;
@@ -664,10 +668,5 @@ Item {
         backgroundbox.opacity = 0;
         backgroundbox.scale = 1.03;
         menuIntroSound.play()
-            }
-          }
-        }
-      }
-      }
     }
 }
