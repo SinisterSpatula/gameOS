@@ -91,7 +91,7 @@ Item {
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
     lineHeightMode: Text.FixedHeight
-    lineHeight: vpx(100)
+    lineHeight: vpx(90)
     //visible: (gameData.assets.logo == "") ? true : false
     //style: Text.Outline; styleColor: "#cc000000"
   }
