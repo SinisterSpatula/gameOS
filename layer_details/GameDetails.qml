@@ -77,12 +77,12 @@ Item {
     
         //Scroll the gameDescription
     if(event.key == Qt.Key_Down){
-        gameDescription.flick(0,-500);
+        gameDescription.flick(0,-60);
             
         return;
     }
     if(event.key == Qt.Key_Up) {
-        gameDescription.flick(0,500);
+        gameDescription.flick(0,60);
     }
     
   }
@@ -421,7 +421,7 @@ Item {
             contentHeight: parent.height
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
-	                bottom: parent.bottom;
+	                bottom: panelbuttons.top - vpx(30);
                     }
             
 	        TextEdit {
