@@ -417,8 +417,8 @@ Item {
             clip:true
             width: parent.width
             height: parent.height
-            contentWidth: vpx(300)
-            contentHeight: height
+            contentWidth: parent.width
+            contentHeight: parent.height
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
 	                bottom: parent.bottom;
@@ -431,6 +431,7 @@ Item {
                 font.pixelSize: vpx(60) //vpx(30)
                 font.family: "Open Sans"
 		width: parent.width
+		height: parent.height
                 //textFormat: Text.RichText
                 color: "#fff"
                 //elide: Text.ElideRight
