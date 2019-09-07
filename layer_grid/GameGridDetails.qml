@@ -79,7 +79,9 @@ Item {
     id: gameTitle
 
     anchors {
-      verticalCenter: parent.verticalCenter
+      //verticalCenter: parent.verticalCenter
+    top: parent.top
+    topMargin: vpx(10)
     }
     width: vpx(1080) //vpx(850)
     text: gameData.title
