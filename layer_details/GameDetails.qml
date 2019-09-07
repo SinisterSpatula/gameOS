@@ -421,7 +421,7 @@ Item {
 	    maximumFlickVelocity: 200;
             clip:true
             width: parent.width
-            height: details.height - panelbuttons.height - vpx(50);
+            height: parent.height
             contentWidth: parent.width
             contentHeight: textBox.ImplicitHeight * 1.5;
             anchors {
@@ -463,7 +463,7 @@ Item {
             bottom: parent.bottom;
             left: parent.left; right: parent.right;
           }
-          color: "#16ffffff"
+          color: "#ffffffff"
           width: parent.width
           height: vpx(80)
 
