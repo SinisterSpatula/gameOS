@@ -80,9 +80,9 @@ Item {
 
     anchors {
       //verticalCenter: parent.verticalCenter
-    fill: parent
-    top: parent.top
-    topMargin: vpx(10)
+      fill: parent
+      top: parent.top
+      //topMargin: vpx(10)
     }
     width: vpx(1080) //vpx(850)
     text: gameData.title
