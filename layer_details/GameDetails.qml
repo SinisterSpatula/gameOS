@@ -424,7 +424,7 @@ Item {
 	                bottom: parent.bottom;
                     }
             
-	        Text {
+	        TextEdit {
 	        id: textBox
 	        horizontalAlignment: Text.AlignLeft //Text.AlignJustify
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
