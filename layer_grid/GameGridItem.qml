@@ -385,18 +385,18 @@ Item {
 
   Text {
     text: game.title
-    width: itemcontainer.width - vpx(30)
-    anchors { margins: vpx(10) }
-    color: selected ? "orange" : "white"
-    font.pixelSize: vpx(45) //vpx(18)
-    //font.family: openSans
+    width: itemcontainer.width - vpx(10)
+    anchors {
+      left: parent.left; leftMargin: vpx(16);
+      bottom: parent.bottom; bottomMargin: vpx(14)
+    }
+    color: selected ? "white" : "gray"
+    font.pixelSize: vpx(45)
+    font.family: titleFont.name
     font.bold: true
-    style: Text.Outline; styleColor: "black"
     visible: !game.assets.logo
-    anchors.centerIn: parent
+    style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
-    horizontalAlignment: Text.AlignHCenter
-
   }
 }
