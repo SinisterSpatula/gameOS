@@ -404,10 +404,10 @@ Item {
             id: gameDescription
             boundsBehavior: gameDescription.StopAtBounds
             clip:true
-            width:200
-            height:200
-            contentWidth: 500
-            contentHeight: 500
+            width: vpx(200)
+            height: vpx(200)
+            contentWidth: vpx(200)
+            contentHeight: vpx(200)
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
 	      bottom: parent.bottom;
