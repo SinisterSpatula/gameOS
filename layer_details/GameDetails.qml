@@ -412,7 +412,17 @@ Item {
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
             }
-            horizontalAlignment: Text.AlignJustify
+	    Keys.onPressed: {
+            if(event.key == Qt.Key_Down){
+                gameDescription.flick(0,-500);
+            }
+            else if(event.key == Qt.Key_Up){
+                gameDescription.flick(0,500);
+            }
+            
+	  Text {
+	    id: textBox
+	    horizontalAlignment: Text.AlignJustify
             text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
             font.pixelSize: vpx(30)
             font.family: "Open Sans"
@@ -422,14 +432,8 @@ Item {
             wrapMode: Text.WordWrap
             opacity: showVideo ? 0.1 : 1.0
             Behavior on opacity { NumberAnimation { duration: 100 } }
-	    
-	    Keys.onPressed: {
-            if(event.key == Qt.Key_Down){
-                testFlick.flick(0,-500);
-            }
-            else if(event.key == Qt.Key_Up){
-                testFlick.flick(0,500);
-            }
+	    }
+
         }
 	    
           }
