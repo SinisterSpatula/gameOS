@@ -406,8 +406,8 @@ Item {
             clip:true
             width: parent.width
             height: parent.height
-            contentWidth: vpx(400)
-            contentHeight: vpx(400)
+            contentWidth: width
+            contentHeight: height
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
 	      bottom: parent.bottom;
