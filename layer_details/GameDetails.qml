@@ -428,7 +428,7 @@ Item {
 	        id: textBox
 	        horizontalAlignment: Text.AlignLeft //Text.AlignJustify
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
-                font.pixelSize: vpx(60)
+                font.pixelSize: vpx(60) //vpx(30)
                 font.family: "Open Sans"
                 //textFormat: Text.RichText
                 color: "#fff"
