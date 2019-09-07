@@ -404,11 +404,10 @@ Item {
             id: gameDescription
             boundsBehavior: gameDescription.StopAtBounds
             clip:true
-            width: parent.width
-            //height: (boxart.height*2.4) - y//parent.height - navigationbox.height
-            height: parent.height
-	    contentWidth: textBox.width
-            contentHeight: textBox.height
+            width:200
+            height:200
+            contentWidth: 500
+            contentHeight: textBox.paintedHeight
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
 	      bottom: parent.bottom;
