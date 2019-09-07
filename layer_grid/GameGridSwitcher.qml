@@ -15,7 +15,7 @@ Rectangle {
     id: switchanimation;
     OpacityAnimator { target: switchoverlay; from: 0; to: 0.95; duration: 1; }
     OpacityAnimator { target: logo; from: 0; to: 0.95; duration: 100; }
-    PauseAnimation { duration: 1; } //duration: 300;
+    PauseAnimation { duration: 3000; } //duration: 300;
     OpacityAnimator { target: switchoverlay; from: 0.95; to: 0; duration: 300; }
   }
 
