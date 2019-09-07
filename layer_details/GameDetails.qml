@@ -173,7 +173,7 @@ Item {
       // Background art
       Item {
         id: bgart
-        width: vpx(700)
+        width: vpx(750)
         height: parent.height - navigationbox.height
         anchors.right: parent.right
 
@@ -369,6 +369,7 @@ Item {
             font.bold: true
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
+            opacity: (gameData.rating != "" && !showVideo) ? 1 : 0.05
 	    wrapMode: Text.WordWrap
     	    lineHeightMode: Text.FixedHeight
     	    lineHeight: vpx(50)
@@ -441,7 +442,7 @@ Item {
                 color: "#fff"
                 //elide: Text.ElideRight
                 wrapMode: Text.WordWrap
-                opacity: showVideo ? 0.1 : 1.0
+                opacity: showVideo ? 0.05 : 1.0
                 Behavior on opacity { NumberAnimation { duration: 100 } }
 	     }
 
