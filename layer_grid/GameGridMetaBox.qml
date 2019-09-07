@@ -21,6 +21,7 @@ BorderImage {
     //width: parent.width
     //height: parent.height
     anchors.centerIn: parent
+    visible: false;
     Image {
       id: iconimage
       source: icon
