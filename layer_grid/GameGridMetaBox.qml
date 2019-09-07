@@ -16,14 +16,14 @@ BorderImage {
   horizontalTileMode: BorderImage.Stretch
   verticalTileMode: BorderImage.Stretch
   source: "../assets/images/metabg.svg"
-  
+  opacity: 0.00
 
   RowLayout {
     id: rowcontent
     //width: parent.width
     //height: parent.height
     anchors.centerIn: parent
-    visible: false;
+    
     Image {
       id: iconimage
       source: icon
