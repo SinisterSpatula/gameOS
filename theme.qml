@@ -234,7 +234,7 @@ FocusScope {
 
           focus: true
           Behavior on opacity { OpacityAnimator { duration: 100 } }
-          gridWidth: parent.width - vpx(164)
+          gridWidth: parent.width - vpx(60) //- vpx(164)
           height: parent.height
 
           anchors {
