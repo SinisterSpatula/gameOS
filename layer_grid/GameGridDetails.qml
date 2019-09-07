@@ -80,6 +80,7 @@ Item {
 
     anchors {
       //verticalCenter: parent.verticalCenter
+    fill: parent
     top: parent.top
     topMargin: vpx(10)
     }
