@@ -423,15 +423,14 @@ Item {
             
 	  Text {
 	    id: textBox
-	    horizontalAlignment: Text.AlignJustify
+	    horizontalAlignment: Text.AlignLeft //Text.AlignJustify
             text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
             font.pixelSize: vpx(30)
             font.family: "Open Sans"
             //textFormat: Text.RichText
             color: "#fff"
-            elide: Text.ElideRight
+            //elide: Text.ElideRight
             wrapMode: Text.WordWrap
-	    layout: Text.fillWidth
             opacity: showVideo ? 0.1 : 1.0
             Behavior on opacity { NumberAnimation { duration: 100 } }
 	    }
