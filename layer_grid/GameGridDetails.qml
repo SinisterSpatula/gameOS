@@ -272,7 +272,7 @@ Item {
     GameGridMetaBox {
       metatext: Utils.formatPlayTime(gameData.playTime)
       icon: "../assets/images/clock.svg"
-      visible: (gameData.playTime > 0)
+      visible: false //visible: (gameData.playTime > 0)
     }
   }
 
