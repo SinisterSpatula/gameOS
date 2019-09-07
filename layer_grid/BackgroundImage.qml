@@ -12,7 +12,7 @@ Item {
   property string bgImage2
   property bool firstBG: true
 
-  //onBgSourceChanged: swapImage(bgSource)
+  onBgSourceChanged: swapImage(bgSource)
 
 
 
