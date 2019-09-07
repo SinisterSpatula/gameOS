@@ -668,12 +668,14 @@ Item {
     function intro() {
         backgroundbox.opacity = 1;
         backgroundbox.scale = 1;
+	panelbuttons.opacity = 1;
         menuIntroSound.play()
     }
 
     function outro() {
         backgroundbox.opacity = 0;
         backgroundbox.scale = 1.03;
+	panelbuttons.opacity = 0;
         menuIntroSound.play()
     }
 }
