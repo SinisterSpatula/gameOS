@@ -14,7 +14,7 @@ Item {
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
   property bool showVideo: false
-  property bool boxAvailable: gameData.assets.boxFront || gameData.assets.screenshots[0]
+  property bool boxAvailable: gameData.assets.boxFront
   property int videooffset: vpx(330)
   property int numbuttons: boxAvailable ? 4 : 3
 
