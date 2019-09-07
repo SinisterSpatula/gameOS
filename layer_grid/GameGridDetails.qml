@@ -89,6 +89,7 @@ Item {
     font.bold: true
     //font.capitalization: Font.AllUppercase
     elide: Text.ElideRight
+    wrapMode: Text.WordWrap
     //visible: (gameData.assets.logo == "") ? true : false
     //style: Text.Outline; styleColor: "#cc000000"
   }
