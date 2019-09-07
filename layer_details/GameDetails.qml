@@ -430,7 +430,7 @@ Item {
             //textFormat: Text.RichText
             color: "#fff"
             elide: Text.ElideRight
-            wrapMode: "Text.WordWrap"
+            wrapMode: Text.WordWrap
             opacity: showVideo ? 0.1 : 1.0
             Behavior on opacity { NumberAnimation { duration: 100 } }
 	    }
