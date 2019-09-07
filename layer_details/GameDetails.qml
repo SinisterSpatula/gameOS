@@ -355,6 +355,9 @@ Item {
             font.bold: true
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
+	    wrapMode: Text.WordWrap
+    	    lineHeightMode: Text.FixedHeight
+    	    lineHeight: vpx(50)
           }
 
           Image {
