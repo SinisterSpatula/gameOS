@@ -416,21 +416,22 @@ Item {
  	// description
           Flickable {
             id: gameDescription
-            boundsBehavior: gameDescription.StopAtBounds
-	    flickableDirection: gameDescription.VerticalFlick
-	    maximumFlickVelocity: 200;
+            // boundsBehavior: gameDescription.StopAtBounds
+	    // flickableDirection: gameDescription.VerticalFlick
+	    maximumFlickVelocity: 300;
             clip:true
             width: parent.width
-            height: parent.height
+            height: vpx(340) //parent.height
             contentWidth: parent.width
             contentHeight: textBox.ImplicitHeight * 1.5;
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
+                    bottom: parent.bottom; bottomMargin: vpx(70);
                     }
             
 	        TextEdit {
 	        id: textBox
-	        horizontalAlignment: Text.AlignLeft //Text.AlignJustify
+	        horizontalAlignment: Text.AlignJustify
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
                 font.pixelSize: vpx(45) //vpx(30)
                 font.family: "Open Sans"
@@ -473,7 +474,6 @@ Item {
             width: parent.width
             height: parent.height
             anchors.fill: parent
-	    z: gameDescription.z + 1;
 
             // Launch button
             GamePanelButton {
