@@ -10,7 +10,7 @@ BorderImage {
   Layout.minimumWidth: rowcontent.width + vpx(10);
   Layout.minimumHeight: rowcontent.height + vpx(5);
   Layout.alignment: Qt.AlignHCenter;
-  visible: false;
+  
 
   border { left: vpx(3); top: vpx(3); right: vpx(3); bottom: vpx(3); }
   horizontalTileMode: BorderImage.Stretch
