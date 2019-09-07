@@ -77,12 +77,12 @@ Item {
     
         //Scroll the gameDescription
     if(event.key == Qt.Key_Down){
-        gameDescription.flick(0,-100);
+        gameDescription.flick(0,-500);
             
         return;
     }
     if(event.key == Qt.Key_Up) {
-        gameDescription.flick(0,100);
+        gameDescription.flick(0,500);
     }
     
   }
