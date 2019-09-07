@@ -463,7 +463,7 @@ Item {
             bottom: parent.bottom;
             left: parent.left; right: parent.right;
           }
-          color: "#ff666666"
+          color: "#ff404040"
           width: parent.width
           height: vpx(80)
 
