@@ -431,7 +431,7 @@ Item {
             color: "#fff"
             elide: Text.ElideRight
             wrapMode: Text.WordWrap
-	    Layout: fillWidth
+	    layout: Text.fillWidth
             opacity: showVideo ? 0.1 : 1.0
             Behavior on opacity { NumberAnimation { duration: 100 } }
 	    }
