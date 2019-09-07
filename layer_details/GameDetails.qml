@@ -430,6 +430,7 @@ Item {
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
                 font.pixelSize: vpx(60) //vpx(30)
                 font.family: "Open Sans"
+		width: parent.width
                 //textFormat: Text.RichText
                 color: "#fff"
                 //elide: Text.ElideRight
