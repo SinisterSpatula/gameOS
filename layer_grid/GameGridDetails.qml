@@ -80,7 +80,6 @@ Item {
 
     anchors {
       verticalCenter: parent.verticalCenter
-      top: parent.top;
     }
     width: vpx(1080) //vpx(850)
     text: gameData.title
@@ -92,7 +91,7 @@ Item {
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
     lineHeightMode: Text.FixedHeight
-    lineHeight: vpx(90)
+    lineHeight: vpx(85)
     //visible: (gameData.assets.logo == "") ? true : false
     //style: Text.Outline; styleColor: "#cc000000"
   }
