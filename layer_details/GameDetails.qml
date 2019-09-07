@@ -42,6 +42,18 @@ Item {
   }
 
   Keys.onPressed: {
+    
+    //Scroll the gameDescription
+    if(event.key == Qt.Key_Down){
+        gameDescription.flick(0,-500);
+            
+        return;
+    }
+    if(event.key == Qt.Key_Up) {
+        gameDescription.flick(0,500);
+    }
+    
+    
     if (event.isAutoRepeat)
       return;
 
@@ -75,15 +87,6 @@ Item {
       return;
     }
     
-        //Scroll the gameDescription
-    if(event.key == Qt.Key_Down){
-        gameDescription.flick(0,-500);
-            
-        return;
-    }
-    if(event.key == Qt.Key_Up) {
-        gameDescription.flick(0,500);
-    }
     
   }
 
@@ -137,7 +140,7 @@ Item {
   function closedetails() {
     if (showVideo)
       toggleVideo();
-
+    gameDescription.contentY = 0;
     detailsCloseRequested();
   }
 
@@ -414,24 +417,25 @@ Item {
           Flickable {
             id: gameDescription
             boundsBehavior: gameDescription.StopAtBounds
+	    flickableDirection: gameDescription.VerticalFlick
+	    maximumFlickVelocity: 200;
             clip:true
             width: parent.width
             height: parent.height
             contentWidth: parent.width
-            contentHeight: parent.height
+            contentHeight: textBox.ImplicitHeight * 1.5;
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
-	                bottom: parent.bottom;
                     }
             
 	        TextEdit {
 	        id: textBox
 	        horizontalAlignment: Text.AlignLeft //Text.AlignJustify
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
-                font.pixelSize: vpx(60) //vpx(30)
+                font.pixelSize: vpx(45) //vpx(30)
                 font.family: "Open Sans"
 		width: parent.width
-		height: parent.height
+		height: gameDescription.height
                 //textFormat: Text.RichText
                 color: "#fff"
                 //elide: Text.ElideRight
@@ -459,7 +463,7 @@ Item {
             bottom: parent.bottom;
             left: parent.left; right: parent.right;
           }
-          color: "#16ffffff"
+          color: "#ff333333"
           width: parent.width
           height: vpx(80)
 
@@ -469,6 +473,7 @@ Item {
             width: parent.width
             height: parent.height
             anchors.fill: parent
+	    z: gameDescription.z + 1;
 
             // Launch button
             GamePanelButton {
