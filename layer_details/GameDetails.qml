@@ -140,7 +140,7 @@ Item {
   function closedetails() {
     if (showVideo)
       toggleVideo();
-
+    gameDescription.contentY = 0;
     detailsCloseRequested();
   }
 
@@ -417,6 +417,8 @@ Item {
           Flickable {
             id: gameDescription
             boundsBehavior: gameDescription.StopAtBounds
+	    flickableDirection: gameDescription.VerticalFlick
+	    maximumFlickVelocity: 300;
             clip:true
             width: parent.width
             height: parent.height
