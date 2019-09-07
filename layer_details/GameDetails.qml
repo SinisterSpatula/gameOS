@@ -418,7 +418,7 @@ Item {
             width: parent.width
             height: parent.height
             contentWidth: parent.width
-            contentHeight: parent.height - vpx(100);
+            contentHeight: parent.height + vpx(1000);
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
                     }
