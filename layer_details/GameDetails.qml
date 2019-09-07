@@ -407,8 +407,8 @@ Item {
             width: parent.width
             //height: (boxart.height*2.4) - y//parent.height - navigationbox.height
             height: vpx(400)
-            contentHeight: textBox.paintedHeight
-            contentWidth: textBox.paintedWidth
+	    contentWidth: width
+            contentHeight: textBox.implicitHeight
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
             }
