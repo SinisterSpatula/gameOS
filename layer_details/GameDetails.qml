@@ -406,11 +406,12 @@ Item {
             clip:true
             width: parent.width
             //height: (boxart.height*2.4) - y//parent.height - navigationbox.height
-            height: vpx(400)
-	    contentWidth: width
-            contentHeight: textBox.implicitHeight
+            height: parent.height
+	    contentWidth: textBox.width
+            contentHeight: textBox.height
             anchors {
               top: gameTitle.bottom; topMargin: vpx(50);
+	      bottom: parent.bottom;
             }
 	    Keys.onPressed: {
             if(event.key == Qt.Key_Down){
