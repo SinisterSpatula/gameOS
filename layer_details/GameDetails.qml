@@ -419,6 +419,7 @@ Item {
             else if(event.key == Qt.Key_Up){
                 gameDescription.flick(0,500);
             }
+	  }
             
 	  Text {
 	    id: textBox
@@ -434,7 +435,6 @@ Item {
             Behavior on opacity { NumberAnimation { duration: 100 } }
 	    }
 
-        }
 	    
           }
 
