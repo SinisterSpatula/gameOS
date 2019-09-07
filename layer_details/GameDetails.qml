@@ -418,7 +418,7 @@ Item {
             id: gameDescription
             boundsBehavior: gameDescription.StopAtBounds
 	    flickableDirection: gameDescription.VerticalFlick
-	    maximumFlickVelocity: 300;
+	    maximumFlickVelocity: 200;
             clip:true
             width: parent.width
             height: parent.height
@@ -473,6 +473,7 @@ Item {
             width: parent.width
             height: parent.height
             anchors.fill: parent
+	    z: gameDescription.z + 1;
 
             // Launch button
             GamePanelButton {
