@@ -165,7 +165,7 @@ FocusScope {
         id: collectiontitle
 
         anchors {
-          top: parent.top; topMargin: vpx(0); //vpx(35)
+          top: parent.top; topMargin: vpx(35);
           //horizontalCenter: menuicon.horizontalCenter
           left: menuicon.right; leftMargin: vpx(35)
         }
