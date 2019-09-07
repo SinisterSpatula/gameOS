@@ -74,6 +74,17 @@ Item {
 
       return;
     }
+    
+        //Scroll the gameDescription
+    if(event.key == Qt.Key_Down){
+        gameDescription.flick(0,-500);
+            
+        return;
+    }
+    if(event.key == Qt.Key_Up) {
+        gameDescription.flick(0,500);
+    }
+    
   }
 
   Timer {
@@ -399,25 +410,36 @@ Item {
             }
           }
 
-          // description
-          Text {
+ 	// description
+          Flickable {
             id: gameDescription
+            boundsBehavior: gameDescription.StopAtBounds
+            clip:true
             width: parent.width
-            //height: (boxart.height*2.4) - y//parent.height - navigationbox.height
-            height: vpx(400)
+            height: parent.height
+            contentWidth: parent.width
+            contentHeight: parent.height
             anchors {
-              top: gameTitle.bottom; topMargin: vpx(50);
-            }
-            horizontalAlignment: Text.AlignJustify
-            text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
-            font.pixelSize: vpx(30)
-            font.family: "Open Sans"
-            //textFormat: Text.RichText
-            color: "#fff"
-            elide: Text.ElideRight
-            wrapMode: Text.WordWrap
-            opacity: showVideo ? 0.1 : 1.0
-            Behavior on opacity { NumberAnimation { duration: 100 } }
+                    top: gameTitle.bottom; topMargin: vpx(50);
+	                bottom: parent.bottom;
+                    }
+            
+	        TextEdit {
+	        id: textBox
+	        horizontalAlignment: Text.AlignLeft //Text.AlignJustify
+                text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
+                font.pixelSize: vpx(60) //vpx(30)
+                font.family: "Open Sans"
+		width: parent.width
+		height: parent.height
+                //textFormat: Text.RichText
+                color: "#fff"
+                //elide: Text.ElideRight
+                wrapMode: Text.WordWrap
+                opacity: showVideo ? 0.1 : 1.0
+                Behavior on opacity { NumberAnimation { duration: 100 } }
+	     }
+
           }
 
         }
