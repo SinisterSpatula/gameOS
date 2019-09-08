@@ -418,8 +418,8 @@ Item {
  	// description
           Flickable {
             id: gameDescription
-            // boundsBehavior: gameDescription.StopAtBounds
-	    // flickableDirection: gameDescription.VerticalFlick
+            boundsBehavior: gameDescription.StopAtBounds
+	    flickableDirection: gameDescription.VerticalFlick
 	    maximumFlickVelocity: 300;
             clip:true
             width: parent.width
