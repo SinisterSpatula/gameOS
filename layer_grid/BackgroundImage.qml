@@ -83,7 +83,7 @@ Item {
     bg.state = bg.state == "fadeInRect2" ? "fadeOutRect2" : "fadeInRect2"
   }
 
-//  LinearGradient {
+  LinearGradient {
     z: parent.z + 1
     width: parent.width
     height: parent.height
