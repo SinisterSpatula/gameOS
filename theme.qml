@@ -7,6 +7,7 @@ import "qrc:/qmlutils" as PegasusUtils
 import "layer_grid"
 import "layer_menu"
 import "layer_details"
+import "layer_settings"
 
 FocusScope {
   // Loading the fonts here makes them usable in the rest of the theme
@@ -115,6 +116,26 @@ FocusScope {
       content.opacity = 0
       backgroundimage.dimopacity = 0
       gamedetails.intro()
+    }
+  }
+  
+    function toggleSettings() {
+    if (gamesettings.active) {
+      // Close the settings
+      gamegrid.focus = true
+      gamegrid.visible = true
+      content.opacity = 1
+      backgroundimage.dimopacity = 0.97
+      gamesettings.active = false
+      gamesettings.outro()
+    } else {
+      // Open settings panel
+      gamesettings.focus = true
+      gamesettings.active = true
+      gamegrid.visible = false
+      content.opacity = 0
+      backgroundimage.dimopacity = 0
+      gamesettings.intro()
     }
   }
 
@@ -248,6 +269,7 @@ FocusScope {
           onCollectionPrev: prevCollection()
           onMenuRequested: toggleMenu()
           onDetailsRequested: toggleDetails()
+          onSettingsRequested: toggleSettings()
           onGameChanged: changeGameIndex(currentIdx)
         }
       }
@@ -267,6 +289,7 @@ FocusScope {
         height: parent.height
 
         onDetailsCloseRequested: toggleDetails()
+        onSettingsCloseRequested: toggleSettings()
         onLaunchRequested: launchGame()
 
       }
