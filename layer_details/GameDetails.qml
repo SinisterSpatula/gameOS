@@ -14,7 +14,7 @@ Item {
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
   property bool showVideo: false
-  property bool boxAvailable: gameData.assets.boxFront || gameData.assets.screenshots[0]
+  property bool boxAvailable: gameData.assets.boxFront
   property int videooffset: vpx(330)
   property int numbuttons: boxAvailable ? 4 : 3
 
@@ -173,7 +173,7 @@ Item {
       // Background art
       Item {
         id: bgart
-        width: vpx(700)
+        width: vpx(750)
         height: parent.height - navigationbox.height
         anchors.right: parent.right
 
@@ -369,6 +369,8 @@ Item {
             font.bold: true
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
+            opacity: showVideo ? 0.05 : 1
+            Behavior on opacity { NumberAnimation { duration: 100 } }
 	    wrapMode: Text.WordWrap
     	    lineHeightMode: Text.FixedHeight
     	    lineHeight: vpx(50)
@@ -416,21 +418,22 @@ Item {
  	// description
           Flickable {
             id: gameDescription
-            boundsBehavior: gameDescription.StopAtBounds
-	    flickableDirection: gameDescription.VerticalFlick
-	    maximumFlickVelocity: 200;
+            // boundsBehavior: gameDescription.StopAtBounds
+	    // flickableDirection: gameDescription.VerticalFlick
+	    maximumFlickVelocity: 300;
             clip:true
             width: parent.width
-            height: parent.height
+            height: vpx(340) //parent.height
             contentWidth: parent.width
             contentHeight: textBox.ImplicitHeight * 1.5;
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
+                    bottom: parent.bottom; bottomMargin: vpx(70);
                     }
             
 	        TextEdit {
 	        id: textBox
-	        horizontalAlignment: Text.AlignLeft //Text.AlignJustify
+	        horizontalAlignment: Text.AlignJustify
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
                 font.pixelSize: vpx(45) //vpx(30)
                 font.family: "Open Sans"
@@ -440,7 +443,7 @@ Item {
                 color: "#fff"
                 //elide: Text.ElideRight
                 wrapMode: Text.WordWrap
-                opacity: showVideo ? 0.1 : 1.0
+                opacity: showVideo ? 0.05 : 1.0
                 Behavior on opacity { NumberAnimation { duration: 100 } }
 	     }
 
@@ -463,7 +466,7 @@ Item {
             bottom: parent.bottom;
             left: parent.left; right: parent.right;
           }
-          color: "#ff333333"
+          color: "#16ffffff"
           width: parent.width
           height: vpx(80)
 
@@ -473,7 +476,6 @@ Item {
             width: parent.width
             height: parent.height
             anchors.fill: parent
-	    z: gameDescription.z + 1;
 
             // Launch button
             GamePanelButton {
