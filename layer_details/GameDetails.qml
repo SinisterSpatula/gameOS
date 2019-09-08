@@ -425,7 +425,7 @@ Item {
             width: parent.width
             height: vpx(340) //parent.height
             contentWidth: parent.width
-            contentHeight: textBox.ImplicitHeight * 1.5;
+            contentHeight: textBox.ImplicitHeight;
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
                     bottom: parent.bottom; bottomMargin: vpx(70);
