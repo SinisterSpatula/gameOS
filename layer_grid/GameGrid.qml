@@ -17,6 +17,7 @@ FocusScope {
   signal launchRequested
   signal menuRequested
   signal detailsRequested
+  signal settingsRequested
   //signal filtersRequested
   signal collectionNext
   signal collectionPrev
@@ -114,6 +115,10 @@ FocusScope {
         if (api.keys.isAccept(event) && !event.isAutoRepeat) {
             event.accepted = true;
             root.detailsRequested()
+        }
+        if (api.keys.isSelect(event) && !event.isAutoRepeat) {
+            event.accepted = true;
+            root.settingsRequested()
         }
         if (api.keys.isPageUp(event) || api.keys.isPageDown(event)) {
             event.accepted = true;
