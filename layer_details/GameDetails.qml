@@ -285,7 +285,7 @@ Item {
           sourceSize { width: vpx(512); height: vpx(512) }
           fillMode: Image.PreserveAspectFit
           asynchronous: true
-          visible: gameData.assets.boxFront || gameData.assets.screenshots[0]
+          visible: gameData.assets.boxFront || gameData.assets.screenshots[0] || ""
           smooth: true
           Behavior on opacity { NumberAnimation { duration: 100 } }
           Behavior on x { NumberAnimation { duration: 100;  easing.type: Easing.InQuad } }
@@ -435,7 +435,7 @@ Item {
 	        id: textBox
 	        horizontalAlignment: Text.AlignJustify
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
-                font.pixelSize: vpx(45) //vpx(30)
+                font.pixelSize: vpx(40)
                 font.family: "Open Sans"
 		width: gameDescription.width
 		height: gameDescription.height
