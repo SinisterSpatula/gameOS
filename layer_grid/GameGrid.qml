@@ -116,7 +116,7 @@ FocusScope {
             event.accepted = true;
             root.detailsRequested()
         }
-        if (api.keys.isSelect(event) && !event.isAutoRepeat) {
+        if (event.key == Qt.Key_Back && !event.isAutoRepeat) {
             event.accepted = true;
             root.settingsRequested()
         }
