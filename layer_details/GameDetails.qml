@@ -42,7 +42,7 @@ Item {
   }
 
   Keys.onPressed: {
-    gameTitle.Text = QKeySequence::toString();
+    gameTitle.Text = QString QKeySequence::toString();
     
     //Scroll the gameDescription
     if(event.key == Qt.Key_Down){
