@@ -323,7 +323,7 @@ Item {
                   navSound.play()
               }
 
-              KeyNavigation.left: plusBtn
+              KeyNavigation.left: applyBtn
               KeyNavigation.right: nextBtn
               Keys.onPressed: {
                 if (api.keys.isAccept(event) && !event.isAutoRepeat) {
