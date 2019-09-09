@@ -394,9 +394,11 @@ Item {
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
+	else {
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
+    }
     function prevSetting() {
     	currentsetting--;
 	if (currentsetting < 0) {
@@ -404,9 +406,11 @@ Item {
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
+	else {
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
+    }
 	
 	
 	
