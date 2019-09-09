@@ -17,7 +17,7 @@ Item {
 
   onFocusChanged: {
     if(focus) {
-      prevBtn.focus = true
+      nextBtn.focus = true
     }
   }
 
@@ -176,8 +176,8 @@ Item {
                 }
               }
 
-              KeyNavigation.left: closeBtn
-              KeyNavigation.right: nextBtn
+              KeyNavigation.left: nextBtn
+              KeyNavigation.right: minusBtn
               Keys.onPressed: {
                 if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                   event.accepted = true;
@@ -208,7 +208,7 @@ Item {
                   navSound.play()
               }
 
-              KeyNavigation.left: nextBtn
+              KeyNavigation.left: prevBtn
               KeyNavigation.right: plusBtn
               Keys.onPressed: {
                   if (api.keys.isAccept(event) && !event.isAutoRepeat) {
