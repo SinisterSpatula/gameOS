@@ -30,6 +30,7 @@ Item {
     if(focus) {
       nextBtn.focus = true
       settingsDescBox.text = settingsDescription[currentsetting];
+      settingsValueBox.text = "Current Value: " + currentsetting;
     }
   }
 
@@ -137,7 +138,20 @@ Item {
             opacity: 1
         }
 
-	
+	Text {
+            id: settingsValueBox
+
+            anchors { top: settingsDescBox.bottom; topMargin: vpx(60) }
+            width: parent.width
+            text: "Current Value: " + currentsetting;
+            color: "white"
+            font.pixelSize: vpx(60)
+            font.family: titleFont.name
+            font.bold: true
+            //font.capitalization: Font.AllUppercase
+            elide: Text.ElideRight
+            opacity: 1
+        }	
 	
       
 
@@ -378,12 +392,14 @@ Item {
 	if (currentsetting > (settingsList.length + 1)) {
 	currentsetting = 0; }
 	settingsDescBox.text = settingsDescription[currentsetting];
+	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
     function prevSetting() {
     	currentsetting--;
 	if (currentsetting < 0) {
 	currentsetting = settingsList.length; }
 	settingsDescBox.text = settingsDescription[currentsetting];
+	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
 	
 	
