@@ -322,7 +322,7 @@ Item {
 
       }
 
-    }
+    
 
     function intro() {
         backgroundbox.opacity = 1;
