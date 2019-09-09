@@ -192,7 +192,7 @@ Item {
               }
 
               KeyNavigation.left: closeBtn
-              KeyNavigation.right: prevBtn
+              KeyNavigation.right: minusBtn
               Keys.onPressed: {
                 if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                   event.accepted = true;
@@ -204,40 +204,6 @@ Item {
                 nextSetting();
 		}
               }
-            Rectangle {
-              width: vpx(1)
-              height: parent.height
-              color: "#1a1a1a"
-            }
- 
- 
- 	    // Previous button
-            GamePanelButton {
-              id: prevBtn
-              text: "Previous"
-              width: parent.width/numbuttons
-              height: parent.height
-
-              onFocusChanged: {
-                if (focus) {
-                  navSound.play()
-                }
-              }
-
-              KeyNavigation.left: nextBtn
-              KeyNavigation.right: minusBtn
-              Keys.onPressed: {
-                if (api.keys.isAccept(event) && !event.isAutoRepeat) {
-                  event.accepted = true;
-                  prevSetting();
-                }
-              }
-              onClicked: {
-                focus = true;
-                prevSetting();
-              }
-            }
-
             Rectangle {
               width: vpx(1)
               height: parent.height
@@ -256,7 +222,7 @@ Item {
                   navSound.play()
               }
 
-              KeyNavigation.left: prevBtn
+              KeyNavigation.left: nextBtn
               KeyNavigation.right: plusBtn
               Keys.onPressed: {
                   if (api.keys.isAccept(event) && !event.isAutoRepeat) {
@@ -311,6 +277,40 @@ Item {
               height: parent.height
               color: "#1a1a1a"
             }
+	    
+	    // Apply button
+            GamePanelButton {
+              id: applyBtn
+              text: "Apply"
+              width: parent.width/numbuttons
+              height: parent.height
+
+              onFocusChanged: {
+                if (focus) {
+                  navSound.play()
+                }
+              }
+
+              KeyNavigation.left: plusBtn
+              KeyNavigation.right: closeBtn
+              Keys.onPressed: {
+                if (api.keys.isAccept(event) && !event.isAutoRepeat) {
+                  event.accepted = true;
+                  applySetting();
+                }
+              }
+              onClicked: {
+                focus = true;
+                applySetting();
+              }
+            }
+
+            Rectangle {
+              width: vpx(1)
+              height: parent.height
+              color: "#1a1a1a"
+            }
+	    
 
             // Close button
             GamePanelButton {
@@ -404,5 +404,8 @@ Item {
 	        settingsDescBox.text = settingsDescription[currentsetting];
 	}
 	
+	function applySetting() {
+		//apply and save.
+	}
 	
 }
