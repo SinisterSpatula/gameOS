@@ -306,7 +306,7 @@ FocusScope {
         width: parent.width
         height: parent.height
 
-        onSettingsCloseRequested: toggleSettings()
+        onSettingsRequested: toggleSettings()
         
       }
 
