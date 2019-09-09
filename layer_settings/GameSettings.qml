@@ -42,7 +42,13 @@ Item {
       event.accepted = true;
       closesettings();
       return;
-    }   
+    }
+    //Hack to check if it was the Gamepad Select button
+    if (event.key.toString() == "1048586" && !event.isAutoRepeat) {
+      event.accepted = true;
+      closesettings();
+      return;
+    }
     
   }
 
