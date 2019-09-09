@@ -42,8 +42,6 @@ Item {
   }
 
   Keys.onPressed: {
-    gameTitle.text = event.key.toString();
-    
     //Scroll the gameDescription
     if(event.key == Qt.Key_Down){
         gameDescription.flick(0,-500);
