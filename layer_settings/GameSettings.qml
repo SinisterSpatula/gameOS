@@ -390,14 +390,20 @@ Item {
     function nextSetting() {
     	currentsetting++;
 	if (currentsetting > (settingsList.length + 1)) {
-	currentsetting = 0; }
+	currentsetting = 0; 
+	settingsDescBox.text = settingsDescription[currentsetting];
+	settingsValueBox.text = "Current Value: " + currentsetting;
+	}
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
     function prevSetting() {
     	currentsetting--;
 	if (currentsetting < 0) {
-	currentsetting = settingsList.length; }
+	currentsetting = settingsList.length;
+	settingsDescBox.text = settingsDescription[currentsetting];
+	settingsValueBox.text = "Current Value: " + currentsetting;
+	}
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
 	}
