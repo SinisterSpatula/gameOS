@@ -388,7 +388,7 @@ Item {
     
         //settings menu functions
         function nextSetting() {
-	        if (currentsetting < settingsList.length) {currentsetting++;}
+	        if (currentsetting < (settingsList.length - 1)) {currentsetting++;}
 
 	        settingsValueBox.text = "Current Value: " + currentsetting;
 	        settingsDescBox.text = settingsDescription[currentsetting];
