@@ -29,8 +29,8 @@ Item {
   onFocusChanged: {
     if(focus) {
       nextBtn.focus = true
-      settingsDescBox.text = settingsDescription[currentsetting];
-      settingsValueBox.text = "Current Value: " + currentsetting;
+      currentsetting = 0;
+      refreshSetting();
     }
   }
 
@@ -389,19 +389,20 @@ Item {
         //settings menu functions
         function nextSetting() {
 	        if (currentsetting < (settingsList.length - 1)) {currentsetting++;}
-
-	        settingsValueBox.text = "Current Value: " + currentsetting;
-	        settingsDescBox.text = settingsDescription[currentsetting];
-	    }
+		
+		refreshSetting();
+	}
         
         function prevSetting() {
 	        if (currentsetting > 0) {currentsetting--;}
 
-	        settingsValueBox.text = "Current Value: " + currentsetting;
-	        settingsDescBox.text = settingsDescription[currentsetting];
-	    }
+	        refreshSetting();
+	}
 
-	
+	function refreshSetting() {
+		settingsValueBox.text = "Current Value: " + currentsetting;
+	        settingsDescBox.text = settingsDescription[currentsetting];
+	}
 	
 	
 }
