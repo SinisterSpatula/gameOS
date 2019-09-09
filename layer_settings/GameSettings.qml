@@ -120,7 +120,7 @@ Item {
             opacity: 1
           }
 
-        }
+        
 	Text {
             id: settingsDescBox
 
@@ -134,10 +134,11 @@ Item {
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
             opacity: 1
+        }
 
-	}
 	
-      }
+	
+      
 
       // NOTE: Navigation
       Item {
@@ -345,7 +346,7 @@ Item {
           }
         }
       }
-    }
+    
 
       // Empty area for swiping on touch
       Item {
@@ -372,5 +373,7 @@ Item {
         backgroundbox.opacity = 0;
         backgroundbox.scale = 1.03;
         menuIntroSound.play()
+    }
+    }
     }
 }
