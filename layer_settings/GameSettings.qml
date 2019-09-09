@@ -389,27 +389,27 @@ Item {
     //settings menu functions
     function nextSetting() {
     	currentsetting++;
-	if (currentsetting > (settingsList.length + 1)) {
-	currentsetting = 0; 
+	//if (currentsetting > (settingsList.length + 1)) {
+	//currentsetting = 0; 
+	//settingsDescBox.text = settingsDescription[currentsetting];
+	//settingsValueBox.text = "Current Value: " + currentsetting;
+	//}
+	//else {
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
-	}
-	else {
-	settingsDescBox.text = settingsDescription[currentsetting];
-	settingsValueBox.text = "Current Value: " + currentsetting;
-	}
+	//}
     }
     function prevSetting() {
     	currentsetting--;
-	if (currentsetting < 0) {
-	currentsetting = settingsList.length;
+	//if (currentsetting < 0) {
+	//currentsetting = settingsList.length;
+	//settingsDescBox.text = settingsDescription[currentsetting];
+	//settingsValueBox.text = "Current Value: " + currentsetting;
+	//}
+	//else {
 	settingsDescBox.text = settingsDescription[currentsetting];
 	settingsValueBox.text = "Current Value: " + currentsetting;
-	}
-	else {
-	settingsDescBox.text = settingsDescription[currentsetting];
-	settingsValueBox.text = "Current Value: " + currentsetting;
-	}
+	//}
     }
 	
 	
