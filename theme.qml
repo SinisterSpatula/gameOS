@@ -289,7 +289,7 @@ FocusScope {
         height: parent.height
 
         onDetailsCloseRequested: toggleDetails()
-        onSettingsCloseRequested: toggleSettings()
+        onsettingsCloseRequested: toggleSettings()
         onLaunchRequested: launchGame()
 
       }
