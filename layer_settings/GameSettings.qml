@@ -257,7 +257,7 @@ Item {
               }
 
               KeyNavigation.left: minusBtn
-              KeyNavigation.right: closeBtn
+              KeyNavigation.right: applyBtn
               Keys.onPressed: {
                   if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                       event.accepted = true;
