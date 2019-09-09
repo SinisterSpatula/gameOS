@@ -105,6 +105,7 @@ Item {
 
         }
 
+	}
 
       // NOTE: Navigation
       Item {
@@ -290,8 +291,6 @@ Item {
 
           }
         }
-
-      }
 
 
         // Round those corners!
