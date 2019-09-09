@@ -390,15 +390,15 @@ Item {
         function nextSetting() {
 	        if (currentsetting < settingsList.length) {currentsetting++;}
 
-	        settingsDescBox.text = settingsDescription[currentsetting];
 	        settingsValueBox.text = "Current Value: " + currentsetting;
+	        settingsDescBox.text = settingsDescription[currentsetting];
 	    }
         
         function prevSetting() {
 	        if (currentsetting > 0) {currentsetting--;}
 
-	        settingsDescBox.text = settingsDescription[currentsetting];
 	        settingsValueBox.text = "Current Value: " + currentsetting;
+	        settingsDescBox.text = settingsDescription[currentsetting];
 	    }
 
 	
