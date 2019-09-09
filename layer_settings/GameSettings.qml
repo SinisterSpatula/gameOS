@@ -188,10 +188,6 @@ Item {
               onClicked: {
                 focus = true
                 nextSetting();
-		currentsetting++;
-		if (currentsetting > settingsList.count) {
-		currentsetting = 0;
-		settingsDescBox.text = settingsDescription[currentsetting];
 		}
               }
             }
