@@ -190,7 +190,6 @@ Item {
                 nextSetting();
 		}
               }
-            }
             Rectangle {
               width: vpx(1)
               height: parent.height
