@@ -12,6 +12,7 @@ Item {
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
   property int numbuttons: 5
+  property int currentsetting: 0
   
   // settings values
   // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown
@@ -120,8 +121,23 @@ Item {
           }
 
         }
+	Text {
+            id: settingsDescBox
 
+            anchors { top: parent.top; topMargin: vpx(15) }
+            width: parent.width
+            text: settingsDescription[currentsetting];
+            color: "white"
+            font.pixelSize: vpx(60)
+            font.family: titleFont.name
+            font.bold: true
+            //font.capitalization: Font.AllUppercase
+            elide: Text.ElideRight
+            opacity: 1
+
+	}
 	
+      }
 
       // NOTE: Navigation
       Item {
@@ -169,7 +185,12 @@ Item {
               }
               onClicked: {
                 focus = true
-                nextSetting();
+                //nextSetting();
+		currentsetting++;
+		if (currentsetting > settingsList.count) {
+		currentsetting = 0;
+		settingsDescBox.text = settingsDescription[currentsetting];
+		}
               }
             }
             Rectangle {
