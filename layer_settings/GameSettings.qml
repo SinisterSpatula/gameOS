@@ -380,13 +380,13 @@ Item {
     //settings menu functions
     function nextSetting() {
     	currentsetting++;
-	if (currentsetting > settingsList.count) {
+	if (currentsetting >= (settingsList.count + 1)) {
 	currentsetting = 0; }
 	settingsDescBox.text = settingsDescription[currentsetting];
 	}
     function prevSetting() {
     	currentsetting--;
-	if (currentsetting < 0) {
+	if (currentsetting <= -1) {
 	currentsetting = settingsList.count; }
 	settingsDescBox.text = settingsDescription[currentsetting];
 	}
