@@ -177,7 +177,7 @@ Item {
               }
 
               KeyNavigation.left: prevBtn
-              KeyNavigation.right: increaseBtn
+              KeyNavigation.right: plusBtn
               Keys.onPressed: {
                 if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                   event.accepted = true;
@@ -229,7 +229,7 @@ Item {
               color: "#1a1a1a"
             }
 	    
-	    // Pluse button
+	    // Plus button
             GamePanelButton {
               id: plusBtn
               text: "+"
