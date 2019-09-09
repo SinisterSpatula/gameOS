@@ -289,13 +289,28 @@ FocusScope {
         height: parent.height
 
         onDetailsCloseRequested: toggleDetails()
-        onSettingsCloseRequested: toggleSettings()
         onLaunchRequested: launchGame()
 
       }
+      
+      
+      GameSettings {
+        id: gamesettings
+
+        property bool active : false
+        
+        anchors {
+          left: parent.left; right: parent.right
+          top: parent.top; bottom: parent.bottom
+        }
+        width: parent.width
+        height: parent.height
+
+        onSettingsCloseRequested: toggleSettings()
+        
+      }
 
     }
-
 
   }
 
