@@ -124,7 +124,7 @@ Item {
 	Text {
             id: settingsDescBox
 
-            anchors { top: parent.top; topMargin: vpx(15) }
+            anchors { top: settingsTitle.bottom; topMargin: vpx(60) }
             width: parent.width
             text: settingsDescription[currentsetting];
             color: "white"
@@ -186,7 +186,7 @@ Item {
               }
               onClicked: {
                 focus = true
-                //nextSetting();
+                nextSetting();
 		currentsetting++;
 		if (currentsetting > settingsList.count) {
 		currentsetting = 0;
@@ -375,4 +375,21 @@ Item {
         backgroundbox.scale = 1.03;
         menuIntroSound.play()
     }
+    
+    //settings menu functions
+    function nextSetting() {
+    	currentsetting++;
+	if (currentsetting > settingsList.count) {
+	currentsetting = 0; }
+	settingsDescBox.text = settingsDescription[currentsetting];
+	}
+    function prevSetting() {
+    	currentsetting--;
+	if (currentsetting < 0) {
+	currentsetting = 0; }
+	settingsDescBox.text = settingsDescription[currentsetting];
+	}
+	
+	
+	
 }
