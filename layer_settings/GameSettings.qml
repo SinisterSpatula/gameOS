@@ -93,7 +93,7 @@ Item {
 
             anchors { top: parent.top; topMargin: vpx(15) }
             width: parent.width
-            text: "Settings"
+            text: "Theme Settings"
             color: "white"
             font.pixelSize: vpx(60)
             font.family: titleFont.name
@@ -131,7 +131,39 @@ Item {
             height: parent.height
             anchors.fill: parent
 
-            // Previous button
+             // Next button
+            GamePanelButton {
+              id: nextBtn
+              text: "Next"
+              width: parent.width/numbuttons
+              height: parent.height
+
+              onFocusChanged: {
+                if (focus)
+                  navSound.play()
+              }
+
+              KeyNavigation.left: closeBtn
+              KeyNavigation.right: prevBtn
+              Keys.onPressed: {
+                if (api.keys.isAccept(event) && !event.isAutoRepeat) {
+                  event.accepted = true;
+                  nextSetting();
+                }
+              }
+              onClicked: {
+                focus = true
+                nextSetting();
+              }
+            }
+            Rectangle {
+              width: vpx(1)
+              height: parent.height
+              color: "#1a1a1a"
+            }
+ 
+ 
+ 	    // Previous button
             GamePanelButton {
               id: prevBtn
               text: "Previous"
@@ -158,37 +190,6 @@ Item {
               }
             }
 
-            Rectangle {
-              width: vpx(1)
-              height: parent.height
-              color: "#1a1a1a"
-            }
-
-            // Next button
-            GamePanelButton {
-              id: nextBtn
-              text: "Next"
-              width: parent.width/numbuttons
-              height: parent.height
-
-              onFocusChanged: {
-                if (focus)
-                  navSound.play()
-              }
-
-              KeyNavigation.left: prevBtn
-              KeyNavigation.right: plusBtn
-              Keys.onPressed: {
-                if (api.keys.isAccept(event) && !event.isAutoRepeat) {
-                  event.accepted = true;
-                  nextSetting();
-                }
-              }
-              onClicked: {
-                focus = true
-                nextSetting();
-              }
-            }
             Rectangle {
               width: vpx(1)
               height: parent.height
