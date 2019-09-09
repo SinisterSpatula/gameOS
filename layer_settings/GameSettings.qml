@@ -361,7 +361,8 @@ Item {
 
       }
 
-    
+        }
+    }
 
     function intro() {
         backgroundbox.opacity = 1;
@@ -373,7 +374,5 @@ Item {
         backgroundbox.opacity = 0;
         backgroundbox.scale = 1.03;
         menuIntroSound.play()
-    }
-    }
     }
 }
