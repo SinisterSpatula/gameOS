@@ -21,8 +21,8 @@ Item {
   property var settingsWheelArt: [0, 1] //show wheel art, 0 = no, 1 = yes.
   property var settingsFanart: [0, 1] //show fanart in backgrounds, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList [0, 1, 2, 3, 4] //Color, Scrollspeed, WheelArt, Fanart, Update.
-  property var settingsDescription ["Change the highlight color", "Change the Game Description Scrolling speed", "Should wheel art be displayed on the game tiles?", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
+  property var settingsList: [0, 1, 2, 3, 4] //Color, Scrollspeed, WheelArt, Fanart, Update.
+  property var settingsDescription: ["Change the highlight color", "Change the Game Description Scrolling speed", "Should wheel art be displayed on the game tiles?", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
