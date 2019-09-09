@@ -19,7 +19,7 @@ Item {
   property int numbuttons: boxAvailable ? 4 : 3
 
   signal launchRequested
-  signal detailsCloseRequested
+  signal settingsCloseRequested
   signal filtersRequested
   signal switchCollection(int collectionIdx)
 
