@@ -375,14 +375,14 @@ Item {
     //settings menu functions
     function nextSetting() {
     	currentsetting++;
-	if (currentsetting >= (settingsList.count + 1)) {
+	if (currentsetting > (settingsList.length + 1)) {
 	currentsetting = 0; }
 	settingsDescBox.text = settingsDescription[currentsetting];
 	}
     function prevSetting() {
     	currentsetting--;
-	if (currentsetting <= -1) {
-	currentsetting = settingsList.count; }
+	if (currentsetting < 0) {
+	currentsetting = settingsList.length; }
 	settingsDescBox.text = settingsDescription[currentsetting];
 	}
 	
