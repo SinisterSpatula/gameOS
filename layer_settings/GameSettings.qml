@@ -105,7 +105,7 @@ Item {
 
         }
 
-	}
+	
 
       // NOTE: Navigation
       Item {
@@ -308,6 +308,7 @@ Item {
           }
         }
       }
+    }
 
       // Empty area for swiping on touch
       Item {
