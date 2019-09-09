@@ -12,7 +12,16 @@ Item {
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
   property int numbuttons: 5
-
+  
+  // settings values
+  // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown
+  property var settingsHighlightColor: ["#FF9E12", "#CC0000", "#CC00CC", "#33CC33", "#3333FF", "#E6E600", "#66CCFF", "#996600"]
+  property var settingsScrollSpeed: [200, 500, 300] //medium, fast, slow - used by flickable game description.
+  property var settingsWheelArt: [0, 1] //show wheel art, 0 = no, 1 = yes.
+  property var settingsFanart: [0, 1] //show fanart in backgrounds, 0 = no, 1 = yes.
+  property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
+  property var settingsList [0, 1, 2, 3, 4] //Color, Scrollspeed, WheelArt, Fanart, Update.
+  
   signal settingsCloseRequested
 
   onFocusChanged: {
