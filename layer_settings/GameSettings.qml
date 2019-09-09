@@ -29,6 +29,7 @@ Item {
   onFocusChanged: {
     if(focus) {
       nextBtn.focus = true
+      settingsDescBox.text = settingsDescription[currentsetting];
     }
   }
 
@@ -386,7 +387,7 @@ Item {
     function prevSetting() {
     	currentsetting--;
 	if (currentsetting < 0) {
-	currentsetting = 0; }
+	currentsetting = settingsList.count; }
 	settingsDescBox.text = settingsDescription[currentsetting];
 	}
 	
