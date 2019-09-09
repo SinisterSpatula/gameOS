@@ -116,7 +116,8 @@ FocusScope {
             event.accepted = true;
             root.detailsRequested()
         }
-        if (event.key == Qt.Key_Back && !event.isAutoRepeat) {
+        //Hack to check if it was the Gamepad Select button
+        if (event.key.toString() == "1048586" && !event.isAutoRepeat) {
             event.accepted = true;
             root.settingsRequested()
         }
