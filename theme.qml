@@ -74,11 +74,11 @@ FocusScope {
     gamesettings.wheelArt = api.memory.get('settingsWheelArt') || true;
     gamesettings.fanArt = api.memory.get('settingsFanArt') || true;
     
-    if (!api.memory.has('settingsFavorites')) {api.memory.set('settingsFavorites', false)}
-    if (!api.memory.has('settingsHighlight')) {api.memory.set('settingsHighlight', "#FF9E12")}
-    if (!api.memory.has('settingScrollSpeed')) {api.memory.set('settingScrollSpeed', 300)}
-    if (!api.memory.has('settingsWheelArt')) {api.memory.set('settingsWheelArt', true)}
-    if (!api.memory.has('settingsFanArt')) {api.memory.set('settingsFanArt', true)}
+    api.memory.set('settingsFavorites', false);
+    api.memory.set('settingsHighlight', "#FF9E12")
+    api.memory.set('settingScrollSpeed', 300)
+    api.memory.set('settingsWheelArt', true)
+    api.memory.set('settingsFanArt', true)
   }
   
 
