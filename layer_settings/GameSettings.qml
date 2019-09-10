@@ -388,10 +388,10 @@ Item {
     
         //settings menu functions
         function nextSetting() {
-	        if (currentsetting < (settingsList.length) {
+	        if (currentsetting < (settingsList.length)) {
 		currentsetting++;
 		}
-		if (currentsetting == settingsList.length {
+		if (currentsetting == settingsList.length) {
 		currentsetting = 0;
 		}
 				
