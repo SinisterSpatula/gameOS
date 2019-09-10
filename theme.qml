@@ -79,6 +79,14 @@ FocusScope {
     wheelart = api.memory.get('settingsWheelArt') || true;
     fanart = api.memory.get('settingsFanArt') || true;
   }
+  
+  function saveSettings() {
+  api.memory.set('settingsFavorites', favorites);
+  api.memory.set('settingsHighlight', highlight);
+  api.memory.set('settingScrollSpeed', scrollspeed);
+  api.memory.set('settingsWheelArt', wheelart);
+  api.memory.set('settingsFanArt', fanart);
+  }
 
   function launchGame() {
     api.memory.set('collectionIndex', collectionIndex);
