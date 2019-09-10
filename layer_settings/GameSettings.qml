@@ -394,7 +394,7 @@ Item {
 		currentsetting++;
 		settingsetpoint = -1;
 		}
-		if (currentsetting == settingsList.length - 1) {
+		if (currentsetting == settingsList.length) {
 		currentsetting = 0;
 		settingsetpoint = -1;
 		}
@@ -414,7 +414,7 @@ Item {
 		if (settingsetpoint < (settingsHighlightColor.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsHighlightColor.length - 1) {
+		if (settingsetpoint == settingsHighlightColor.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
@@ -427,7 +427,7 @@ Item {
 		if (settingsetpoint < (settingsScrollSpeed.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsScrollSpeed.length - 1) {
+		if (settingsetpoint == settingsScrollSpeed.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
@@ -441,7 +441,7 @@ Item {
 		if (settingsetpoint < (settingsScrollSpeed.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsScrollSpeed.length - 1) {
+		if (settingsetpoint == settingsScrollSpeed.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
