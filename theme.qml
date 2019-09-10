@@ -26,6 +26,13 @@ FocusScope {
 
   property int collectionIndex: 0
   property var currentCollection: api.collections.get(collectionIndex)
+  
+  property bool Favorites: api.memory.get('settingsFavorites') || false;
+  property var Highlight: api.memory.get('settingsHighlight') || "#FF9E12";
+  property int ScrollSpeed: api.memory.get('settingScrollSpeed') || 300;
+  property bool WheelArt: api.memory.get('settingsWheelArt') || true;
+  property bool FanArt: api.memory.get('settingsFanArt') || true;
+  
 
   function nextCollection () {
     jumpToCollection(collectionIndex + 1);
