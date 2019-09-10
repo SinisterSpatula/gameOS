@@ -474,17 +474,17 @@ Item {
 		switch (currentsetting) {
          case 0: {
                  // Display ONLY Favorite Games Apply and save
-		 favorites = false;
-		 if (settingsetpoint == 1) { favorites = true; }
-		 api.memory.set('settingsFavorites', favorites);
+		 gamesettings.favorites = false;
+		 if (settingsetpoint == 1) { gamesettings.favorites = true; }
+		 api.memory.set('settingsFavorites', gamesettings.favorites);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
 	 case 1: {
                  // Change Highlight Color Apply and save
-		 highlight = settingsHighlightColor[settingsetpoint];
-		 api.memory.set('settingsHighlight', highlight);
+		 gamesettings.highlight = settingsHighlightColor[settingsetpoint];
+		 api.memory.set('settingsHighlight', gamesettings.highlight);
 		 settingsValueBox.color = "white";
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
@@ -492,26 +492,26 @@ Item {
              }
          case 2: {
                  // Description Scroll Speed Apply and save
-		 scrollSpeed = settingsScrollSpeed[settingsetpoint];
-		 api.memory.set('settingsScrollSpeed', scrollSpeed);
+		 gamesettings.scrollSpeed = settingsScrollSpeed[settingsetpoint];
+		 api.memory.set('settingsScrollSpeed', gamesettings.scrollSpeed);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
          case 3: {
                  // Display Wheel Art? Apply and save
-		 wheelArt = false;
-		 if (settingsetpoint == 1) { wheelArt = true; }
-		 api.memory.set('settingsWheelArt', wheelArt);
+		 gamesettings.wheelArt = false;
+		 if (settingsetpoint == 1) { gamesettings.wheelArt = true; }
+		 api.memory.set('settingsWheelArt', gamesettings.wheelArt);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
          case 4: {
                  // Display Fanart? Apply and save
-		 fanArt = false;
-		 if (settingsetpoint == 1) { fanArt = true; }
-		 api.memory.set('settingsFanArt', fanArt);
+		 gamesettings.fanArt = false;
+		 if (settingsetpoint == 1) { gamesettings.fanArt = true; }
+		 api.memory.set('settingsFanArt', gamesettings.fanArt);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
