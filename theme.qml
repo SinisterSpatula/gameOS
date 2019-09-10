@@ -81,14 +81,6 @@ FocusScope {
     if (!api.memory.has('settingsFanArt')) {api.memory.set('settingsFanArt', gamesettings.fanArt)}
   }
   
-  function saveSettings() {
-  api.memory.set('settingsFavorites', gamesettings.favorites);
-  api.memory.set('settingsHighlight', gamesettings.highlight);
-  api.memory.set('settingScrollSpeed', gamesettings.scrollSpeed);
-  api.memory.set('settingsWheelArt', gamesettings.wheelArt);
-  api.memory.set('settingsFanArt', gamesettings.fanArt);
-  }
-  
 
   function launchGame() {
     api.memory.set('collectionIndex', collectionIndex);
