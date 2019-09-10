@@ -390,7 +390,7 @@ Item {
     
         //settings menu functions
         function nextSetting() {
-	        if (currentsetting < (settingsList.length - 1)) {
+	        if (currentsetting <= (settingsList.length - 1)) {
 		currentsetting++;
 		settingsetpoint = -1;
 		}
@@ -411,7 +411,7 @@ Item {
 	switch (currentsetting) {
          case 0: {
                  // Change Highlight Color increase
-		if (settingsetpoint < (settingsHighlightColor.length - 1)) {
+		if (settingsetpoint <= (settingsHighlightColor.length - 1)) {
 		settingsetpoint++;
 		}
 		if (settingsetpoint == settingsHighlightColor.length) {
@@ -424,7 +424,7 @@ Item {
              }
          case 1: {
                  // Description Scroll Speed increase
-		if (settingsetpoint < (settingsScrollSpeed.length - 1)) {
+		if (settingsetpoint <= (settingsScrollSpeed.length - 1)) {
 		settingsetpoint++;
 		}
 		if (settingsetpoint == settingsScrollSpeed.length) {
@@ -438,7 +438,7 @@ Item {
              }
          case 2: {
                  // Display Wheel Art? increase
-		if (settingsetpoint < (settingsScrollSpeed.length - 1)) {
+		if (settingsetpoint <= (settingsScrollSpeed.length - 1)) {
 		settingsetpoint++;
 		}
 		if (settingsetpoint == settingsScrollSpeed.length) {
