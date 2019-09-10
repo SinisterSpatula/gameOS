@@ -21,6 +21,7 @@ Item {
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
   property var settingsWheelArt: [0, 1] //show wheel art, 0 = no, 1 = yes.
   property var settingsFanart: [0, 1] //show fanart in backgrounds, 0 = no, 1 = yes.
+  property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
   property var settingsList: [0, 1, 2, 3, 4] //Color, Scrollspeed, WheelArt, Fanart, Update.
   property var settingsDescription: ["Change the highlight color", "Change the Game Description Scrolling speed", "Should wheel art be displayed on the game tiles?", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
@@ -438,10 +439,10 @@ Item {
              }
          case 2: {
                  // Display Wheel Art? increase
-		if (settingsetpoint < (settingsScrollSpeed.length - 1)) {
+		if (settingsetpoint < (settingsWheelArt.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsScrollSpeed.length - 1) {
+		if (settingsetpoint == settingsWheelArt.length - 1) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
@@ -451,10 +452,28 @@ Item {
              }
          case 3: {
                  // Display Fanart? increase
+		if (settingsetpoint < (settingsFanart.length - 1)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsFanart.length - 1) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsFanart[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
+		if (settingsFanart[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
                  break;
              }
          case 4: {
                  //Perform Theme Update? increase
+		if (settingsetpoint < (settingsUpdate.length - 1)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsUpdate.length - 1) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO, do not update.";}
+		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES update now.";}
                  break;
              }
          default: {
