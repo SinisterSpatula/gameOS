@@ -474,12 +474,17 @@ Item {
 		switch (currentsetting) {
          case 0: {
                  // Display ONLY Favorite Games Apply and save
+		 Favorites = false;
+		 if (settingsetpoint == 1) { Favorites = true; }
+		 api.memory.set('settingsFavorites', Favorites);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
 	 case 1: {
                  // Change Highlight Color Apply and save
+		 Highlight = settingsHighlightColor[settingsetpoint];
+		 api.memory.set('settingsHighlight', Highlight);
 		 settingsValueBox.color = "white";
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
@@ -487,18 +492,26 @@ Item {
              }
          case 2: {
                  // Description Scroll Speed Apply and save
+		 ScrollSpeed = settingsScrollSpeed[settingsetpoint];
+		 api.memory.set('settingsScrollSpeed', ScrollSpeed);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
          case 3: {
                  // Display Wheel Art? Apply and save
+		 WheelArt = false;
+		 if (settingsetpoint == 1) { WheelArt = true; }
+		 api.memory.set('settingsWheelArt', WheelArt);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
          case 4: {
                  // Display Fanart? Apply and save
+		 FanArt = false;
+		 if (settingsetpoint == 1) { FanArt = true; }
+		 api.memory.set('settingsFanArt', FanArt);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
