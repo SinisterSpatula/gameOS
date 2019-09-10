@@ -13,7 +13,7 @@ Item {
   property int cornerradius: vpx(8)
   property int numbuttons: 5
   property int currentsetting: 0
-  property int settingsetpoint: 0
+  property int settingsetpoint: -1
   
   // settings values
   // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown
@@ -31,6 +31,7 @@ Item {
     if(focus) {
       nextBtn.focus = true
       currentsetting = 0;
+      settingsetpoint = -1;
       refreshSetting();
     }
   }
@@ -474,6 +475,7 @@ Item {
 	
 	function applySetting() {
 		//apply and save.
+		if (settingsetpoint == -1) {return;}
 		switch (currentsetting) {
          case 0: {
                  // Change Highlight Color Apply and save
