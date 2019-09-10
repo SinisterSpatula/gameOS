@@ -407,7 +407,7 @@ Item {
 	
 	function increaseSetting() {
 	switch (currentsetting) {
-         case "0": {
+         case 0: {
                  // Change Highlight Color increase
 		if (settingsetpoint < (settingsHighlightColor.length)) {
 		settingsetpoint++;
@@ -420,19 +420,19 @@ Item {
 		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
                 break;
              }
-         case "1": {
+         case 1: {
                  // Description Scroll Speed increase
                  break;
              }
-         case "2": {
+         case 2: {
                  // Display Wheel Art? increase
                  break;
              }
-         case "3": {
+         case 3: {
                  // Display Fanart? increase
                  break;
              }
-         case "4": {
+         case 4: {
                  //Perform Theme Update? increase
                  break;
              }
@@ -445,23 +445,23 @@ Item {
 	
 	function decreaseSetting() {
 	switch (currentsetting) {
-         case "0": {
+         case 0: {
                  // Change Highlight Color decrease
                  break;
              }
-         case "1": {
+         case 1: {
                  // Description Scroll Speed decrease
                  break;
              }
-         case "2": {
+         case 2: {
                  // Display Wheel Art? decrease
                  break;
              }
-         case "3": {
+         case 3: {
                  // Display Fanart? decrease
                  break;
              }
-         case "4": {
+         case 4: {
                  //Perform Theme Update? decrease
                  break;
              }
@@ -474,23 +474,23 @@ Item {
 	function applySetting() {
 		//apply and save.
 		switch (currentsetting) {
-         case "0": {
+         case 0: {
                  // Change Highlight Color Apply and save
                  break;
              }
-         case "1": {
+         case 1: {
                  // Description Scroll Speed Apply and save
                  break;
              }
-         case "2": {
+         case 2: {
                  // Display Wheel Art? Apply and save
                  break;
              }
-         case "3": {
+         case 3: {
                  // Display Fanart? Apply and save
                  break;
              }
-         case "4": {
+         case 4: {
                  //Perform Theme Update? Apply and save
                  break;
              }
