@@ -27,6 +27,11 @@ FocusScope {
   property int collectionIndex: 0
   property var currentCollection: api.collections.get(collectionIndex)
   
+  property bool favorites: false;
+  property var highlight: "#FF9E12";
+  property int scrollSpeed: 300;
+  property bool wheelArt: true;
+  property bool fanArt: true;  
   
 
   function nextCollection () {
@@ -68,6 +73,11 @@ FocusScope {
   Component.onCompleted: {
     collectionIndex = api.memory.get('collectionIndex') || 0;
     currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0;
+    favorites = api.memory.get('settingsFavorites') || false;
+    highlight = api.memory.get('settingsHighlight') || "#FF9E12";
+    scrollSpeed = api.memory.get('settingScrollSpeed') || 300;
+    wheelArt = api.memory.get('settingsWheelArt') || true;
+    fanArt = api.memory.get('settingsFanArt') || true;
   }
 
   function launchGame() {
@@ -298,12 +308,6 @@ FocusScope {
       
       GameSettings {
         id: gamesettings
-        
-        property bool favorites: api.memory.get('settingsFavorites') || false;
-        property var highlight: api.memory.get('settingsHighlight') || "#FF9E12";
-        property int scrollSpeed: api.memory.get('settingScrollSpeed') || 300;
-        property bool wheelArt: api.memory.get('settingsWheelArt') || true;
-        property bool fanArt: api.memory.get('settingsFanArt') || true;
 
         property bool active : false
         
