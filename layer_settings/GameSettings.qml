@@ -213,7 +213,7 @@ Item {
             // Minus button
             GamePanelButton {
               id: minusBtn
-              text: "Dec"
+              text: "Down"
               width: parent.width/numbuttons
               height: parent.height
 
@@ -247,7 +247,7 @@ Item {
 	    // Plus button
             GamePanelButton {
               id: plusBtn
-              text: "Inc"
+              text: "Up"
               width: parent.width/numbuttons
               height: parent.height
 
