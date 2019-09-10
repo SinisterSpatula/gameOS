@@ -14,7 +14,7 @@ Item {
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
   property bool showVideo: false
-  property bool boxAvailable: gameData.assets.boxFront || gameData.assets.screenshots[0]
+  property bool boxAvailable: gameData.assets.boxFront
   property int videooffset: vpx(330)
   property int numbuttons: boxAvailable ? 4 : 3
 
@@ -42,7 +42,6 @@ Item {
   }
 
   Keys.onPressed: {
-    
     //Scroll the gameDescription
     if(event.key == Qt.Key_Down){
         gameDescription.flick(0,-500);
@@ -173,7 +172,7 @@ Item {
       // Background art
       Item {
         id: bgart
-        width: vpx(700)
+        width: vpx(750)
         height: parent.height - navigationbox.height
         anchors.right: parent.right
 
@@ -285,7 +284,7 @@ Item {
           sourceSize { width: vpx(512); height: vpx(512) }
           fillMode: Image.PreserveAspectFit
           asynchronous: true
-          visible: gameData.assets.boxFront || gameData.assets.screenshots[0]
+          visible: gameData.assets.boxFront || gameData.assets.screenshots[0] || ""
           smooth: true
           Behavior on opacity { NumberAnimation { duration: 100 } }
           Behavior on x { NumberAnimation { duration: 100;  easing.type: Easing.InQuad } }
@@ -369,6 +368,8 @@ Item {
             font.bold: true
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
+            opacity: showVideo ? 0.05 : 1
+            Behavior on opacity { NumberAnimation { duration: 100 } }
 	    wrapMode: Text.WordWrap
     	    lineHeightMode: Text.FixedHeight
     	    lineHeight: vpx(50)
@@ -416,14 +417,14 @@ Item {
  	// description
           Flickable {
             id: gameDescription
-            // boundsBehavior: gameDescription.StopAtBounds
-	    // flickableDirection: gameDescription.VerticalFlick
+            boundsBehavior: Flickable.StopAtBounds
+	    flickableDirection: Flickable.VerticalFlick
 	    maximumFlickVelocity: 300;
             clip:true
             width: parent.width
             height: vpx(340) //parent.height
-            contentWidth: parent.width
-            contentHeight: textBox.ImplicitHeight * 1.5;
+            contentWidth: textBox.paintedWidth;
+            contentHeight: textBox.paintedHeight;
             anchors {
                     top: gameTitle.bottom; topMargin: vpx(50);
                     bottom: parent.bottom; bottomMargin: vpx(70);
@@ -433,15 +434,15 @@ Item {
 	        id: textBox
 	        horizontalAlignment: Text.AlignJustify
                 text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
-                font.pixelSize: vpx(45) //vpx(30)
+                font.pixelSize: vpx(40)
                 font.family: "Open Sans"
-		width: parent.width
+		width: gameDescription.width
 		height: gameDescription.height
                 //textFormat: Text.RichText
                 color: "#fff"
                 //elide: Text.ElideRight
                 wrapMode: Text.WordWrap
-                opacity: showVideo ? 0.1 : 1.0
+                opacity: showVideo ? 0.05 : 1.0
                 Behavior on opacity { NumberAnimation { duration: 100 } }
 	     }
 
