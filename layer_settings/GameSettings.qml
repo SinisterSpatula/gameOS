@@ -388,15 +388,14 @@ Item {
     
         //settings menu functions
         function nextSetting() {
-	        if (currentsetting < (settingsList.length - 1)) {currentsetting++;}
-		
+	        if (currentsetting < (settingsList.length) {
+		currentsetting++;
+		}
+		if (currentsetting == settingsList.length {
+		currentsetting = 0;
+		}
+				
 		refreshSetting();
-	}
-        
-        function prevSetting() {
-	        if (currentsetting > 0) {currentsetting--;}
-
-	        refreshSetting();
 	}
 
 	function refreshSetting() {
