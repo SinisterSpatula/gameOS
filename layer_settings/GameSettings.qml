@@ -474,9 +474,9 @@ Item {
 		switch (currentsetting) {
          case 0: {
                  // Display ONLY Favorite Games Apply and save
-		 gamesettings.favorites = false;
-		 if (settingsetpoint == 1) { gamesettings.favorites = true; }
-		 api.memory.set('settingsFavorites', gamesettings.favorites);
+		 root.favorites = false;
+		 if (settingsetpoint == 1) { root.favorites = true; }
+		 api.memory.set('settingsFavorites', root.favorites);
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
