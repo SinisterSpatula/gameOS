@@ -18,7 +18,7 @@ Item {
   // settings values
   // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown
   property var settingsHighlightColor: ["#FF9E12", "#CC0000", "#CC00CC", "#33CC33", "#3333FF", "#E6E600", "#66CCFF", "#996600"]
-  property var settingsScrollSpeed: [200, 500, 300] //medium, fast, slow - used by flickable game description.
+  property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
   property var settingsWheelArt: [0, 1] //show wheel art, 0 = no, 1 = yes.
   property var settingsFanart: [0, 1] //show fanart in backgrounds, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
@@ -424,6 +424,16 @@ Item {
              }
          case 1: {
                  // Description Scroll Speed increase
+		if (settingsetpoint < (settingsScrollSpeed.length)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsScrollSpeed.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsScrollSpeed[settingsetpoint] == 200) { settingsValueBox.text = "Set it to SLOW?";}
+		if (settingsScrollSpeed[settingsetpoint] == 300) { settingsValueBox.text = "Set it to MEDIUM?";}
+		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "Set it to FAST?";}
                  break;
              }
          case 2: {
