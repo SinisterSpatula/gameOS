@@ -29,9 +29,9 @@ FocusScope {
   
   property bool favorites: false;
   property var highlight: "#FF9E12";
-  property int scrollSpeed: 300;
-  property bool wheelArt: true;
-  property bool fanArt: true;  
+  property int scrollspeed: 300;
+  property bool wheelart: true;
+  property bool fanart: true;
   
 
   function nextCollection () {
@@ -75,9 +75,9 @@ FocusScope {
     currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0;
     favorites = api.memory.get('settingsFavorites') || false;
     highlight = api.memory.get('settingsHighlight') || "#FF9E12";
-    scrollSpeed = api.memory.get('settingScrollSpeed') || 300;
-    wheelArt = api.memory.get('settingsWheelArt') || true;
-    fanArt = api.memory.get('settingsFanArt') || true;
+    scrollspeed = api.memory.get('settingScrollSpeed') || 300;
+    wheelart = api.memory.get('settingsWheelArt') || true;
+    fanart = api.memory.get('settingsFanArt') || true;
   }
 
   function launchGame() {
