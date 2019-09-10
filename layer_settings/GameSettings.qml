@@ -438,10 +438,10 @@ Item {
              }
          case 2: {
                  // Display Wheel Art? increase
-		if (settingsetpoint <= (settingsScrollSpeed.length - 1)) {
+		if (settingsetpoint < (settingsScrollSpeed.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsScrollSpeed.length) {
+		if (settingsetpoint == settingsScrollSpeed.length - 1) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
