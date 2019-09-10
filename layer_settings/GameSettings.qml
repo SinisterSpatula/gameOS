@@ -458,6 +458,7 @@ Item {
                  break;
              }
          default: {
+	 	 settingsValueBox.color = "white";
 	 	 settingsValueBox.text = "Something Went Wrong!";
 		 settingsetpoint = -1;
                  break;
@@ -479,6 +480,7 @@ Item {
              }
 	 case 1: {
                  // Change Highlight Color Apply and save
+		 settingsValueBox.color = "white";
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
@@ -508,6 +510,7 @@ Item {
                  break;
              }
          default: {
+	 	 settingsValueBox.color = "white";
 	 	 settingsValueBox.text = "Something Went wrong!";
 		 settingsetpoint = -1;
                  break;
