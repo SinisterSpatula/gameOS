@@ -27,11 +27,6 @@ FocusScope {
   property int collectionIndex: 0
   property var currentCollection: api.collections.get(collectionIndex)
   
-  property bool favorites: api.memory.get('settingsFavorites') || false;
-  property var highlight: api.memory.get('settingsHighlight') || "#FF9E12";
-  property int scrollSpeed: api.memory.get('settingScrollSpeed') || 300;
-  property bool wheelArt: api.memory.get('settingsWheelArt') || true;
-  property bool fanArt: api.memory.get('settingsFanArt') || true;
   
 
   function nextCollection () {
@@ -303,6 +298,12 @@ FocusScope {
       
       GameSettings {
         id: gamesettings
+        
+        property bool favorites: api.memory.get('settingsFavorites') || false;
+        property var highlight: api.memory.get('settingsHighlight') || "#FF9E12";
+        property int scrollSpeed: api.memory.get('settingScrollSpeed') || 300;
+        property bool wheelArt: api.memory.get('settingsWheelArt') || true;
+        property bool fanArt: api.memory.get('settingsFanArt') || true;
 
         property bool active : false
         
