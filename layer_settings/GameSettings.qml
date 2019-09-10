@@ -438,6 +438,15 @@ Item {
              }
          case 2: {
                  // Display Wheel Art? increase
+		if (settingsetpoint < (settingsScrollSpeed.length)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsScrollSpeed.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsWheelArt[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
+		if (settingsWheelArt[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
                  break;
              }
          case 3: {
