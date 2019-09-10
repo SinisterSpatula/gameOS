@@ -396,7 +396,7 @@ Item {
 		}
 		if (currentsetting == settingsList.length) {
 		currentsetting = 0;
-		settingsetpoint = 0;
+		settingsetpoint = -1;
 		}
 		refreshSetting();
 	}
