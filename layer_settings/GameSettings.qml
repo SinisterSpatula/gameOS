@@ -11,20 +11,21 @@ Item {
 
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
-  property int numbuttons: 5
+  property int numbuttons: 4
   property int currentsetting: 0
   property int settingsetpoint: -1
   
   // settings values
   // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown
   property var settingsHighlightColor: ["#FF9E12", "#CC0000", "#CC00CC", "#33CC33", "#3333FF", "#E6E600", "#66CCFF", "#996600"]
+  property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
   property var settingsWheelArt: [0, 1] //show wheel art, 0 = no, 1 = yes.
   property var settingsFanart: [0, 1] //show fanart in backgrounds, 0 = no, 1 = yes.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: [0, 1, 2, 3, 4] //Color, Scrollspeed, WheelArt, Fanart, Update.
-  property var settingsDescription: ["Change the highlight color", "Change the Game Description Scrolling speed", "Should wheel art be displayed on the game tiles?", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
+  property var settingsList: [0, 1, 2, 3, 4, 5] //Color, Scrollspeed, WheelArt, Fanart, Update.
+  property var settingsDescription: ["Show ONLY your FAVORITE games", "Change the highlight color", "Change the Game Description Scrolling speed", "Should wheel art be displayed on the game tiles?", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
@@ -195,7 +196,7 @@ Item {
               }
 
               KeyNavigation.left: closeBtn
-              KeyNavigation.right: minusBtn
+              KeyNavigation.right: toggleBtn
               Keys.onPressed: {
                 if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                   event.accepted = true;
@@ -213,10 +214,11 @@ Item {
               color: "#1a1a1a"
             }
 
-            // Minus button
+	    
+	    // Toggle button
             GamePanelButton {
-              id: minusBtn
-              text: "Down"
+              id: toggleBtn
+              text: "Toggle"
               width: parent.width/numbuttons
               height: parent.height
 
@@ -226,51 +228,17 @@ Item {
               }
 
               KeyNavigation.left: nextBtn
-              KeyNavigation.right: plusBtn
-              Keys.onPressed: {
-                  if (api.keys.isAccept(event) && !event.isAutoRepeat) {
-                      event.accepted = true;
-                      decreaseSetting();
-                  }
-              }
-
-              onClicked: {
-                  focus = true;
-                  decreaseSetting();
-              }
-
-            }
-
-            Rectangle {
-              width: vpx(1)
-              height: parent.height
-              color: "#1a1a1a"
-            }
-	    
-	    // Plus button
-            GamePanelButton {
-              id: plusBtn
-              text: "Up"
-              width: parent.width/numbuttons
-              height: parent.height
-
-              onFocusChanged: {
-                if (focus)
-                  navSound.play()
-              }
-
-              KeyNavigation.left: minusBtn
               KeyNavigation.right: applyBtn
               Keys.onPressed: {
                   if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                       event.accepted = true;
-                      increaseSetting();
+                      toggleSetting();
                   }
               }
 
               onClicked: {
                   focus = true;
-                  increaseSetting();
+                  toggleSetting();
               }
 
             }
@@ -294,7 +262,7 @@ Item {
                 }
               }
 
-              KeyNavigation.left: plusBtn
+              KeyNavigation.left: toggleBtn
               KeyNavigation.right: closeBtn
               Keys.onPressed: {
                 if (api.keys.isAccept(event) && !event.isAutoRepeat) {
@@ -403,15 +371,28 @@ Item {
 	}
 
 	function refreshSetting() {
-		settingsValueBox.text = "Toggle options using Up/Down below.";
+		settingsValueBox.text = "Toggle options using Toggle button below.";
 		settingsValueBox.color = "white";
 	        settingsDescBox.text = settingsDescription[currentsetting];
 	}
 	
-	function increaseSetting() {
+	function toggleSetting() {
 	switch (currentsetting) {
          case 0: {
-                 // Change Highlight Color increase
+                 // Display ONLY Favorite Games? toggle
+		if (settingsetpoint < (settingsFavorites.length)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsFavorites.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsFavorites[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
+		if (settingsFavorites[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
+                 break;
+             }
+	 case 1: {
+                 // Change Highlight Color toggle
 		if (settingsetpoint <= (settingsHighlightColor.length - 1)) {
 		settingsetpoint++;
 		}
@@ -423,8 +404,8 @@ Item {
 		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
                 break;
              }
-         case 1: {
-                 // Description Scroll Speed increase
+         case 2: {
+                 // Description Scroll Speed toggle
 		if (settingsetpoint <= (settingsScrollSpeed.length - 1)) {
 		settingsetpoint++;
 		}
@@ -437,8 +418,8 @@ Item {
 		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "Set it to FAST?";}
                  break;
              }
-         case 2: {
-                 // Display Wheel Art? increase
+         case 3: {
+                 // Display Wheel Art? toggle
 		if (settingsetpoint < (settingsWheelArt.length)) {
 		settingsetpoint++;
 		}
@@ -450,8 +431,8 @@ Item {
 		if (settingsWheelArt[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
                  break;
              }
-         case 3: {
-                 // Display Fanart? increase
+         case 4: {
+                 // Display Fanart? toggle
 		if (settingsetpoint < (settingsFanart.length)) {
 		settingsetpoint++;
 		}
@@ -463,8 +444,8 @@ Item {
 		if (settingsFanart[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
                  break;
              }
-         case 4: {
-                 //Perform Theme Update? increase
+         case 5: {
+                 //Perform Theme Update? toggle
 		if (settingsetpoint < (settingsUpdate.length)) {
 		settingsetpoint++;
 		}
@@ -483,101 +464,32 @@ Item {
 	
 	}
 	
-	function decreaseSetting() {
-	switch (currentsetting) {
-         case 0: {
-                 // Change Highlight Color decrease
-		if (settingsetpoint <= (settingsHighlightColor.length - 1)) {
-		settingsetpoint--;
-		}
-		if (settingsetpoint == settingsHighlightColor.length) {
-		settingsetpoint = (settingsHighlightColor.length - 1);
-		}
-		settingsDescBox.text = settingsDescription[currentsetting];
-		settingsValueBox.color = settingsHighlightColor[settingsetpoint];
-		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
-                break;
-             }
-         case 1: {
-                 // Description Scroll Speed decrease
-		if (settingsetpoint <= (settingsScrollSpeed.length - 1)) {
-		settingsetpoint--;
-		}
-		if (settingsetpoint == settingsScrollSpeed.length) {
-		settingsetpoint = (settingsScrollSpeed.length - 1);
-		}
-		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsScrollSpeed[settingsetpoint] == 200) { settingsValueBox.text = "Set it to SLOW?";}
-		if (settingsScrollSpeed[settingsetpoint] == 300) { settingsValueBox.text = "Set it to MEDIUM?";}
-		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "Set it to FAST?";}
-                 break;
-             }
-         case 2: {
-                 // Display Wheel Art? decrease
-		if (settingsetpoint < (settingsWheelArt.length)) {
-		settingsetpoint--;
-		}
-		if (settingsetpoint == settingsWheelArt.length) {
-		settingsetpoint = 1;
-		}
-		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsWheelArt[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
-		if (settingsWheelArt[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
-                 break;
-             }
-         case 3: {
-                 // Display Fanart? decrease
-		if (settingsetpoint < (settingsFanart.length)) {
-		settingsetpoint--;
-		}
-		if (settingsetpoint == settingsFanart.length) {
-		settingsetpoint = 1;
-		}
-		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsFanart[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
-		if (settingsFanart[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
-                 break;
-             }
-         case 4: {
-                 //Perform Theme Update? decrease
-		if (settingsetpoint < (settingsUpdate.length)) {
-		settingsetpoint--;
-		}
-		if (settingsetpoint == settingsUpdate.length) {
-		settingsetpoint = 1;
-		}
-		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO, do not update.";}
-		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES update now.";}
-                 break;
-             }
-         default: {
-                 break;
-             }
-         }
-	}
-	
+
 	function applySetting() {
 		//apply and save.
 		if (settingsetpoint == -1) {return;}
 		switch (currentsetting) {
          case 0: {
+                 // Display ONLY Favorite Games Apply and save
+                 break;
+             }
+	 case 1: {
                  // Change Highlight Color Apply and save
                  break;
              }
-         case 1: {
+         case 2: {
                  // Description Scroll Speed Apply and save
                  break;
              }
-         case 2: {
+         case 3: {
                  // Display Wheel Art? Apply and save
                  break;
              }
-         case 3: {
+         case 4: {
                  // Display Fanart? Apply and save
                  break;
              }
-         case 4: {
+         case 5: {
                  //Perform Theme Update? Apply and save
                  break;
              }
