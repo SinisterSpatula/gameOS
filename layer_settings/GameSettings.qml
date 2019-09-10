@@ -487,22 +487,68 @@ Item {
 	switch (currentsetting) {
          case 0: {
                  // Change Highlight Color decrease
-                 break;
+		if (settingsetpoint <= (settingsHighlightColor.length - 1)) {
+		settingsetpoint--;
+		}
+		if (settingsetpoint == settingsHighlightColor.length) {
+		settingsetpoint = (settingsHighlightColor.length - 1);
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		settingsValueBox.color = settingsHighlightColor[settingsetpoint];
+		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
+                break;
              }
          case 1: {
                  // Description Scroll Speed decrease
+		if (settingsetpoint <= (settingsScrollSpeed.length - 1)) {
+		settingsetpoint--;
+		}
+		if (settingsetpoint == settingsScrollSpeed.length) {
+		settingsetpoint = (settingsScrollSpeed.length - 1);
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsScrollSpeed[settingsetpoint] == 200) { settingsValueBox.text = "Set it to SLOW?";}
+		if (settingsScrollSpeed[settingsetpoint] == 300) { settingsValueBox.text = "Set it to MEDIUM?";}
+		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "Set it to FAST?";}
                  break;
              }
          case 2: {
                  // Display Wheel Art? decrease
+		if (settingsetpoint < (settingsWheelArt.length)) {
+		settingsetpoint--;
+		}
+		if (settingsetpoint == settingsWheelArt.length) {
+		settingsetpoint = 1;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsWheelArt[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
+		if (settingsWheelArt[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
                  break;
              }
          case 3: {
                  // Display Fanart? decrease
+		if (settingsetpoint < (settingsFanart.length)) {
+		settingsetpoint--;
+		}
+		if (settingsetpoint == settingsFanart.length) {
+		settingsetpoint = 1;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsFanart[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
+		if (settingsFanart[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
                  break;
              }
          case 4: {
                  //Perform Theme Update? decrease
+		if (settingsetpoint < (settingsUpdate.length)) {
+		settingsetpoint--;
+		}
+		if (settingsetpoint == settingsUpdate.length) {
+		settingsetpoint = 1;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO, do not update.";}
+		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES update now.";}
                  break;
              }
          default: {
