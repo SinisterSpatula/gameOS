@@ -392,7 +392,7 @@ Item {
         function nextSetting() {
 	        if (currentsetting < (settingsList.length - 1)) {
 		currentsetting++;
-		settingsetpoint = 0;
+		settingsetpoint = -1;
 		}
 		if (currentsetting == settingsList.length) {
 		currentsetting = 0;
