@@ -27,11 +27,6 @@ FocusScope {
   property int collectionIndex: 0
   property var currentCollection: api.collections.get(collectionIndex)
   
-  property bool favorites: false;
-  property var highlight: "#FF9E12";
-  property int scrollspeed: 300;
-  property bool wheelart: true;
-  property bool fanart: true;
   
 
   function nextCollection () {
@@ -73,20 +68,13 @@ FocusScope {
   Component.onCompleted: {
     collectionIndex = api.memory.get('collectionIndex') || 0;
     currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0;
-    favorites = api.memory.get('settingsFavorites') || false;
-    highlight = api.memory.get('settingsHighlight') || "#FF9E12";
-    scrollspeed = api.memory.get('settingScrollSpeed') || 300;
-    wheelart = api.memory.get('settingsWheelArt') || true;
-    fanart = api.memory.get('settingsFanArt') || true;
+    gamesettings.favorites = api.memory.get('settingsFavorites') || false;
+    gamesettings.highlight = api.memory.get('settingsHighlight') || "#FF9E12";
+    gamesettings.scrollspeed = api.memory.get('settingScrollSpeed') || 300;
+    gamesettings.wheelArt = api.memory.get('settingsWheelArt') || true;
+    gamesettings.fanArt = api.memory.get('settingsFanArt') || true;
   }
   
-  function saveSettings() {
-  api.memory.set('settingsFavorites', favorites);
-  api.memory.set('settingsHighlight', highlight);
-  api.memory.set('settingScrollSpeed', scrollspeed);
-  api.memory.set('settingsWheelArt', wheelart);
-  api.memory.set('settingsFanArt', fanart);
-  }
 
   function launchGame() {
     api.memory.set('collectionIndex', collectionIndex);
@@ -318,6 +306,11 @@ FocusScope {
         id: gamesettings
 
         property bool active : false
+        property bool favorites
+        property var highlight
+        property int scrollSpeed
+        property bool wheelArt
+        property bool fanArt
         
         anchors {
           left: parent.left; right: parent.right
