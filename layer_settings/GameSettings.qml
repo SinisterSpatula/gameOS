@@ -505,7 +505,7 @@ Item {
              }
          case 5: {
                  //Perform Theme Update? Apply and save
-		 settingsValueBox.text = "Setting Saved!";
+		 settingsValueBox.text = "Update Complete!";
 		 settingsetpoint = -1;
                  break;
              }
