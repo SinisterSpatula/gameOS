@@ -17,6 +17,7 @@ FocusScope {
   signal launchRequested
   signal menuRequested
   signal detailsRequested
+  signal settingsRequested
   //signal filtersRequested
   signal collectionNext
   signal collectionPrev
@@ -114,6 +115,11 @@ FocusScope {
         if (api.keys.isAccept(event) && !event.isAutoRepeat) {
             event.accepted = true;
             root.detailsRequested()
+        }
+        //Hack to check if it was the Gamepad Select button
+        if (event.key.toString() == "1048586" && !event.isAutoRepeat) {
+            event.accepted = true;
+            root.settingsRequested()
         }
         if (api.keys.isPageUp(event) || api.keys.isPageDown(event)) {
             event.accepted = true;
