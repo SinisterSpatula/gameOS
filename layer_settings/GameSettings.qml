@@ -439,10 +439,10 @@ Item {
              }
          case 2: {
                  // Display Wheel Art? increase
-		if (settingsetpoint < (settingsWheelArt.length - 1)) {
+		if (settingsetpoint < (settingsWheelArt.length)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsWheelArt.length - 1) {
+		if (settingsetpoint == settingsWheelArt.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
@@ -452,10 +452,10 @@ Item {
              }
          case 3: {
                  // Display Fanart? increase
-		if (settingsetpoint < (settingsFanart.length - 1)) {
+		if (settingsetpoint < (settingsFanart.length)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsFanart.length - 1) {
+		if (settingsetpoint == settingsFanart.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
@@ -465,10 +465,10 @@ Item {
              }
          case 4: {
                  //Perform Theme Update? increase
-		if (settingsetpoint < (settingsUpdate.length - 1)) {
+		if (settingsetpoint < (settingsUpdate.length)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsUpdate.length - 1) {
+		if (settingsetpoint == settingsUpdate.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
