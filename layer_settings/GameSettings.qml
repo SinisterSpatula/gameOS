@@ -458,6 +458,8 @@ Item {
                  break;
              }
          default: {
+	 	 settingsValueBox.text = "Something Went Wrong!";
+		 settingsetpoint = -1;
                  break;
              }
          }
@@ -471,29 +473,43 @@ Item {
 		switch (currentsetting) {
          case 0: {
                  // Display ONLY Favorite Games Apply and save
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
                  break;
              }
 	 case 1: {
                  // Change Highlight Color Apply and save
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
                  break;
              }
          case 2: {
                  // Description Scroll Speed Apply and save
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
                  break;
              }
          case 3: {
                  // Display Wheel Art? Apply and save
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
                  break;
              }
          case 4: {
                  // Display Fanart? Apply and save
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
                  break;
              }
          case 5: {
                  //Perform Theme Update? Apply and save
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
                  break;
              }
          default: {
+	 	 settingsValueBox.text = "Something Went wrong!";
+		 settingsetpoint = -1;
                  break;
              }
          }
