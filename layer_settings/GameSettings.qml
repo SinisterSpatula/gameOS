@@ -13,6 +13,7 @@ Item {
   property int cornerradius: vpx(8)
   property int numbuttons: 5
   property int currentsetting: 0
+  property int settingsetpoint: 0
   
   // settings values
   // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown
@@ -390,11 +391,12 @@ Item {
         function nextSetting() {
 	        if (currentsetting < (settingsList.length)) {
 		currentsetting++;
+		settingsetpoint = 0;
 		}
 		if (currentsetting == settingsList.length) {
 		currentsetting = 0;
+		settingsetpoint = 0;
 		}
-				
 		refreshSetting();
 	}
 
@@ -403,8 +405,99 @@ Item {
 	        settingsDescBox.text = settingsDescription[currentsetting];
 	}
 	
+	function increaseSetting() {
+	switch (currentsetting) {
+         case "0": {
+                 // Change Highlight Color increase
+		if (settingsetpoint < (settingsHighlightColor.length)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsHighlightColor.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		settingsValueBox.color = settingsHighlightColor[settingsetpoint];
+		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
+                break;
+             }
+         case "1": {
+                 // Description Scroll Speed increase
+                 break;
+             }
+         case "2": {
+                 // Display Wheel Art? increase
+                 break;
+             }
+         case "3": {
+                 // Display Fanart? increase
+                 break;
+             }
+         case "4": {
+                 //Perform Theme Update? increase
+                 break;
+             }
+         default: {
+                 break;
+             }
+         }
+	
+	}
+	
+	function decreaseSetting() {
+	switch (currentsetting) {
+         case "0": {
+                 // Change Highlight Color decrease
+                 break;
+             }
+         case "1": {
+                 // Description Scroll Speed decrease
+                 break;
+             }
+         case "2": {
+                 // Display Wheel Art? decrease
+                 break;
+             }
+         case "3": {
+                 // Display Fanart? decrease
+                 break;
+             }
+         case "4": {
+                 //Perform Theme Update? decrease
+                 break;
+             }
+         default: {
+                 break;
+             }
+         }
+	}
+	
 	function applySetting() {
 		//apply and save.
+		switch (currentsetting) {
+         case "0": {
+                 // Change Highlight Color Apply and save
+                 break;
+             }
+         case "1": {
+                 // Description Scroll Speed Apply and save
+                 break;
+             }
+         case "2": {
+                 // Display Wheel Art? Apply and save
+                 break;
+             }
+         case "3": {
+                 // Display Fanart? Apply and save
+                 break;
+             }
+         case "4": {
+                 //Perform Theme Update? Apply and save
+                 break;
+             }
+         default: {
+                 break;
+             }
+         }
 	}
 	
 }
