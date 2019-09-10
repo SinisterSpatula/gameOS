@@ -70,7 +70,7 @@ FocusScope {
     currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0;
     gamesettings.favorites = api.memory.get('settingsFavorites') || false;
     gamesettings.highlight = api.memory.get('settingsHighlight') || "#FF9E12";
-    gamesettings.scrollspeed = api.memory.get('settingScrollSpeed') || 300;
+    gamesettings.scrollSpeed = api.memory.get('settingScrollSpeed') || 300;
     gamesettings.wheelArt = api.memory.get('settingsWheelArt') || true;
     gamesettings.fanArt = api.memory.get('settingsFanArt') || true;
   }
