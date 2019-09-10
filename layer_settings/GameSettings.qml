@@ -401,7 +401,8 @@ Item {
 	}
 
 	function refreshSetting() {
-		settingsValueBox.text = "Current Value: " + currentsetting;
+		settingsValueBox.text = "Toggle options using Up/Down below.";
+		settingsValueBox.color = "white";
 	        settingsDescBox.text = settingsDescription[currentsetting];
 	}
 	
