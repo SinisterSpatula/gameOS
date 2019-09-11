@@ -11,6 +11,7 @@ Item {
   property int cornerradius: vpx(3)
   property var collection//: api.currentCollection
   property bool steam: false
+  property bool showlogo: api.memory.get('settingsWheelArt')
 
   signal details
   signal clicked
@@ -83,14 +84,14 @@ Item {
 
     // DropShadow
     layer.enabled: selected
-    layer.effect: DropShadow {
-        horizontalOffset: 0
-        verticalOffset: 0
-        radius: 10.0
-        samples: 17
-        color: "#80000000"
-        transparentBorder: true
-    }
+    //layer.effect: DropShadow {
+        //horizontalOffset: 0
+        //verticalOffset: 0
+        //radius: 10.0
+        //samples: 17
+        //color: "#80000000"
+        //transparentBorder: true
+    //}
 
     // Animation layer
     Rectangle {
@@ -235,24 +236,24 @@ Item {
       asynchronous: true
 
       //opacity: 0
-      source: (!steam) ? game.assets.logo : ""
+      source: (showlogo) ? game.assets.logo : ""
       sourceSize { width: 256; height: 256 }
       fillMode: Image.PreserveAspectFit
       smooth: true
-      visible: game.assets.logo || ""
+      visible: (showlogo) ? game.assets.logo : ""
       z:5
     }
 
-    DropShadow {
-      id: logoshadow
-      anchors.fill: gamelogo
-      horizontalOffset: 0
-      verticalOffset: 0
-      radius: 8.0
-      samples: 17
-      color: "#80000000"
-      source: gamelogo
-    }
+    //DropShadow {
+      //id: logoshadow
+      //anchors.fill: gamelogo
+      //horizontalOffset: 0
+      //verticalOffset: 0
+      //radius: 8.0
+      //samples: 17
+      //color: "#80000000"
+      //source: gamelogo
+    //}
 
     // Favourite tag
     Item {
@@ -276,7 +277,7 @@ Item {
       ColorOverlay {
           anchors.fill: favebg
           source: favebg
-          color: "#FF9E12"
+          color: gamesettings.highlight
           z: 10
       }
 
@@ -394,7 +395,7 @@ Item {
     font.pixelSize: vpx(45)
     font.family: titleFont.name
     font.bold: true
-    visible: !game.assets.logo
+    visible: (showlogo && !game.assets.logo) ? true : false;
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap

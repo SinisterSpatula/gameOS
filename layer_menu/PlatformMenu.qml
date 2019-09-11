@@ -147,7 +147,7 @@ Item {
         id: highlight
         Rectangle {
           width: gameList.cellWidth; height: gameList.cellHeight
-          color: "#FF9E12"
+          color: gamesettings.highlight
           x: gameList.currentItem.x
           y: gameList.currentItem.y
           Behavior on y { NumberAnimation {

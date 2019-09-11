@@ -300,8 +300,8 @@ Item {
             Image {
               id: favebg
               source: "../assets/images/favebg.svg"
-              width: vpx(32)
-              height: vpx(32)
+              width: vpx(64)
+              height: vpx(64)
               sourceSize { width: vpx(32); height: vpx(32)}
               anchors { top: parent.top; topMargin: vpx(0); right: parent.right; rightMargin: vpx(0) }
               visible: false
@@ -310,15 +310,15 @@ Item {
             ColorOverlay {
                 anchors.fill: favebg
                 source: favebg
-                color: "#FF9E12"
+                color: gamesettings.highlight
                 z: 10
             }
 
             Image {
               id: star
               source: "../assets/images/star.svg"
-              width: vpx(13)
-              height: vpx(13)
+              width: vpx(26)
+              height: vpx(26)
               sourceSize { width: vpx(32); height: vpx(32)}
               anchors { top: parent.top; topMargin: vpx(3); right: parent.right; rightMargin: vpx(3) }
               smooth: true
@@ -419,7 +419,7 @@ Item {
             id: gameDescription
             boundsBehavior: Flickable.StopAtBounds
 	    flickableDirection: Flickable.VerticalFlick
-	    maximumFlickVelocity: 300;
+	    maximumFlickVelocity: gamesettings.scrollSpeed
             clip:true
             width: parent.width
             height: vpx(340) //parent.height
