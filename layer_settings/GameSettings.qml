@@ -478,7 +478,7 @@ Item {
 		 gamesettings.favorites = false;
 		 if (settingsetpoint == 1) { gamesettings.favorites = true; }
 		 api.memory.set('settingsFavorites', gamesettings.favorites)
-		 settingsValueBox.text = "Setting Saved!";
+		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
 		 settingsetpoint = -1;
                  break;
              }
@@ -487,7 +487,7 @@ Item {
 		 gamesettings.highlight = settingsHighlightColor[settingsetpoint];
 		 api.memory.set('settingsHighlight', gamesettings.highlight)
 		 settingsValueBox.color = "white";
-		 settingsValueBox.text = "Setting Saved!";
+		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
 		 settingsetpoint = -1;
                  break;
              }
@@ -495,7 +495,7 @@ Item {
                  // Description Scroll Speed Apply and save
 		 gamesettings.scrollSpeed = settingsScrollSpeed[settingsetpoint];
 		 api.memory.set('settingScrollSpeed', gamesettings.scrollSpeed)
-		 settingsValueBox.text = "Setting Saved!";
+		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
 		 settingsetpoint = -1;
                  break;
              }
@@ -504,7 +504,7 @@ Item {
 		 gamesettings.wheelArt = false;
 		 if (settingsetpoint == 1) { gamesettings.wheelArt = true; }
 		 api.memory.set('settingsWheelArt', gamesettings.wheelArt)
-		 settingsValueBox.text = "Setting Saved!";
+		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
 		 settingsetpoint = -1;
                  break;
              }
@@ -513,13 +513,13 @@ Item {
 		 gamesettings.fanArt = false;
 		 if (settingsetpoint == 1) { gamesettings.fanArt = true; }
 		 api.memory.set('settingsFanArt', gamesettings.fanArt)
-		 settingsValueBox.text = "Setting Saved!";
+		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
 		 settingsetpoint = -1;
                  break;
              }
          case 5: {
                  //Perform Theme Update? Apply and save
-		 settingsValueBox.text = "Please manually update by running the command: " + settingsUpdateCommand;
+		 settingsValueBox.text = "Please manually update by running the command:\n" + settingsUpdateCommand;
 		 settingsetpoint = -1;
                  break;
              }
