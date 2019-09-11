@@ -235,11 +235,11 @@ Item {
       asynchronous: true
 
       //opacity: 0
-      if (gamesettings.wheelArt) {source: (!steam) ? game.assets.logo : ""}
+      source: (!steam && gamesettings.wheelArt) ? game.assets.logo : ""
       sourceSize { width: 256; height: 256 }
       fillMode: Image.PreserveAspectFit
       smooth: true
-      if (gamesettings.wheelArt) {visible: game.assets.logo || ""}
+      visible: (gamesettings.wheelArt) ? game.assets.logo : ""
       z:5
     }
 
