@@ -276,7 +276,7 @@ Item {
       ColorOverlay {
           anchors.fill: favebg
           source: favebg
-          color: "#FF9E12"
+          color: gamesettings.highlight
           z: 10
       }
 
