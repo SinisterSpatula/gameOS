@@ -235,24 +235,24 @@ Item {
       asynchronous: true
 
       //opacity: 0
-      source: (!steam) ? game.assets.logo : ""
+      if (gamesettings.wheelArt) {source: (!steam) ? game.assets.logo : ""}
       sourceSize { width: 256; height: 256 }
       fillMode: Image.PreserveAspectFit
       smooth: true
-      visible: game.assets.logo || ""
+      if (gamesettings.wheelArt) {visible: game.assets.logo || ""}
       z:5
     }
 
-    DropShadow {
-      id: logoshadow
-      anchors.fill: gamelogo
-      horizontalOffset: 0
-      verticalOffset: 0
-      radius: 8.0
-      samples: 17
-      color: "#80000000"
-      source: gamelogo
-    }
+    //DropShadow {
+      //id: logoshadow
+      //anchors.fill: gamelogo
+      //horizontalOffset: 0
+      //verticalOffset: 0
+      //radius: 8.0
+      //samples: 17
+      //color: "#80000000"
+      //source: gamelogo
+    //}
 
     // Favourite tag
     Item {
