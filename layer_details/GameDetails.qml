@@ -300,8 +300,8 @@ Item {
             Image {
               id: favebg
               source: "../assets/images/favebg.svg"
-              width: vpx(32)
-              height: vpx(32)
+              width: vpx(64)
+              height: vpx(64)
               sourceSize { width: vpx(32); height: vpx(32)}
               anchors { top: parent.top; topMargin: vpx(0); right: parent.right; rightMargin: vpx(0) }
               visible: false
@@ -310,7 +310,7 @@ Item {
             ColorOverlay {
                 anchors.fill: favebg
                 source: favebg
-                color: "#FF9E12"
+                color: gamesettings.highlight
                 z: 10
             }
 
