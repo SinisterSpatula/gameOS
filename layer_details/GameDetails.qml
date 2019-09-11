@@ -419,7 +419,7 @@ Item {
             id: gameDescription
             boundsBehavior: Flickable.StopAtBounds
 	    flickableDirection: Flickable.VerticalFlick
-	    maximumFlickVelocity: 300;
+	    maximumFlickVelocity: gamesettings.scrollSpeed
             clip:true
             width: parent.width
             height: vpx(340) //parent.height
