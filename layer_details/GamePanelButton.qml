@@ -10,7 +10,7 @@ Rectangle {
     property alias text: label.text
     //property bool activated: false
 
-    color: focus ? gamesettings.highlight : (mouseArea.containsMouse ? gamesettings.highlight : "transparent")
+    color: focus ? "#FF9E12" : (mouseArea.containsMouse ? "#FF9E12" : "transparent")
     Behavior on color {
       ColorAnimation {
         duration: 200;
