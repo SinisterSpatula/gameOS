@@ -317,8 +317,8 @@ Item {
             Image {
               id: star
               source: "../assets/images/star.svg"
-              width: vpx(13)
-              height: vpx(13)
+              width: vpx(26)
+              height: vpx(26)
               sourceSize { width: vpx(32); height: vpx(32)}
               anchors { top: parent.top; topMargin: vpx(3); right: parent.right; rightMargin: vpx(3) }
               smooth: true
