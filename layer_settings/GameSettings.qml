@@ -155,6 +155,7 @@ Item {
             //font.capitalization: Font.AllUppercase
             elide: Text.ElideRight
             opacity: 1
+	    wrapMode: Text.WordWrap
         }	
 	
       
