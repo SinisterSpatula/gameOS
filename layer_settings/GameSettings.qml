@@ -25,7 +25,7 @@ Item {
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
   property var settingsList: [0, 1, 3] //Favorites, Color, Scrollspeed, WheelArt, Fanart, Update.
-  property var settingsDescription: ["Change the highlight color", "Change the Game Description Scrolling speed", "Do you want to update the theme?"]
+  property var settingsDescription: ["Change the highlight color", "Change the Game Description Scrolling speed", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
@@ -432,20 +432,20 @@ Item {
 	//	if (settingsWheelArt[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
         //       break;
         //     }
-         //case 4: {
-         //        // Display Fanart? toggle
-	//	if (settingsetpoint < (settingsFanart.length)) {
-	//	settingsetpoint++;
-	//	}
-	//	if (settingsetpoint == settingsFanart.length) {
-	//	settingsetpoint = 0;
-	//	}
-	//	settingsDescBox.text = settingsDescription[currentsetting];
-	//	if (settingsFanart[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
-	//	if (settingsFanart[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
-        //        break;
-        //     }
          case 2: {
+                 // Display Fanart? toggle
+		if (settingsetpoint < (settingsFanart.length)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsFanart.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsFanart[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
+		if (settingsFanart[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
+                break;
+               }
+         case 3: {
                  //Perform Theme Update? toggle
 		if (settingsetpoint < (settingsUpdate.length)) {
 		settingsetpoint++;
@@ -508,16 +508,16 @@ Item {
 	//	 settingsetpoint = -1;
         //         break;
         //     }
-        // case 4: {
-        //         // Display Fanart? Apply and save
-	//	 gamesettings.fanArt = false;
-	//	 if (settingsetpoint == 1) { gamesettings.fanArt = true; }
-	//	 api.memory.set('settingsFanArt', gamesettings.fanArt)
-	//	 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
-	//	 settingsetpoint = -1;
-        //         break;
-        //     }
          case 2: {
+                 // Display Fanart? Apply and save
+		 gamesettings.fanArt = false;
+		 if (settingsetpoint == 1) { gamesettings.fanArt = true; }
+		 api.memory.set('settingsFanArt', gamesettings.fanArt)
+		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
+		 settingsetpoint = -1;
+                 break;
+               }
+         case 3: {
                  //Perform Theme Update? Apply and save
 		 settingsValueBox.text = "Please manually update by running the command:\n" + settingsUpdateCommand;
 		 settingsetpoint = -1;
