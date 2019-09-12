@@ -25,7 +25,7 @@ Item {
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
   property var settingsList: [0, 1, 3] //Favorites, Color, Scrollspeed, WheelArt, Fanart, Update.
-  property var settingsDescription: ["Show ONLY your FAVORITE games", "Change the highlight color", "Change the Game Description Scrolling speed", "Should wheel art be displayed on the game tiles?", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
+  property var settingsDescription: ["Change the highlight color", "Change the Game Description Scrolling speed", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
