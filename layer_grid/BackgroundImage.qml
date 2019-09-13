@@ -53,7 +53,7 @@ Item {
   Rectangle {
     id: backgrounddim
     anchors.fill: parent
-    color: "#697796" //15181e
+    color: "#15181e" //15181e //697796
 
     opacity: dimopacity
 
