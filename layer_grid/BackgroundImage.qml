@@ -21,7 +21,7 @@ Item {
         anchors.fill: parent
         visible: gameData
         asynchronous: true
-        source: bgDefault //bgSource
+        source: bgSource
         sourceSize { width: 320; height: 240 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
