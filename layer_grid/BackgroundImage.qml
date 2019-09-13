@@ -48,7 +48,7 @@ Item {
   //    GradientStop { position: 0.0; color: "#00000000" }
   //    GradientStop { position: 0.7; color: "#ff000000" }
   //  }
-  }
+  //}
 
   Rectangle {
     id: backgrounddim
