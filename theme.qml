@@ -313,8 +313,8 @@ FocusScope {
         property bool favorites
         property var highlight
         property int scrollSpeed
-        property bool wheelArt
-        property bool fanArt
+        property var backcolor
+        property var backgroundart
         
         anchors {
           left: parent.left; right: parent.right
