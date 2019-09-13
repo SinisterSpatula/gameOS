@@ -236,11 +236,11 @@ Item {
       asynchronous: true
 
       //opacity: 0
-      source: (showlogo) ? game.assets.logo : ""
+      source: (game.assets.logo) ? game.assets.logo : ""
       sourceSize { width: 256; height: 256 }
       fillMode: Image.PreserveAspectFit
       smooth: true
-      visible: (showlogo) ? game.assets.logo : ""
+      visible: (game.assets.logo) ? game.assets.logo : ""
       z:5
     }
 
@@ -395,7 +395,7 @@ Item {
     font.pixelSize: vpx(45)
     font.family: titleFont.name
     font.bold: true
-    visible: (showlogo && !game.assets.logo) ? true : false;
+    visible: (!game.assets.logo) ? true : false;
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
