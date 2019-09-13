@@ -50,15 +50,15 @@ Item {
     }
   }
 
-//  Rectangle {
-//    id: backgrounddim
-//    anchors.fill: parent
-//    color: "#15181e"
-//
-//    opacity: dimopacity
-//
-//    Behavior on opacity { NumberAnimation { duration: 100 } }
-//  }
+  Rectangle {
+    id: backgrounddim
+    anchors.fill: parent
+    color: "#697796" //15181e
+
+    opacity: dimopacity
+
+    Behavior on opacity { NumberAnimation { duration: 100 } }
+  }
 
 
 
