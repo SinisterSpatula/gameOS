@@ -8,12 +8,6 @@ Item {
 
   property string bgDefault: '../assets/images/defaultbg.png'
   property string bgSource: (gamesettings.fanArt && gameData.assets.background) ? gameData.assets.background : (!gamesettings.fanArt && gameData.assets.screenshots[0]) ? gameData.assets.screenshots[0] : bgDefault
-  property string bgImage1
-  property string bgImage2
-  property bool firstBG: true
-
-  //onBgSourceChanged: swapImage(bgSource)
-
 
 
   Item {
@@ -21,42 +15,13 @@ Item {
 
     anchors.fill: parent
 
-    states: [
-        State { // this will fade in rect2 and fade out rect
-            name: "fadeInRect2"
-            PropertyChanges { target: rect; opacity: 0}
-            PropertyChanges { target: rect2; opacity: 1}
-        },
-        State   { // this will fade in rect and fade out rect2
-            name:"fadeOutRect2"
-            PropertyChanges { target: rect;opacity:1}
-            PropertyChanges { target: rect2;opacity:0}
-        }
-    ]
-
-    transitions: [
-        Transition {
-            NumberAnimation { property: "opacity"; easing.type: Easing.InOutQuad; duration: 300  }
-        }
-    ]
-
-    Image {
-        id: rect2
-        anchors.fill: parent
-        visible: gameData
-        asynchronous: true
-        source: bgImage1
-        sourceSize { width: 320; height: 240 }
-        fillMode: Image.PreserveAspectCrop
-        smooth: false
-    }
 
     Image {
         id: rect
         anchors.fill: parent
         visible: gameData
         asynchronous: true
-        source: bgImage2
+        source: bgSource
         sourceSize { width: 320; height: 240 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
@@ -66,22 +31,7 @@ Item {
 
   }
 
-  function swapImage(newSource) {
-    if (firstBG) {
-      // Go to second image
-      if (newSource)
-        bgImage2 = newSource
 
-      firstBG = false
-    } else {
-      // Go to first image
-      if (newSource)
-        bgImage1 = newSource
-
-      firstBG = true
-    }
-    bg.state = bg.state == "fadeInRect2" ? "fadeOutRect2" : "fadeInRect2"
-  }
 
   LinearGradient {
     z: parent.z + 1
