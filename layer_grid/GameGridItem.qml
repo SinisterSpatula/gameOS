@@ -11,7 +11,6 @@ Item {
   property int cornerradius: vpx(3)
   property var collection//: api.currentCollection
   property bool steam: false
-  property bool showlogo: api.memory.get('settingsWheelArt')
 
   signal details
   signal clicked
