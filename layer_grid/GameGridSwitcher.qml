@@ -13,10 +13,10 @@ Rectangle {
 
   SequentialAnimation {
     id: switchanimation;
-    OpacityAnimator { target: switchoverlay; from: 0; to: 0.95; duration: 1; }
-    OpacityAnimator { target: logo; from: 0; to: 0.95; duration: 100; }
+    OpacityAnimator { target: switchoverlay; from: 0; to: 0.94; duration: 1; }
+    OpacityAnimator { target: logo; from: 0; to: 1.0; duration: 100; }
     PauseAnimation { duration: 1000; } //duration: 300;
-    OpacityAnimator { target: switchoverlay; from: 0.95; to: 0; duration: 300; }
+    OpacityAnimator { target: switchoverlay; from: 0.54; to: 0; duration: 300; }
   }
 
   Image {
