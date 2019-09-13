@@ -16,54 +16,6 @@ Item {
   signal clicked
 
 
-  /////////////////
-  // VIDEO STUFF //
-  /////////////////
-
-//  onSelectedChanged: {
-//    if (selected) {
-//      videoDelay.restart();
-//    }
-//    else {
-//      videoPreviewLoader.sourceComponent = undefined;
-//      fadescreenshot.stop();
-//    }
-//
-//  }
-//
-//  onCollectionChanged: {
-//    if (collection.shortName == "steam") {
-//      steam = true
-//    } else {
-//      steam = false
-//    }
-//
-//  }
-//
-//
-//  Timer {
-//    id: videoDelay
-//    interval: 100
-//    onTriggered: {
-//      if (selected && game.assets.videos.length) {
-//        videoPreviewLoader.sourceComponent = videoPreviewWrapper;
-//        fadescreenshot.restart();
-//      }
-//    }
-//  }
-//
-//  Timer {
-//    id: fadescreenshot
-//    interval: 1000
-//    onTriggered: {
-//      screenshot.opacity = 0;
-//    }
-//  }
-
-  ////////////////////////
-  // END OF VIDEO STUFF //
-  ////////////////////////
-
   // Border
   Rectangle {
     id: itemcontainer
@@ -83,14 +35,7 @@ Item {
 
     // DropShadow
     layer.enabled: selected
-    //layer.effect: DropShadow {
-        //horizontalOffset: 0
-        //verticalOffset: 0
-        //radius: 10.0
-        //samples: 17
-        //color: "#80000000"
-        //transparentBorder: true
-    //}
+
 
     // Animation layer
     Rectangle {
@@ -101,15 +46,6 @@ Item {
       color: "white"
       radius: cornerradius + vpx(3)
 
-//      // Looping colour animation
-//      SequentialAnimation on opacity {
-//        id: colorAnim
-//        running: true
-//        loops: Animation.Infinite
-//        NumberAnimation { to: 1; duration: 200; }
-//        NumberAnimation { to: 0; duration: 500; }
-//        PauseAnimation { duration: 200 }
-//      }
     }
 
 
@@ -126,84 +62,7 @@ Item {
     }
 
     // Actual art
-    Image {
-      id: screenshot
 
-      width: root.gridItemWidth
-      height: root.gridItemHeight
-      z: 3
-      anchors {
-        fill: parent
-        margins: vpx(4)
-      }
-
-      asynchronous: true
-      visible: game.assets.screenshots[0] || game.assets.boxFront || ""
-
-      smooth: true
-
-      source: (steam) ? game.assets.logo : game.assets.screenshots[0] || game.assets.boxFront || ""
-      sourceSize { width: 256; height: 256 }
-      fillMode: Image.PreserveAspectCrop
-
-      property bool rounded: true
-      property bool adapt: true
-
-      Behavior on opacity { PropertyAnimation { duration: 1000; easing.type: Easing.OutQuart; easing.amplitude: 2.0; } }
-
-      layer.enabled: rounded
-      layer.effect: OpacityMask {
-          maskSource: Item {
-              width: screenshot.width
-              height: screenshot.height
-              Rectangle {
-                  anchors.centerIn: parent
-                  width: screenshot.width
-                  height: screenshot.height
-                  radius: cornerradius - vpx(1)
-              }
-          }
-      }
-    }
-
-
-
-    // Video preview
-//    Component {
-//      id: videoPreviewWrapper
-//      Video {
-//        source: game.assets.videos.length ? game.assets.videos[0] : ""
-//        anchors.fill: parent
-//        fillMode: VideoOutput.PreserveAspectCrop
-//        muted: true
-//        loops: MediaPlayer.Infinite
-//        autoPlay: true
-//      }
-//
-//    }
-//
-//    Loader {
-//      id: videoPreviewLoader
-//      asynchronous: true
-//      anchors {
-//        fill: parent
-//        margins: vpx(4)
-//      }
-//      layer.enabled: true
-//      layer.effect: OpacityMask {
-//          maskSource: Item {
-//              width: videoPreviewLoader.width
-//              height: videoPreviewLoader.height
-//              Rectangle {
-//                  anchors.centerIn: parent
-//                  width: videoPreviewLoader.width
-//                  height: videoPreviewLoader.height
-//                  radius: cornerradius - vpx(1)
-//              }
-//          }
-//      }
-//      //z: 3
-//    }
 
     // Dim overlay
     Rectangle {
@@ -229,30 +88,21 @@ Item {
       height: root.gridItemHeight
       anchors {
         fill: parent
-        margins: vpx(20)
+        //margins: vpx(20)
       }
 
       asynchronous: true
 
       //opacity: 0
-      source: (game.assets.logo) ? game.assets.logo : ""
+      source: game.assets.logo || game.assets.screenshots[0] || ""
       sourceSize { width: 256; height: 256 }
       fillMode: Image.PreserveAspectFit
-      smooth: true
-      visible: (game.assets.logo) ? game.assets.logo : ""
+      //smooth: true
+      visible: game.assets.logo || game.assets.screenshots || ""
       z:5
     }
 
-    //DropShadow {
-      //id: logoshadow
-      //anchors.fill: gamelogo
-      //horizontalOffset: 0
-      //verticalOffset: 0
-      //radius: 8.0
-      //samples: 17
-      //color: "#80000000"
-      //source: gamelogo
-    //}
+
 
     // Favourite tag
     Item {
@@ -314,18 +164,18 @@ Item {
     states: [
       State {
         name: "SELECTED"
-        PropertyChanges { target: screenshot; opacity: 1 }
+        PropertyChanges { target: gamelogo; opacity: 1 }
         PropertyChanges { target: itemcontainer; color: "#FF9E12"}
         PropertyChanges { target: rectAnim; opacity: 1 }
-        PropertyChanges { target: screenshot; opacity: 1 }
+        PropertyChanges { target: gamelogo; opacity: 1 }
         PropertyChanges { target: dimoverlay; opacity: 0.4 }
       },
       State {
         name: "UNSELECTED"
-        PropertyChanges { target: screenshot; opacity: 1 }
+        PropertyChanges { target: gamelogo; opacity: 1 }
         PropertyChanges { target: itemcontainer; color: "transparent"}
         PropertyChanges { target: rectAnim; opacity: 0 }
-        PropertyChanges { target: screenshot; opacity: 0.8 }
+        PropertyChanges { target: gamelogo; opacity: 0.8 }
         PropertyChanges { target: dimoverlay; opacity: 0.5 }
       }
     ]
@@ -337,7 +187,7 @@ Item {
         PropertyAnimation { target: rectAnim; duration: 100 }
         ColorAnimation { target: itemcontainer; duration: 100 }
         PropertyAnimation { target: rectAnim; duration: 100 }
-        PropertyAnimation { target: screenshot; duration: 100 }
+        PropertyAnimation { target: gamelogo; duration: 100 }
         PropertyAnimation { target: dimoverlay; duration: 100 }
       },
       Transition {
@@ -346,7 +196,7 @@ Item {
         PropertyAnimation { target: rectAnim; duration: 100 }
         ColorAnimation { target: itemcontainer; duration: 100 }
         PropertyAnimation { target: rectAnim; duration: 1000 }
-        PropertyAnimation { target: screenshot; duration: 100 }
+        PropertyAnimation { target: gamelogo; duration: 100 }
         PropertyAnimation { target: dimoverlay; duration: 100 }
       }
     ]
@@ -355,7 +205,7 @@ Item {
   Image {
     anchors.centerIn: parent
 
-    visible: screenshot.status === Image.Loading
+    visible: gamelogo.status === Image.Loading
     source: "../assets/images/loading.png"
     width: vpx(50)
     height: vpx(50)
@@ -394,7 +244,7 @@ Item {
     font.pixelSize: vpx(45)
     font.family: titleFont.name
     font.bold: true
-    visible: (!game.assets.logo) ? true : false;
+    visible: (game.assets.logo) ? false : true;
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
