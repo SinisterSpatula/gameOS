@@ -21,10 +21,11 @@ Item {
   property var settingsBackgroundColor: ["#CC7700", "#990000", "#800080", "#1F7A1F", "#000080", "#808000", "#005580", "#4d3300", "#000000"]
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
   property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
+  property var settingsWheelCropping: [false, true]
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: ["HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "UpdateTheme"]
-  property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "Do you want to update the theme?"]
+  property var settingsList: ["HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "WheelCropping", "UpdateTheme"]
+  property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "For Wheel Art on game grid tiles, enable Cropping?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
@@ -433,7 +434,20 @@ Item {
                 if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
 		break;
              }
-         case 4: {
+	 case 4: {
+                 //Should Wheel Art be cropped? toggle
+		if (settingsetpoint < (settingsUpdate.length)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsUpdate.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO, do not crop wheel art.";}
+		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES, crop the wheel art.";}
+                 break;
+             }
+         case 5: {
                  //Perform Theme Update? toggle
 		if (settingsetpoint < (settingsUpdate.length)) {
 		settingsetpoint++;
@@ -496,6 +510,14 @@ Item {
                  break;
              }
          case 4: {
+                 //Should Wheel art be cropped? Apply and save
+		 gamesettings.wheelcropping = settingsWheelCropping[settingsetpoint];
+		 api.memory.set('settingsWheelCropping', gamesettings.wheelcropping) 
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
+                 break;
+             }
+	 case 5: {
                  //Perform Theme Update? Apply and save
 		 settingsValueBox.text = "Please manually update by running the command:\n" + settingsUpdateCommand;
 		 settingsetpoint = -1;
