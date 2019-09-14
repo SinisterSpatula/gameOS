@@ -13,6 +13,7 @@ Item {
     id: bg
 
     anchors.fill: parent
+    color: gamesettings.backcolor
 
 
     Image {
