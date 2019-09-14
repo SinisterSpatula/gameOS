@@ -13,7 +13,6 @@ Item {
     id: bg
 
     anchors.fill: parent
-    color: gamesettings.backcolor
 
 
     Image {
@@ -31,10 +30,18 @@ Item {
 
   }
 
+    Rectangle {
+    id: backgroundcolor
+    anchors.fill: parent
+    color: gamesettings.backcolor
+    opacity: 1.0
+    z: rect.z + 1
+    visible: (gamesettings.backgroundart == "Color")
+  }
 
 
   LinearGradient {
-    z: parent.z + 1
+    z: parent.z + 2
     width: parent.width
     height: parent.height
     anchors {
@@ -49,6 +56,7 @@ Item {
       GradientStop { position: 0.7; color: "#ff000000" }
     }
   }
+  
 
   Rectangle {
     id: backgrounddim
