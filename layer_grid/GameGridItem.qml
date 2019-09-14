@@ -96,7 +96,7 @@ Item {
       //opacity: 0
       source: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       sourceSize { width: 256; height: 256 }
-      fillMode: (game.assets.logo) ? Image.PreserveAspectCrop : (game.assets.screenshots[0]) ? Image.PreserveAspectCrop : Image.PerserveAspectFit
+      fillMode: (game.assets.logo && gamesettings.wheelcropping) ? Image.PreserveAspectCrop : (game.assets.logo && !gamesettings.wheelcropping) ? Image.PerserveAspectFit : (game.assets.screenshots[0]) ? Image.PreserveAspectCrop : Image.PerserveAspectFit
       smooth: true
       visible: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       z:5
