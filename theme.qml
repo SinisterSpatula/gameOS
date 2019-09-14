@@ -310,10 +310,9 @@ FocusScope {
         id: gamesettings
 
         property bool active : false
-        property bool favorites
         property var highlight
-        property int scrollSpeed
         property var backcolor
+        property int scrollSpeed
         property var backgroundart
         
         anchors {
