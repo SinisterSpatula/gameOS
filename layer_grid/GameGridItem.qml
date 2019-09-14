@@ -64,21 +64,21 @@ Item {
     // Actual art
 
 
-    // Dim overlay
-    Rectangle {
-      id: dimoverlay
-      width: root.gridItemWidth
-      height: root.gridItemHeight
-      anchors {
-        fill: parent
-        margins: vpx(3)
-      }
-      color: "black"
-      opacity: 0.6
-      visible: !steam || ""
-      z: (selected) ? 4 : 6
-      radius: cornerradius
-    }
+//    // Dim overlay
+//    Rectangle {
+//      id: dimoverlay
+//      width: root.gridItemWidth
+//      height: root.gridItemHeight
+//      anchors {
+//        fill: parent
+//        margins: vpx(3)
+//      }
+//      color: "black"
+//      opacity: 0.6
+//      visible: !steam || ""
+//      z: (selected) ? 4 : 6
+//      radius: cornerradius
+//    }
 
     // Logo
     Image {
