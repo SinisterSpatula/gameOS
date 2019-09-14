@@ -16,16 +16,15 @@ Item {
   property int settingsetpoint: -1
   
   // settings values
-  // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown
+  // ----------------------------------- Orange ----- Red ----- Purple -- Green ----- Blue ---- Yellow -- Sky Blue --- Brown------Black
   property var settingsHighlightColor: ["#FF9E12", "#CC0000", "#CC00CC", "#33CC33", "#3333FF", "#E6E600", "#66CCFF", "#996600"]
-  property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
+  property var settingsBackgroundColor: ["#CC7700", "#990000", "#800080", "#1F7A1F", "#000080", "#808000", "#005580", "#4d3300", "#000000"]
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
-  property var settingsWheelArt: [0, 1] //show wheel art, 0 = no, 1 = yes.
-  property var settingsFanart: [0, 1] //show fanart in backgrounds, 0 = no, 1 = yes.
+  property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: [0, 1, 2, 3, 4, 5] //Favorites, Color, Scrollspeed, WheelArt, Fanart, Update.
-  property var settingsDescription: ["Show ONLY your FAVORITE games", "Change the highlight color", "Change the Game Description Scrolling speed", "Should wheel art be displayed on the game tiles?", "Should Fanart be displayed in the background?", "Do you want to update the theme?"]
+  property var settingsList: ["HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "UpdateTheme"]
+  property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
@@ -379,20 +378,7 @@ Item {
 	
 	function toggleSetting() {
 	switch (currentsetting) {
-         case 0: {
-                 // Display ONLY Favorite Games? toggle
-		if (settingsetpoint < (settingsFavorites.length)) {
-		settingsetpoint++;
-		}
-		if (settingsetpoint == settingsFavorites.length) {
-		settingsetpoint = 0;
-		}
-		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsFavorites[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
-		if (settingsFavorites[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
-                 break;
-             }
-	 case 1: {
+	 case 0: {
                  // Change Highlight Color toggle
 		if (settingsetpoint <= (settingsHighlightColor.length - 1)) {
 		settingsetpoint++;
@@ -403,6 +389,19 @@ Item {
 		settingsDescBox.text = settingsDescription[currentsetting];
 		settingsValueBox.color = settingsHighlightColor[settingsetpoint];
 		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
+                break;
+             }
+	 case 1: {
+                 // Change Background Color toggle
+		if (settingsetpoint <= (settingsBackgroundColor.length - 1)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsBackgroundColor.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		settingsValueBox.color = settingsBackgroundColor[settingsetpoint];
+		settingsValueBox.text = "Set it to this color?: " + settingsBackgroundColor[settingsetpoint];
                 break;
              }
          case 2: {
@@ -419,33 +418,22 @@ Item {
 		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "Set it to FAST?";}
                  break;
              }
-         case 3: {
-                 // Display Wheel Art? toggle
-		if (settingsetpoint < (settingsWheelArt.length)) {
+	 case 3: {
+                 // Background Art toggle: Default, FanArt, Screenshot, Color
+		if (settingsetpoint <= (settingsBackgroundArt.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsWheelArt.length) {
+		if (settingsetpoint == settingsBackgroundArt.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsWheelArt[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
-		if (settingsWheelArt[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
-                 break;
+		if (settingsBackgroundArt[settingsetpoint] == "Default") { settingsValueBox.text = "Set it to Default Background?";}
+		if (settingsBackgroundArt[settingsetpoint] == "FanArt") { settingsValueBox.text = "Set it to Fan Art Background?";}
+		if (settingsBackgroundArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot Background?";}
+                if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
+		break;
              }
          case 4: {
-                 // Display Fanart? toggle
-		if (settingsetpoint < (settingsFanart.length)) {
-		settingsetpoint++;
-		}
-		if (settingsetpoint == settingsFanart.length) {
-		settingsetpoint = 0;
-		}
-		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsFanart[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
-		if (settingsFanart[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
-                 break;
-             }
-         case 5: {
                  //Perform Theme Update? toggle
 		if (settingsetpoint < (settingsUpdate.length)) {
 		settingsetpoint++;
@@ -473,21 +461,21 @@ Item {
 		//apply and save.
 		if (settingsetpoint == -1) {return;}
 		switch (currentsetting) {
-         case 0: {
-                 // Display ONLY Favorite Games Apply and save
-		 gamesettings.favorites = false;
-		 if (settingsetpoint == 1) { gamesettings.favorites = true; }
-		 api.memory.set('settingsFavorites', gamesettings.favorites)
-		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
-		 settingsetpoint = -1;
-                 break;
-             }
-	 case 1: {
+	 case 0: {
                  // Change Highlight Color Apply and save
 		 gamesettings.highlight = settingsHighlightColor[settingsetpoint];
 		 api.memory.set('settingsHighlight', gamesettings.highlight)
 		 settingsValueBox.color = "white";
-		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
+		 settingsValueBox.text = "Setting Saved!";
+		 settingsetpoint = -1;
+                 break;
+             }
+	 case 1: {
+                 // Change Background Color Apply and save
+		 gamesettings.backcolor = settingsBackgroundColor[settingsetpoint];
+		 api.memory.set('settingsBackgroundColor', gamesettings.backcolor)
+		 settingsValueBox.color = "white";
+		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
@@ -495,29 +483,19 @@ Item {
                  // Description Scroll Speed Apply and save
 		 gamesettings.scrollSpeed = settingsScrollSpeed[settingsetpoint];
 		 api.memory.set('settingScrollSpeed', gamesettings.scrollSpeed)
-		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
+		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
          case 3: {
-                 // Display Wheel Art? Apply and save
-		 gamesettings.wheelArt = false;
-		 if (settingsetpoint == 1) { gamesettings.wheelArt = true; }
-		 api.memory.set('settingsWheelArt', gamesettings.wheelArt)
-		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
+                 // Background Art Apply and save
+		 gamesettings.backgroundart = settingsBackgroundArt[settingsetpoint];
+		 api.memory.set('settingsBackgroundArt', gamesettings.backgroundart)
+		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
          case 4: {
-                 // Display Fanart? Apply and save
-		 gamesettings.fanArt = false;
-		 if (settingsetpoint == 1) { gamesettings.fanArt = true; }
-		 api.memory.set('settingsFanArt', gamesettings.fanArt)
-		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
-		 settingsetpoint = -1;
-                 break;
-             }
-         case 5: {
                  //Perform Theme Update? Apply and save
 		 settingsValueBox.text = "Please manually update by running the command:\n" + settingsUpdateCommand;
 		 settingsetpoint = -1;

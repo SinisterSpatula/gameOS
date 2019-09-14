@@ -68,17 +68,15 @@ FocusScope {
   Component.onCompleted: {
     collectionIndex = api.memory.get('collectionIndex') || 0;
     currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0;
-    gamesettings.favorites = api.memory.get('settingsFavorites') || false;
     gamesettings.highlight = api.memory.get('settingsHighlight') || "#FF9E12";
+    gamesettings.backcolor = api.memory.get('settingsBackgroundColor') || "#CC7700";
     gamesettings.scrollSpeed = api.memory.get('settingScrollSpeed') || 300;
-    gamesettings.wheelArt = api.memory.get('settingsWheelArt') || true;
-    gamesettings.fanArt = api.memory.get('settingsFanArt') || true;
+    gamesettings.backgroundart = api.memory.get('settingsBackgroundArt') || "Default";
     
-    if (!api.memory.has('settingsFavorites')) {api.memory.set('settingsFavorites', gamesettings.favorites)}
     if (!api.memory.has('settingsHighlight')) {api.memory.set('settingsHighlight', gamesettings.highlight)}
+    if (!api.memory.has('settingsBackgroundColor')) {api.memory.set('settingsBackgroundColor', gamesettings.backcolor)}
     if (!api.memory.has('settingScrollSpeed')) {api.memory.set('settingScrollSpeed', gamesettings.scrollSpeed)}
-    if (!api.memory.has('settingsWheelArt')) {api.memory.set('settingsWheelArt', gamesettings.wheelArt)}
-    if (!api.memory.has('settingsFanArt')) {api.memory.set('settingsFanArt', gamesettings.fanArt)}
+    if (!api.memory.has('settingsBackgroundArt')) {api.memory.set('settingsBackgroundArt', gamesettings.backgroundart)}
   }
   
 
@@ -119,7 +117,7 @@ FocusScope {
       gamegrid.focus = true
       gamegrid.visible = true
       content.opacity = 1
-      backgroundimage.dimopacity = 0.97
+      backgroundimage.dimopacity = 0.54 //0.97
       gamedetails.active = false
       gamedetails.outro()
     } else {
@@ -139,7 +137,7 @@ FocusScope {
       gamegrid.focus = true
       gamegrid.visible = true
       content.opacity = 1
-      backgroundimage.dimopacity = 0.97
+      backgroundimage.dimopacity = 0.54 //0.97
       gamesettings.active = false
       gamesettings.outro()
     } else {
@@ -312,11 +310,10 @@ FocusScope {
         id: gamesettings
 
         property bool active : false
-        property bool favorites
         property var highlight
+        property var backcolor
         property int scrollSpeed
-        property bool wheelArt
-        property bool fanArt
+        property var backgroundart
         
         anchors {
           left: parent.left; right: parent.right

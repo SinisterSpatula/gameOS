@@ -4,87 +4,44 @@ import QtGraphicalEffects 1.0
 Item {
   id: root
   property var gameData//: currentCollection.games.get(gameList.currentIndex)
-  property real dimopacity: 0.96
+  property real dimopacity: 0.54 //0.96
 
   property string bgDefault: '../assets/images/defaultbg.png'
-  property string bgSource: gameData ? (gameData.assets.background || gameData.assets.screenshots[0]) || bgDefault : bgDefault
-  property string bgImage1
-  property string bgImage2
-  property bool firstBG: true
-
-  onBgSourceChanged: swapImage(bgSource)
-
-
+  property string bgSource: (gamesettings.backgroundart == "FanArt" && gameData.assets.background) ? gameData.assets.background : (gamesettings.backgroundart == "Screenshot" && gameData.assets.screenshots[0]) ? gameData.assets.screenshots[0] : (gamesettings.backgroundart == "Default") ? bgDefault : (gamesettings.backgroundart == "Color") ? "" : bgDefault
 
   Item {
     id: bg
 
     anchors.fill: parent
 
-    states: [
-        State { // this will fade in rect2 and fade out rect
-            name: "fadeInRect2"
-            PropertyChanges { target: rect; opacity: 0}
-            PropertyChanges { target: rect2; opacity: 1}
-        },
-        State   { // this will fade in rect and fade out rect2
-            name:"fadeOutRect2"
-            PropertyChanges { target: rect;opacity:1}
-            PropertyChanges { target: rect2;opacity:0}
-        }
-    ]
-
-    transitions: [
-        Transition {
-            NumberAnimation { property: "opacity"; easing.type: Easing.InOutQuad; duration: 300  }
-        }
-    ]
-
-    Image {
-        id: rect2
-        anchors.fill: parent
-        visible: gameData
-        asynchronous: true
-        source: bgImage1
-        sourceSize { width: 320; height: 240 }
-        fillMode: Image.PreserveAspectCrop
-        smooth: false
-    }
 
     Image {
         id: rect
         anchors.fill: parent
         visible: gameData
         asynchronous: true
-        source: bgImage2
+        source: bgSource
         sourceSize { width: 320; height: 240 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
     }
 
-    state: "fadeInRect2"
+    //state: "fadeInRect2"
 
   }
 
-  function swapImage(newSource) {
-    if (firstBG) {
-      // Go to second image
-      if (newSource)
-        bgImage2 = newSource
-
-      firstBG = false
-    } else {
-      // Go to first image
-      if (newSource)
-        bgImage1 = newSource
-
-      firstBG = true
-    }
-    bg.state = bg.state == "fadeInRect2" ? "fadeOutRect2" : "fadeInRect2"
+    Rectangle {
+    id: backgroundcolor
+    anchors.fill: parent
+    color: gamesettings.backcolor
+    opacity: 1.0
+    z: rect.z + 1
+    visible: (gamesettings.backgroundart == "Color")
   }
+
 
   LinearGradient {
-    z: parent.z + 1
+    z: parent.z + 2
     width: parent.width
     height: parent.height
     anchors {
@@ -99,11 +56,12 @@ Item {
       GradientStop { position: 0.7; color: "#ff000000" }
     }
   }
+  
 
   Rectangle {
     id: backgrounddim
     anchors.fill: parent
-    color: "#15181e"
+    color: "#15181e" //15181e //697796
 
     opacity: dimopacity
 
