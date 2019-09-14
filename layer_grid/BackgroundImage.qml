@@ -7,8 +7,7 @@ Item {
   property real dimopacity: 0.54 //0.96
 
   property string bgDefault: '../assets/images/defaultbg.png'
-  property string bgSource: (gamesettings.fanArt && gameData.assets.background) ? gameData.assets.background : (!gamesettings.fanArt && gameData.assets.screenshots[0]) ? gameData.assets.screenshots[0] : bgDefault
-
+  property string bgSource: (gamesettings.backgroundart == "FanArt" && gameData.assets.background) ? gameData.assets.background : (gamesettings.backgroundart == "Screenshot" && gameData.assets.screenshots[0]) ? gameData.assets.screenshots[0] : (gamesettings.backgroundart == "Default") ? bgDefault : (gamesettings.backgroundart == "Color") ? "" : bgDefault
 
   Item {
     id: bg
