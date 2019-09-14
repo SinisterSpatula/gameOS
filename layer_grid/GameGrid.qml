@@ -8,7 +8,7 @@ FocusScope {
   property int numColumns: 2
 
   property alias gridWidth: grid.width
-  property int gridItemSpacing: (numColumns == 2) ? vpx(7) : vpx(5) // it will double this
+  property int gridItemSpacing: (numColumns == 2) ? vpx(14) : vpx(10) // it will double this
   property var collectionData
   property var gameData
   property int currentGameIdx
