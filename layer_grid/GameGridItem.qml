@@ -241,7 +241,7 @@ Item {
       bottom: parent.bottom; bottomMargin: vpx(14)
     }
     color: selected ? "white" : "gray"
-    font.pixelSize: vpx(45)
+    font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
     visible: (game.assets.logo) ? false : true;
