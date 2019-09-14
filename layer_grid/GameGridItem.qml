@@ -96,8 +96,8 @@ Item {
       //opacity: 0
       source: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       sourceSize { width: 256; height: 256 }
-      fillMode: Image.PreserveAspectFit
-      //smooth: true
+      fillMode: Image.PreserveAspectCrop//Image.PreserveAspectFit
+      smooth: true
       visible: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       z:5
     }
@@ -241,7 +241,7 @@ Item {
       bottom: parent.bottom; bottomMargin: vpx(14)
     }
     color: selected ? "white" : "gray"
-    font.pixelSize: vpx(45)
+    font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
     visible: (game.assets.logo) ? false : true;
