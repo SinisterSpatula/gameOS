@@ -71,7 +71,7 @@ Item {
       height: root.gridItemHeight
       anchors {
         fill: parent
-        margins: vpx(3)
+        //margins: vpx(3)
       }
       color: "black"
       opacity: 0.6
@@ -88,7 +88,7 @@ Item {
       height: root.gridItemHeight
       anchors {
         fill: parent
-        //margins: vpx(20)
+        margins: vpx(4)
       }
 
       asynchronous: true
@@ -96,8 +96,8 @@ Item {
       //opacity: 0
       source: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       sourceSize { width: 256; height: 256 }
-      fillMode: Image.PreserveAspectFit
-      //smooth: true
+      fillMode: (game.assets.logo && gamesettings.wheelcropping) ? Image.PreserveAspectCrop : (game.assets.logo && !gamesettings.wheelcropping) ? Image.PreserveAspectFit : (game.assets.screenshots[0]) ? Image.PreserveAspectCrop : Image.PreserveAspectFit
+      smooth: true
       visible: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       z:5
     }
@@ -188,7 +188,7 @@ Item {
         ColorAnimation { target: itemcontainer; duration: 100 }
         PropertyAnimation { target: rectAnim; duration: 100 }
         PropertyAnimation { target: gamelogo; duration: 100 }
-        PropertyAnimation { target: dimoverlay; duration: 100 }
+        //PropertyAnimation { target: dimoverlay; duration: 100 }
       },
       Transition {
         from: "UNSELECTED"
@@ -197,7 +197,7 @@ Item {
         ColorAnimation { target: itemcontainer; duration: 100 }
         PropertyAnimation { target: rectAnim; duration: 1000 }
         PropertyAnimation { target: gamelogo; duration: 100 }
-        PropertyAnimation { target: dimoverlay; duration: 100 }
+        //PropertyAnimation { target: dimoverlay; duration: 100 }
       }
     ]
   }
@@ -241,7 +241,7 @@ Item {
       bottom: parent.bottom; bottomMargin: vpx(14)
     }
     color: selected ? "white" : "gray"
-    font.pixelSize: vpx(45)
+    font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
     visible: (game.assets.logo) ? false : true;
