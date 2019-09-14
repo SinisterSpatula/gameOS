@@ -64,21 +64,21 @@ Item {
     // Actual art
 
 
-//    // Dim overlay
-//    Rectangle {
-//      id: dimoverlay
-//      width: root.gridItemWidth
-//      height: root.gridItemHeight
-//      anchors {
-//        fill: parent
-//        margins: vpx(3)
-//      }
-//      color: "black"
-//      opacity: 0.6
-//      visible: !steam || ""
-//      z: (selected) ? 4 : 6
-//      radius: cornerradius
-//    }
+    // Dim overlay
+    Rectangle {
+      id: dimoverlay
+      width: root.gridItemWidth
+      height: root.gridItemHeight
+      anchors {
+        fill: parent
+        //margins: vpx(3)
+      }
+      color: "black"
+      opacity: 0.6
+      visible: !steam || ""
+      z: (selected) ? 4 : 6
+      radius: cornerradius
+    }
 
     // Logo
     Image {
@@ -168,7 +168,7 @@ Item {
         PropertyChanges { target: itemcontainer; color: "#FF9E12"}
         PropertyChanges { target: rectAnim; opacity: 1 }
         PropertyChanges { target: gamelogo; opacity: 1 }
-        //PropertyChanges { target: dimoverlay; opacity: 0.4 }
+        PropertyChanges { target: dimoverlay; opacity: 0.4 }
       },
       State {
         name: "UNSELECTED"
@@ -176,7 +176,7 @@ Item {
         PropertyChanges { target: itemcontainer; color: "transparent"}
         PropertyChanges { target: rectAnim; opacity: 0 }
         PropertyChanges { target: gamelogo; opacity: 0.8 }
-        //PropertyChanges { target: dimoverlay; opacity: 0.5 }
+        PropertyChanges { target: dimoverlay; opacity: 0.5 }
       }
     ]
 
