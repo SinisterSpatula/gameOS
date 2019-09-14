@@ -96,8 +96,8 @@ Item {
       //opacity: 0
       source: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       sourceSize { width: 256; height: 256 }
-      fillMode: Image.PreserveAspectFit
-      //smooth: true
+      fillMode: Image.PreserveAspectCrop//Image.PreserveAspectFit
+      smooth: true
       visible: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       z:5
     }
