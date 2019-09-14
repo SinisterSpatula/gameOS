@@ -430,7 +430,7 @@ Item {
 		if (settingsBackgroundArt[settingsetpoint] == "Default") { settingsValueBox.text = "Set it to Default Background?";}
 		if (settingsBackgroundArt[settingsetpoint] == "FanArt") { settingsValueBox.text = "Set it to Fan Art Background?";}
 		if (settingsBackgroundArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot Background?";}
-                if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";
+                if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
 		break;
              }
          case 4: {
