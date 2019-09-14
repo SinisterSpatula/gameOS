@@ -168,7 +168,7 @@ Item {
         PropertyChanges { target: itemcontainer; color: "#FF9E12"}
         PropertyChanges { target: rectAnim; opacity: 1 }
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: dimoverlay; opacity: 0.4 }
+        //PropertyChanges { target: dimoverlay; opacity: 0.4 }
       },
       State {
         name: "UNSELECTED"
@@ -176,7 +176,7 @@ Item {
         PropertyChanges { target: itemcontainer; color: "transparent"}
         PropertyChanges { target: rectAnim; opacity: 0 }
         PropertyChanges { target: gamelogo; opacity: 0.8 }
-        PropertyChanges { target: dimoverlay; opacity: 0.5 }
+        //PropertyChanges { target: dimoverlay; opacity: 0.5 }
       }
     ]
 
@@ -188,7 +188,7 @@ Item {
         ColorAnimation { target: itemcontainer; duration: 100 }
         PropertyAnimation { target: rectAnim; duration: 100 }
         PropertyAnimation { target: gamelogo; duration: 100 }
-        PropertyAnimation { target: dimoverlay; duration: 100 }
+        //PropertyAnimation { target: dimoverlay; duration: 100 }
       },
       Transition {
         from: "UNSELECTED"
@@ -197,7 +197,7 @@ Item {
         ColorAnimation { target: itemcontainer; duration: 100 }
         PropertyAnimation { target: rectAnim; duration: 1000 }
         PropertyAnimation { target: gamelogo; duration: 100 }
-        PropertyAnimation { target: dimoverlay; duration: 100 }
+        //PropertyAnimation { target: dimoverlay; duration: 100 }
       }
     ]
   }
