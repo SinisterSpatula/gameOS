@@ -7,8 +7,7 @@ Item {
   property real dimopacity: 0.54 //0.96
 
   property string bgDefault: '../assets/images/defaultbg.png'
-  property string bgSource: (gamesettings.fanArt && gameData.assets.background) ? gameData.assets.background : (!gamesettings.fanArt && gameData.assets.screenshots[0]) ? gameData.assets.screenshots[0] : bgDefault
-
+  property string bgSource: (gamesettings.backgroundart == "FanArt" && gameData.assets.background) ? gameData.assets.background : (gamesettings.backgroundart == "Screenshot" && gameData.assets.screenshots[0]) ? gameData.assets.screenshots[0] : (gamesettings.backgroundart == "Default") ? bgDefault : (gamesettings.backgroundart == "Color") ? "" : bgDefault
 
   Item {
     id: bg
@@ -21,7 +20,7 @@ Item {
         anchors.fill: parent
         visible: gameData
         asynchronous: true
-        source: bgDefault //bgSource
+        source: bgSource
         sourceSize { width: 320; height: 240 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
@@ -31,10 +30,18 @@ Item {
 
   }
 
+    Rectangle {
+    id: backgroundcolor
+    anchors.fill: parent
+    color: gamesettings.backcolor
+    opacity: 1.0
+    z: rect.z + 1
+    visible: (gamesettings.backgroundart == "Color")
+  }
 
 
   LinearGradient {
-    z: parent.z + 1
+    z: parent.z + 2
     width: parent.width
     height: parent.height
     anchors {
@@ -49,6 +56,7 @@ Item {
       GradientStop { position: 0.7; color: "#ff000000" }
     }
   }
+  
 
   Rectangle {
     id: backgrounddim
