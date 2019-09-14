@@ -100,7 +100,6 @@ Item {
       smooth: true
       visible: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
       z:5
-      cache: true;
     }
 
 
