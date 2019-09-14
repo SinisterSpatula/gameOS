@@ -20,10 +20,10 @@ Item {
   property var settingsHighlightColor: ["#FF9E12", "#CC0000", "#CC00CC", "#33CC33", "#3333FF", "#E6E600", "#66CCFF", "#996600"]
   property var settingsBackgroundColor: ["#CC7700", "#990000", "#800080", "#1F7A1F", "#000080", "#808000", "#005580", "#4d3300"]
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
-  property var settingsBackgroundArt: [Default, FanArt, Screenshot, Color] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
+  property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: [HighlightColor, BackdroundColor, Scrollspeed, BackgroundArt, UpdateTheme]
+  property var settingsList: ["HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "UpdateTheme"]
   property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
