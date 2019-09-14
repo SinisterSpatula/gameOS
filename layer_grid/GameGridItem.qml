@@ -88,7 +88,7 @@ Item {
       height: root.gridItemHeight
       anchors {
         fill: parent
-        //margins: vpx(20)
+        margins: vpx(3)
       }
 
       asynchronous: true
