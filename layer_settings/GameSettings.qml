@@ -21,11 +21,11 @@ Item {
   property var settingsBackgroundColor: ["#CC7700", "#990000", "#800080", "#1F7A1F", "#000080", "#808000", "#005580", "#4d3300", "#000000"]
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
   property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
-  property var settingsWheelCropping: [false, true]
+  property var settingsGridTileArt: ["Tile", "Wheel", "Screenshot", "BoxArt"] //What to show on the grid tiles, Tile, Wheel art, Screenshots, or box art.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: ["HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "WheelCropping", "UpdateTheme"]
-  property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "For Wheel Art on game grid tiles, enable Cropping?", "Do you want to update the theme?"]
+  property var settingsList: ["HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "GridTileArt", "UpdateTheme"]
+  property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "What art do you want to show on the Game Grid?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
@@ -431,21 +431,23 @@ Item {
 		if (settingsBackgroundArt[settingsetpoint] == "Default") { settingsValueBox.text = "Set it to Default Background?";}
 		if (settingsBackgroundArt[settingsetpoint] == "FanArt") { settingsValueBox.text = "Set it to Fan Art Background?";}
 		if (settingsBackgroundArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot Background?";}
-                if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
+        if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
 		break;
              }
 	 case 4: {
-                 //Should Wheel Art be cropped? toggle
-		if (settingsetpoint < (settingsUpdate.length)) {
+            // Game Grid Art toggle: Tile, Wheel, Screenshot, BoxArt
+		if (settingsetpoint <= (settingsGridTileArt.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsUpdate.length) {
+		if (settingsetpoint == settingsGridTileArt.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO, do not crop wheel art.";}
-		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES, crop the wheel art.";}
-                 break;
+		if (settingsGridTileArt[settingsetpoint] == "Tile") { settingsValueBox.text = "Set it to Tile art?";}
+		if (settingsGridTileArt[settingsetpoint] == "Wheel") { settingsValueBox.text = "Set it to Wheel art?";}
+		if (settingsGridTileArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot art?";}
+        if (settingsGridTileArt[settingsetpoint] == "BoxArt") { settingsValueBox.text = "Set it to Box art?";}
+		break;
              }
          case 5: {
                  //Perform Theme Update? toggle
@@ -510,9 +512,9 @@ Item {
                  break;
              }
          case 4: {
-                 //Should Wheel art be cropped? Apply and save
-		 gamesettings.wheelcropping = settingsWheelCropping[settingsetpoint];
-		 api.memory.set('settingsWheelCropping', gamesettings.wheelcropping) 
+                 //What art to show on the game grid tiles? Apply and save
+		 gamesettings.gridart = settingsGridTileArt[settingsetpoint];
+		 api.memory.set('settingsGridTileArt', gamesettings.gridart) 
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
