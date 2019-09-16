@@ -21,11 +21,12 @@ Item {
   property var settingsBackgroundColor: ["#CC7700", "#990000", "#800080", "#1F7A1F", "#000080", "#808000", "#005580", "#4d3300", "#000000"]
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
   property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
-  property var settingsWheelCropping: [false, true]
+  property var settingsGridTileArt: ["Wheel", "Tile", "Screenshot", "BoxArt", "Cartridge"] //What to show on the grid tiles, Tile, Wheel art, Screenshots, or box art.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
+  property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: ["HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "WheelCropping", "UpdateTheme"]
-  property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "For Wheel Art on game grid tiles, enable Cropping?", "Do you want to update the theme?"]
+  property var settingsList: ["Favorites", "HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "GridTileArt", "UpdateTheme"]
+  property var settingsDescription: ["Show only favorites?", "Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "What art do you want to show on the Game Grid?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
@@ -380,6 +381,19 @@ Item {
 	function toggleSetting() {
 	switch (currentsetting) {
 	 case 0: {
+                 // Display ONLY Favorite Games? toggle
+		if (settingsetpoint < (settingsFavorites.length)) {
+		settingsetpoint++;
+		}
+		if (settingsetpoint == settingsFavorites.length) {
+		settingsetpoint = 0;
+		}
+		settingsDescBox.text = settingsDescription[currentsetting];
+		if (settingsFavorites[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
+		if (settingsFavorites[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
+                 break;
+             }
+	 case 1: {
                  // Change Highlight Color toggle
 		if (settingsetpoint <= (settingsHighlightColor.length - 1)) {
 		settingsetpoint++;
@@ -392,7 +406,7 @@ Item {
 		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
                 break;
              }
-	 case 1: {
+	 case 2: {
                  // Change Background Color toggle
 		if (settingsetpoint <= (settingsBackgroundColor.length - 1)) {
 		settingsetpoint++;
@@ -405,7 +419,7 @@ Item {
 		settingsValueBox.text = "Set it to this color?: " + settingsBackgroundColor[settingsetpoint];
                 break;
              }
-         case 2: {
+         case 3: {
                  // Description Scroll Speed toggle
 		if (settingsetpoint <= (settingsScrollSpeed.length - 1)) {
 		settingsetpoint++;
@@ -419,7 +433,7 @@ Item {
 		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "Set it to FAST?";}
                  break;
              }
-	 case 3: {
+	 case 4: {
                  // Background Art toggle: Default, FanArt, Screenshot, Color
 		if (settingsetpoint <= (settingsBackgroundArt.length - 1)) {
 		settingsetpoint++;
@@ -431,23 +445,26 @@ Item {
 		if (settingsBackgroundArt[settingsetpoint] == "Default") { settingsValueBox.text = "Set it to Default Background?";}
 		if (settingsBackgroundArt[settingsetpoint] == "FanArt") { settingsValueBox.text = "Set it to Fan Art Background?";}
 		if (settingsBackgroundArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot Background?";}
-                if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
+        if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
 		break;
              }
-	 case 4: {
-                 //Should Wheel Art be cropped? toggle
-		if (settingsetpoint < (settingsUpdate.length)) {
+	 case 5: {
+            // Game Grid Art toggle: Wheel, Tile, Screenshot, BoxArt, Cartridge
+		if (settingsetpoint <= (settingsGridTileArt.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsUpdate.length) {
+		if (settingsetpoint == settingsGridTileArt.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO, do not crop wheel art.";}
-		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES, crop the wheel art.";}
-                 break;
+		if (settingsGridTileArt[settingsetpoint] == "Tile") { settingsValueBox.text = "Set it to Tile art?";}
+		if (settingsGridTileArt[settingsetpoint] == "Wheel") { settingsValueBox.text = "Set it to Wheel art?";}
+		if (settingsGridTileArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot art?";}
+        	if (settingsGridTileArt[settingsetpoint] == "BoxArt") { settingsValueBox.text = "Set it to Box art?";}
+		if (settingsGridTileArt[settingsetpoint] == "Cartridge") { settingsValueBox.text = "Set it to Cartridge?";}
+		break;
              }
-         case 5: {
+         case 6: {
                  //Perform Theme Update? toggle
 		if (settingsetpoint < (settingsUpdate.length)) {
 		settingsetpoint++;
@@ -476,6 +493,15 @@ Item {
 		if (settingsetpoint == -1) {return;}
 		switch (currentsetting) {
 	 case 0: {
+                 // Display ONLY Favorite Games Apply and save
+		 gamesettings.favorites = false;
+		 if (settingsetpoint == 1) { gamesettings.favorites = true; }
+		 api.memory.set('settingsFavorites', gamesettings.favorites)
+		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
+		 settingsetpoint = -1;
+                 break;
+             }
+	 case 1: {
                  // Change Highlight Color Apply and save
 		 gamesettings.highlight = settingsHighlightColor[settingsetpoint];
 		 api.memory.set('settingsHighlight', gamesettings.highlight)
@@ -484,7 +510,7 @@ Item {
 		 settingsetpoint = -1;
                  break;
              }
-	 case 1: {
+	 case 2: {
                  // Change Background Color Apply and save
 		 gamesettings.backcolor = settingsBackgroundColor[settingsetpoint];
 		 api.memory.set('settingsBackgroundColor', gamesettings.backcolor)
@@ -493,7 +519,7 @@ Item {
 		 settingsetpoint = -1;
                  break;
              }
-         case 2: {
+         case 3: {
                  // Description Scroll Speed Apply and save
 		 gamesettings.scrollSpeed = settingsScrollSpeed[settingsetpoint];
 		 api.memory.set('settingScrollSpeed', gamesettings.scrollSpeed)
@@ -501,7 +527,7 @@ Item {
 		 settingsetpoint = -1;
                  break;
              }
-         case 3: {
+         case 4: {
                  // Background Art Apply and save
 		 gamesettings.backgroundart = settingsBackgroundArt[settingsetpoint];
 		 api.memory.set('settingsBackgroundArt', gamesettings.backgroundart)
@@ -509,15 +535,15 @@ Item {
 		 settingsetpoint = -1;
                  break;
              }
-         case 4: {
-                 //Should Wheel art be cropped? Apply and save
-		 gamesettings.wheelcropping = settingsWheelCropping[settingsetpoint];
-		 api.memory.set('settingsWheelCropping', gamesettings.wheelcropping) 
+         case 5: {
+                 //What art to show on the game grid tiles? Apply and save
+		 gamesettings.gridart = settingsGridTileArt[settingsetpoint];
+		 api.memory.set('settingsGridTileArt', gamesettings.gridart) 
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }
-	 case 5: {
+	 case 6: {
                  //Perform Theme Update? Apply and save
 		 settingsValueBox.text = "Please manually update by running the command:\n" + settingsUpdateCommand;
 		 settingsetpoint = -1;
