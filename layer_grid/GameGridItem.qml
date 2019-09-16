@@ -43,7 +43,7 @@ Item {
       width: parent.width
       height: parent.height
       visible: selected
-      color: gamesettings.highlight
+      color: "0F" + gamesettings.highlight.slice(2)
       opacity: 0.0
       radius: cornerradius + vpx(3)
 
