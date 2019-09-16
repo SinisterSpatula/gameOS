@@ -175,7 +175,7 @@ Item {
         PropertyChanges { target: gamelogo; opacity: 1 }
         //PropertyChanges { target: itemcontainer; color: "transparent"}
         //PropertyChanges { target: rectAnim; opacity: 0 }
-        PropertyChanges { target: gamelogo; opacity: 0.8 }
+        PropertyChanges { target: gamelogo; opacity: 0.6 }
         //PropertyChanges { target: dimoverlay; opacity: 0.5 }
       }
     ]
