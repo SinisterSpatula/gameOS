@@ -27,8 +27,11 @@ Item {
       fill: parent
       margins: gridItemSpacing
     }
-
+    color: "transparent"
     radius: cornerradius + vpx(3)
+    
+    //border.color: (selected) ? "white" : "transparent"
+    //border.width: vpx(6)
 
     scale: selected ? 1.14 : 1.0
     Behavior on scale { PropertyAnimation { duration: 200; easing.type: Easing.OutQuart; easing.amplitude: 2.0; } }
@@ -38,15 +41,16 @@ Item {
 
 
     // Animation layer
-    Rectangle {
-      id: rectAnim
-      width: parent.width
-      height: parent.height
-      visible: selected
-      color: "white"
-      radius: cornerradius + vpx(3)
-
-    }
+//    Rectangle {
+//      id: rectAnim
+//      width: parent.width
+//      height: parent.height
+//      visible: selected
+//      color: gamesettings.highlight
+//      opacity: 0.3
+//      radius: cornerradius + vpx(3)
+//
+//    }
 
 
     // Background for transparent images (to hide the border transition)
@@ -59,30 +63,16 @@ Item {
       }
       color: "#1a1a1a"
       radius: cornerradius
+      opacity: (gamelogo.source == "") ? 1.0 : 0.0
     }
 
     // Actual art
 
-
-    // Dim overlay
-    Rectangle {
-      id: dimoverlay
-      width: root.gridItemWidth
-      height: root.gridItemHeight
-      anchors {
-        fill: parent
-        //margins: vpx(3)
-      }
-      color: "black"
-      opacity: 0.6
-      visible: !steam || ""
-      z: (selected) ? 4 : 6
-      radius: cornerradius
-    }
-
     // Logo
     Image {
       id: gamelogo
+
+      property bool showtext
 
       width: root.gridItemWidth
       height: root.gridItemHeight
@@ -93,16 +83,22 @@ Item {
 
       asynchronous: true
 
-      //opacity: 0
-      source: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
+      source: (gamesettings.gridart == "Tile") ? game.assets.steam || game.assets.tile || game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Wheel") ? game.assets.logo || game.assets.steam || game.assets.tile || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Cartridge") ? game.assets.cartridge || game.assets.boxFront || game.assets.logo || game.assets.tile || game.assets.screenshots[0] || "" : (gamesettings.gridart == "Screenshot") ? game.assets.screenshots[0] || game.assets.boxFront || game.assets.tile || game.assets.logo || "" : (gamesettings.gridart == "BoxArt") ? game.assets.boxFront || game.assets.cartridge || game.assets.logo || game.assets.tile || game.assets.screenshots[0] || "" : "";
       sourceSize { width: 256; height: 256 }
-      fillMode: (game.assets.logo && gamesettings.wheelcropping) ? Image.PreserveAspectCrop : (game.assets.logo && !gamesettings.wheelcropping) ? Image.PreserveAspectFit : (game.assets.screenshots[0]) ? Image.PreserveAspectCrop : Image.PreserveAspectFit
+      fillMode: (source == game.assets.logo || source == game.assets.boxFront || source == game.assets.cartridge) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
+      showtext: !(source == game.assets.steam || source == game.assets.logo) || progress < 1
       smooth: true
-      visible: game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
+      visible: true
       z:5
     }
-
-
+    //For the logo/screenshot/boxart/cartridge, a dimming effect.
+    ColorOverlay {
+          anchors.fill: gamelogo
+          source: gamelogo
+          color: "#80000000"
+          z: gamelogo.z + 1
+          visible: (selected) ? false : true
+      }
 
     // Favourite tag
     Item {
@@ -165,18 +161,17 @@ Item {
       State {
         name: "SELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: "#FF9E12"}
-        PropertyChanges { target: rectAnim; opacity: 1 }
-        PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: dimoverlay; opacity: 0.4 }
+        //PropertyChanges { target: itemcontainer; color: gamesettings.highlight}
+        //PropertyChanges { target: rectAnim; opacity: 0.3 }
+        //PropertyChanges { target: dimoverlay; opacity: 0.0 } //0.4
       },
       State {
         name: "UNSELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: "transparent"}
-        PropertyChanges { target: rectAnim; opacity: 0 }
-        PropertyChanges { target: gamelogo; opacity: 0.8 }
-        PropertyChanges { target: dimoverlay; opacity: 0.5 }
+        //PropertyChanges { target: itemcontainer; color: "transparent"}
+        //PropertyChanges { target: rectAnim; opacity: 0 }
+        PropertyChanges { target: gamelogo; opacity: 0.6 }
+        //PropertyChanges { target: dimoverlay; opacity: 0.5 }
       }
     ]
 
@@ -184,18 +179,18 @@ Item {
       Transition {
         from: "SELECTED"
         to: "UNSELECTED"
-        PropertyAnimation { target: rectAnim; duration: 100 }
-        ColorAnimation { target: itemcontainer; duration: 100 }
-        PropertyAnimation { target: rectAnim; duration: 100 }
+        //PropertyAnimation { target: rectAnim; duration: 100 }
+        //ColorAnimation { target: itemcontainer; duration: 100 }
+        //PropertyAnimation { target: rectAnim; duration: 100 }
         PropertyAnimation { target: gamelogo; duration: 100 }
         //PropertyAnimation { target: dimoverlay; duration: 100 }
       },
       Transition {
         from: "UNSELECTED"
         to: "SELECTED"
-        PropertyAnimation { target: rectAnim; duration: 100 }
-        ColorAnimation { target: itemcontainer; duration: 100 }
-        PropertyAnimation { target: rectAnim; duration: 1000 }
+        //PropertyAnimation { target: rectAnim; duration: 100 }
+        //ColorAnimation { target: itemcontainer; duration: 100 }
+        //PropertyAnimation { target: rectAnim; duration: 1000 }
         PropertyAnimation { target: gamelogo; duration: 100 }
         //PropertyAnimation { target: dimoverlay; duration: 100 }
       }
@@ -244,7 +239,7 @@ Item {
     font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
-    visible: (game.assets.logo) ? false : true;
+    visible: gamelogo.showtext
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap

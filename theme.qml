@@ -72,13 +72,15 @@ FocusScope {
     gamesettings.backcolor = api.memory.get('settingsBackgroundColor') || "#CC7700";
     gamesettings.scrollSpeed = api.memory.get('settingScrollSpeed') || 300;
     gamesettings.backgroundart = api.memory.get('settingsBackgroundArt') || "Default";
-    gamesettings.wheelcropping = api.memory.get('settingsWheelCropping') || true;
+    gamesettings.gridart = api.memory.get('settingsGridTileArt') || "Screenshot";
+    gamesettings.showfavorites = api.memory.get('settingsFavorites') || false;
     
     if (!api.memory.has('settingsHighlight')) {api.memory.set('settingsHighlight', gamesettings.highlight)}
     if (!api.memory.has('settingsBackgroundColor')) {api.memory.set('settingsBackgroundColor', gamesettings.backcolor)}
     if (!api.memory.has('settingScrollSpeed')) {api.memory.set('settingScrollSpeed', gamesettings.scrollSpeed)}
     if (!api.memory.has('settingsBackgroundArt')) {api.memory.set('settingsBackgroundArt', gamesettings.backgroundart)}
-    if (!api.memory.has('settingsWheelCropping')) {api.memory.set('settingsWheelCropping', gamesettings.wheelcropping)}
+    if (!api.memory.has('settingsGridTileArt')) {api.memory.set('settingsGridTileArt', gamesettings.gridart)}
+    if (!api.memory.has('settingsFavorites')) {api.memory.set('settingsFavorites', gamesettings.showfavorites)}
   }
   
 
@@ -316,7 +318,8 @@ FocusScope {
         property var backcolor
         property int scrollSpeed
         property var backgroundart
-        property bool wheelcropping
+        property var gridart
+        property bool showfavorites
         
         anchors {
           left: parent.left; right: parent.right
