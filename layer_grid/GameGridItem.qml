@@ -69,6 +69,8 @@ Item {
     Image {
       id: gamelogo
 
+      property bool showtext: true
+
       width: root.gridItemWidth
       height: root.gridItemHeight
       anchors {
@@ -81,6 +83,7 @@ Item {
       source: (gamesettings.gridart == "Tile") ? game.assets.steam || game.assets.tile || game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Wheel") ? game.assets.logo || game.assets.steam || game.assets.tile || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Cartridge") ? game.assets.cartridge || game.assets.boxFront || game.assets.logo || game.assets.tile || game.assets.screenshots[0] || "" : (gamesettings.gridart == "Screenshot") ? game.assets.screenshots[0] || game.assets.boxFront || game.assets.tile || game.assets.logo || "" : (gamesettings.gridart == "BoxArt") ? game.assets.boxFront || game.assets.cartridge || game.assets.logo || game.assets.tile || game.assets.screenshots[0] || "" : "";
       sourceSize { width: 256; height: 256 }
       fillMode: (source == game.assets.logo || source == game.assets.boxFront || source == game.assets.cartridge) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
+      showtext: (source == game.assets.steam || gamelogo.source == game.assets.tile || gamelogo.source == game.assets.logo) ? false : true
       smooth: true
       visible: true
       z:5
@@ -233,7 +236,7 @@ Item {
     font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
-    visible: ((gamelogo.source.length > 5) && gamelogo.source == game.assets.steam || gamelogo.source == game.assets.tile || gamelogo.source == game.assets.logo) ? false : true;
+    visible: gamelogo.showtext
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
