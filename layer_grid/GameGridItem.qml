@@ -243,7 +243,7 @@ Item {
     font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
-    visible: (game.assets.tile || game.assets.logo) ? false : true;
+    visible: (gamelogo.source == game.assets.tile || gamelogo.source == game.assets.logo) ? false : true;
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
