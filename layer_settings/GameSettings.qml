@@ -26,7 +26,7 @@ Item {
   property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
   property var settingsList: ["Favorites", "HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "GridTileArt", "UpdateTheme"]
-  property var settingsDescription: ["Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "What art do you want to show on the Game Grid?", "Do you want to update the theme?"]
+  property var settingsDescription: ["Show only favorites?", "Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "What art do you want to show on the Game Grid?", "Do you want to update the theme?"]
   
   signal settingsCloseRequested
 
