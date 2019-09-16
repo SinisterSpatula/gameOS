@@ -65,23 +65,6 @@ Item {
 
     // Actual art
 
-
-//    // Dim overlay
-//    Rectangle {
-//      id: dimoverlay
-//      width: root.gridItemWidth
-//      height: root.gridItemHeight
-//      anchors {
-//        fill: parent
-//        //margins: vpx(3)
-//      }
-//      color: "black"
-//      opacity: 0.6
-//      visible: !steam || ""
-//      z: (selected) ? 4 : 6
-//      radius: cornerradius
-//    }
-
     // Logo
     Image {
       id: gamelogo
@@ -92,7 +75,6 @@ Item {
         fill: parent
         margins: vpx(4)
       }
-      Behavior on opacity { NumberAnimation { duration: 100 } }
 
       asynchronous: true
 
@@ -251,7 +233,7 @@ Item {
     font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
-    visible: (gamelogo.source == game.assets.tile || gamelogo.source == game.assets.logo) ? false : true;
+    visible: (gamelogo.source !== "" && gamelogo.source == game.assets.steam || gamelogo.source == game.assets.tile || gamelogo.source == game.assets.logo) ? false : true;
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
