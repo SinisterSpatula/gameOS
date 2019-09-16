@@ -102,8 +102,14 @@ Item {
       visible: true
       z:5
     }
-
-
+    //For the logo, a dimming effect.
+    ColorOverlay {
+          anchors.fill: gamelogo
+          source: gamelogo
+          color: "#80000000"
+          z: gamelogo.z + 1
+          visible: (selected) ? false : true
+      }
 
     // Favourite tag
     Item {
