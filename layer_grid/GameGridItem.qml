@@ -38,16 +38,16 @@ Item {
 
 
     // Animation layer
-//    Rectangle {
-//      id: rectAnim
-//      width: parent.width
-//      height: parent.height
-//      visible: selected
-//      color: "0F" + gamesettings.highlight.slice(2)
-//      opacity: 0.0
-//      radius: cornerradius + vpx(3)
-//
-//    }
+    Rectangle {
+      id: rectAnim
+      width: parent.width
+      height: parent.height
+      visible: selected
+      color: gamesettings.highlight
+      opacity: 0.3
+      radius: cornerradius + vpx(3)
+
+    }
 
 
     // Background for transparent images (to hide the border transition)
@@ -166,10 +166,9 @@ Item {
       State {
         name: "SELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: "#FF9E12"}
-        PropertyChanges { target: rectAnim; opacity: 1 }
-        PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: dimoverlay; opacity: 0.4 }
+        PropertyChanges { target: itemcontainer; color: gamesettings.highlight: opacity: 0.3}
+        PropertyChanges { target: rectAnim; opacity: 0.3 }
+        PropertyChanges { target: dimoverlay; opacity: 0.0 } //0.4
       },
       State {
         name: "UNSELECTED"
