@@ -69,7 +69,7 @@ Item {
     Image {
       id: gamelogo
 
-      property bool showtext: true
+      property bool showtext
 
       width: root.gridItemWidth
       height: root.gridItemHeight
