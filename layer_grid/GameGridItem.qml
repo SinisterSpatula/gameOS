@@ -83,7 +83,7 @@ Item {
       source: (gamesettings.gridart == "Tile") ? game.assets.steam || game.assets.tile || game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Wheel") ? game.assets.logo || game.assets.steam || game.assets.tile || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Cartridge") ? game.assets.cartridge || game.assets.boxFront || game.assets.logo || game.assets.tile || game.assets.screenshots[0] || "" : (gamesettings.gridart == "Screenshot") ? game.assets.screenshots[0] || game.assets.boxFront || game.assets.tile || game.assets.logo || "" : (gamesettings.gridart == "BoxArt") ? game.assets.boxFront || game.assets.cartridge || game.assets.logo || game.assets.tile || game.assets.screenshots[0] || "" : "";
       sourceSize { width: 256; height: 256 }
       fillMode: (source == game.assets.logo || source == game.assets.boxFront || source == game.assets.cartridge) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
-      showtext: (!!source) ? false : (source == game.assets.steam || gamelogo.source == game.assets.logo) ? false : true
+      showtext: (!!source) ? true : (source == game.assets.steam || gamelogo.source == game.assets.logo) ? false : true
       smooth: true
       visible: true
       z:5
