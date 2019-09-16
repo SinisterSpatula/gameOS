@@ -21,7 +21,7 @@ Item {
   property var settingsBackgroundColor: ["#CC7700", "#990000", "#800080", "#1F7A1F", "#000080", "#808000", "#005580", "#4d3300", "#000000"]
   property var settingsScrollSpeed: [200, 300, 500] //medium, fast, slow - used by flickable game description.
   property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
-  property var settingsGridTileArt: ["Tile", "Wheel", "Screenshot", "BoxArt"] //What to show on the grid tiles, Tile, Wheel art, Screenshots, or box art.
+  property var settingsGridTileArt: ["Wheel", "Tile", "Screenshot", "BoxArt", "Cartridge"] //What to show on the grid tiles, Tile, Wheel art, Screenshots, or box art.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
   property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
@@ -449,7 +449,7 @@ Item {
 		break;
              }
 	 case 5: {
-            // Game Grid Art toggle: Tile, Wheel, Screenshot, BoxArt
+            // Game Grid Art toggle: Wheel, Tile, Screenshot, BoxArt, Cartridge
 		if (settingsetpoint <= (settingsGridTileArt.length - 1)) {
 		settingsetpoint++;
 		}
@@ -460,7 +460,8 @@ Item {
 		if (settingsGridTileArt[settingsetpoint] == "Tile") { settingsValueBox.text = "Set it to Tile art?";}
 		if (settingsGridTileArt[settingsetpoint] == "Wheel") { settingsValueBox.text = "Set it to Wheel art?";}
 		if (settingsGridTileArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot art?";}
-        if (settingsGridTileArt[settingsetpoint] == "BoxArt") { settingsValueBox.text = "Set it to Box art?";}
+        	if (settingsGridTileArt[settingsetpoint] == "BoxArt") { settingsValueBox.text = "Set it to Box art?";}
+		if (settingsGridTileArt[settingsetpoint] == "Cartridge") { settingsValueBox.text = "Set it to Cartridge?";}
 		break;
              }
          case 6: {
