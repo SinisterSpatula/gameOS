@@ -27,7 +27,7 @@ Item {
       fill: parent
       margins: gridItemSpacing
     }
-
+    color: "transparent"
     radius: cornerradius + vpx(3)
 
     scale: selected ? 1.14 : 1.0
