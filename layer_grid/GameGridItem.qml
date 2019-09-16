@@ -233,7 +233,7 @@ Item {
     font.pixelSize: vpx(60)
     font.family: titleFont.name
     font.bold: true
-    visible: (gamelogo.source !== "" && gamelogo.source == game.assets.steam || gamelogo.source == game.assets.tile || gamelogo.source == game.assets.logo) ? false : true;
+    visible: (gamelogo.source !== null && gamelogo.source == game.assets.steam || gamelogo.source == game.assets.tile || gamelogo.source == game.assets.logo) ? false : true;
     style: Text.Outline; styleColor: "black"
     elide: Text.ElideRight
     wrapMode: Text.WordWrap
