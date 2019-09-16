@@ -26,7 +26,7 @@ Item {
   property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
   property var settingsList: ["Favorites", "HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "GridTileArt", "UpdateTheme"]
-  property var settingsDescription: ["Favorites:", "Highlight Color:", "Background Color:", "Description Scrolling:", "Background Art:", "Game Grid Art:", "Updating the theme:"]
+  property var settingsDescription: ["Favorites: (show only favorite games)", "Highlight Color: (Accent color)", "Background Color: (When background art is Color)", "Description Scrolling: (speed)", "Background Art: (What art for background)", "Game Grid Art: (What art for grid)", "Updating the theme: (info about updating)"]
   
   signal settingsCloseRequested
 
@@ -373,7 +373,7 @@ Item {
 	}
 
 	function refreshSetting() {
-		settingsValueBox.text = "Press Toggle button.";
+		settingsValueBox.text = "Press Next or Toggle button.";
 		settingsValueBox.color = "white";
 	        settingsDescBox.text = settingsDescription[currentsetting];
 	}
