@@ -38,16 +38,16 @@ Item {
 
 
     // Animation layer
-    Rectangle {
-      id: rectAnim
-      width: parent.width
-      height: parent.height
-      visible: selected
-      color: gamesettings.highlight
-      opacity: 0.3
-      radius: cornerradius + vpx(3)
-
-    }
+//    Rectangle {
+//      id: rectAnim
+//      width: parent.width
+//      height: parent.height
+//      visible: selected
+//      color: gamesettings.highlight
+//      opacity: 0.3
+//      radius: cornerradius + vpx(3)
+//
+//    }
 
 
     // Background for transparent images (to hide the border transition)
@@ -166,15 +166,15 @@ Item {
       State {
         name: "SELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: "0F" + gamesettings.highlight.slice(2)}
-        PropertyChanges { target: rectAnim; opacity: 0.3 }
+        //PropertyChanges { target: itemcontainer; color: gamesettings.highlight}
+        //PropertyChanges { target: rectAnim; opacity: 0.3 }
         PropertyChanges { target: dimoverlay; opacity: 0.0 } //0.4
       },
       State {
         name: "UNSELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: "transparent"}
-        PropertyChanges { target: rectAnim; opacity: 0 }
+        //PropertyChanges { target: itemcontainer; color: "transparent"}
+        //PropertyChanges { target: rectAnim; opacity: 0 }
         PropertyChanges { target: gamelogo; opacity: 0.8 }
         PropertyChanges { target: dimoverlay; opacity: 0.5 }
       }
@@ -184,18 +184,18 @@ Item {
       Transition {
         from: "SELECTED"
         to: "UNSELECTED"
-        PropertyAnimation { target: rectAnim; duration: 100 }
-        ColorAnimation { target: itemcontainer; duration: 100 }
-        PropertyAnimation { target: rectAnim; duration: 100 }
+        //PropertyAnimation { target: rectAnim; duration: 100 }
+        //ColorAnimation { target: itemcontainer; duration: 100 }
+        //PropertyAnimation { target: rectAnim; duration: 100 }
         PropertyAnimation { target: gamelogo; duration: 100 }
         //PropertyAnimation { target: dimoverlay; duration: 100 }
       },
       Transition {
         from: "UNSELECTED"
         to: "SELECTED"
-        PropertyAnimation { target: rectAnim; duration: 100 }
-        ColorAnimation { target: itemcontainer; duration: 100 }
-        PropertyAnimation { target: rectAnim; duration: 1000 }
+        //PropertyAnimation { target: rectAnim; duration: 100 }
+        //ColorAnimation { target: itemcontainer; duration: 100 }
+        //PropertyAnimation { target: rectAnim; duration: 1000 }
         PropertyAnimation { target: gamelogo; duration: 100 }
         //PropertyAnimation { target: dimoverlay; duration: 100 }
       }
