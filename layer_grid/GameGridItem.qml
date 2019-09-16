@@ -43,7 +43,8 @@ Item {
       width: parent.width
       height: parent.height
       visible: selected
-      color: "white"
+      color: gamesettings.highlight
+      opacity: 0.3
       radius: cornerradius + vpx(3)
 
     }
