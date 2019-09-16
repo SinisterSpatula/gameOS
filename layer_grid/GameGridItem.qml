@@ -93,11 +93,7 @@ Item {
 
       asynchronous: true
 
-      //opacity: 0
-      source: (gamesettings.gridart == "Tile") ? game.assets.tile || game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || ""
-      source: (gamesettings.gridart == "Wheel") ? game.assets.logo || game.assets.tile || game.assets.screenshots[0] || game.assets.boxFront || ""
-      source: (gamesettings.gridart == "Screenshot") ? game.assets.screenshots[0] || game.assets.boxFront || game.assets.tile || game.assets.logo || ""
-      source: (gamesettings.gridart == "BoxArt") ? game.assets.boxFront || game.assets.screenshots[0] || game.assets.tile || game.assets.logo || ""
+      source: (gamesettings.gridart == "Tile") ? game.assets.tile || game.assets.logo || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Wheel") ? game.assets.logo || game.assets.tile || game.assets.screenshots[0] || game.assets.boxFront || "" : (gamesettings.gridart == "Screenshot") ? game.assets.screenshots[0] || game.assets.boxFront || game.assets.tile || game.assets.logo || "" : (gamesettings.gridart == "BoxArt") ? game.assets.boxFront || game.assets.screenshots[0] || game.assets.tile || game.assets.logo || "" : "";
       sourceSize { width: 256; height: 256 }
       fillMode: (source == game.assets.logo) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
       smooth: true
