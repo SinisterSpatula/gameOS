@@ -166,7 +166,7 @@ Item {
       State {
         name: "SELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: gamesettings.highlight}
+        PropertyChanges { target: itemcontainer; color: "0F" + gamesettings.highlight.slice(2)}
         PropertyChanges { target: rectAnim; opacity: 0.3 }
         PropertyChanges { target: dimoverlay; opacity: 0.0 } //0.4
       },
