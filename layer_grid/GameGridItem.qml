@@ -44,7 +44,7 @@ Item {
       height: parent.height
       visible: selected
       color: gamesettings.highlight
-      opacity: 0.1
+      opacity: 0.0
       radius: cornerradius + vpx(3)
 
     }
