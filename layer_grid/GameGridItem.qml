@@ -59,7 +59,7 @@ Item {
       }
       color: "#1a1a1a"
       radius: cornerradius
-      opacity: (gamelogo.source == "") ? 1.0 : 0.3
+      opacity: (gamelogo.source == "") ? 1.0 : 0.0
     }
 
     // Actual art
