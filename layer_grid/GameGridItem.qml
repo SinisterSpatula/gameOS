@@ -38,16 +38,16 @@ Item {
 
 
     // Animation layer
-    Rectangle {
-      id: rectAnim
-      width: parent.width
-      height: parent.height
-      visible: selected
-      color: "0F" + gamesettings.highlight.slice(2)
-      opacity: 0.0
-      radius: cornerradius + vpx(3)
-
-    }
+//    Rectangle {
+//      id: rectAnim
+//      width: parent.width
+//      height: parent.height
+//      visible: selected
+//      color: "0F" + gamesettings.highlight.slice(2)
+//      opacity: 0.0
+//      radius: cornerradius + vpx(3)
+//
+//    }
 
 
     // Background for transparent images (to hide the border transition)
