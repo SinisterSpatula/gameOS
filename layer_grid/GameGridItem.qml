@@ -166,14 +166,14 @@ Item {
       State {
         name: "SELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: gamesettings.highlight: opacity: 0.3}
+        PropertyChanges { target: itemcontainer; color: gamesettings.highlight; opacity: 0.3}
         PropertyChanges { target: rectAnim; opacity: 0.3 }
         PropertyChanges { target: dimoverlay; opacity: 0.0 } //0.4
       },
       State {
         name: "UNSELECTED"
         PropertyChanges { target: gamelogo; opacity: 1 }
-        PropertyChanges { target: itemcontainer; color: "transparent"}
+        PropertyChanges { target: itemcontainer; color: "transparent"; opacity 0.0}
         PropertyChanges { target: rectAnim; opacity: 0 }
         PropertyChanges { target: gamelogo; opacity: 0.8 }
         PropertyChanges { target: dimoverlay; opacity: 0.5 }
