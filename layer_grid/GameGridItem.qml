@@ -92,6 +92,7 @@ Item {
         fill: parent
         margins: vpx(4)
       }
+      Behavior on opacity { NumberAnimation { duration: 100 } }
 
       asynchronous: true
 
@@ -102,7 +103,7 @@ Item {
       visible: true
       z:5
     }
-    //For the logo, a dimming effect.
+    //For the logo/screenshot/boxart/cartridge, a dimming effect.
     ColorOverlay {
           anchors.fill: gamelogo
           source: gamelogo
