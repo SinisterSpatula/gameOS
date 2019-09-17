@@ -8,7 +8,7 @@ FocusScope {
   property int numColumns: 2
 
   property alias gridWidth: grid.width
-  property int gridItemSpacing: (numColumns == 2) ? vpx(28) : vpx(20) // it will double this
+  property int gridItemSpacing: (numColumns == 2) ? vpx(28) : vpx(10) // it will double this
   property var collectionData
   property var gameData
   property int currentGameIdx
@@ -171,7 +171,7 @@ FocusScope {
 
     delegate: GameGridItem {
       width: GridView.view.cellWidth
-      height: GridView.view.cellHeight
+      height: GridView.view.cellHeight - vpx(14)
       selected: GridView.isCurrentItem
       //collection: api.currentCollection
 
