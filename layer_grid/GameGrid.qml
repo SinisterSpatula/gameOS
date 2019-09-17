@@ -93,11 +93,9 @@ FocusScope {
     cellWidth: grid.width/numColumns
     cellHeight: (numColumns == 2) ? vpx(300) : vpx(300)
 
-    //highlightFollowsCurrentItem: false
-    preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(314)
+    preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(300)
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 300
-    //snapMode: GridView.SnapOneItem
 
     model: collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
