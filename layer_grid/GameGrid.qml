@@ -82,7 +82,7 @@ FocusScope {
     id: grid
 
     focus: true
-
+    snapMode: GridView.SnapToRow
     anchors {
       top: parent.top; topMargin: vpx(20) //- gridItemSpacing
       bottom: parent.bottom
