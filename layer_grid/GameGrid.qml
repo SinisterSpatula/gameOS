@@ -84,7 +84,7 @@ FocusScope {
     focus: true
 
     anchors {
-      top: parent.top; topMargin: vpx(300) //- gridItemSpacing  vpx(28)
+      top: parent.top; topMargin: vpx(150) //- gridItemSpacing  vpx(28)
       bottom: parent.bottom
     }
 
