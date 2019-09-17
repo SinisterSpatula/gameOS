@@ -103,7 +103,7 @@ Item {
     // Favourite tag
     Item {
       id: favetag
-      anchors { fill: parent; margins: vpx(4); rightMargin: parent.width - gamelogo.paintedWidth }
+      anchors { top: parent.top; right: parent.paintedWidth; margins: vpx(4); }
       opacity: game.favorite ? 1 : 0
       Behavior on opacity { NumberAnimation { duration: 100 } }
       //width: parent.width
