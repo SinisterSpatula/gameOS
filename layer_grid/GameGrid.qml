@@ -82,6 +82,8 @@ FocusScope {
     id: grid
 
     focus: true
+    
+    cacheBuffer: 1000
 
     anchors {
       top: parent.top; topMargin: vpx(20) //- gridItemSpacing
