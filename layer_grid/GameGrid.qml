@@ -91,11 +91,11 @@ FocusScope {
     anchors.horizontalCenter: parent.horizontalCenter
 
     cellWidth: grid.width/numColumns
-    cellHeight: grid.height/numColums //(numColumns == 2) ? vpx(300) : vpx(300)
+    cellHeight: vpx(325)
 
-    preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(300)
+    preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(325)
     highlightRangeMode: GridView.StrictlyEnforceRange
-    displayMarginBeginning: 300
+    displayMarginBeginning: 325
 
     model: collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
