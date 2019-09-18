@@ -26,7 +26,7 @@ Item {
   property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
   property var settingsList: ["Favorites", "HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "GridTileArt", "UpdateTheme"]
-  property var settingsDescription: ["Show only favorites?", "Set the highlight color", "Set the background solid color", "Set the Game Description Scrolling speed", "Set which art is displayed in the background?", "What art do you want to show on the Game Grid?", "Do you want to update the theme?"]
+  property var settingsDescription: ["Favorites: (show only favorite games)", "Highlight Color: (Accent color)", "Background Color: (When background art is Color)", "Description Scrolling: (speed)", "Background Art: (What art for background)", "Game Grid Art: (What art for grid)", "Updating the theme: (info about updating)"]
   
   signal settingsCloseRequested
 
@@ -373,7 +373,7 @@ Item {
 	}
 
 	function refreshSetting() {
-		settingsValueBox.text = "Toggle options using Toggle button below.";
+		settingsValueBox.text = "Press Next or Toggle button.";
 		settingsValueBox.color = "white";
 	        settingsDescBox.text = settingsDescription[currentsetting];
 	}
@@ -389,8 +389,8 @@ Item {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsFavorites[settingsetpoint] == 0) { settingsValueBox.text = "Set it to NO?";}
-		if (settingsFavorites[settingsetpoint] == 1) { settingsValueBox.text = "Set it to YES?";}
+		if (settingsFavorites[settingsetpoint] == 0) { settingsValueBox.text = "NO";}
+		if (settingsFavorites[settingsetpoint] == 1) { settingsValueBox.text = "YES";}
                  break;
              }
 	 case 1: {
@@ -403,7 +403,7 @@ Item {
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
 		settingsValueBox.color = settingsHighlightColor[settingsetpoint];
-		settingsValueBox.text = "Set it to this color?: " + settingsHighlightColor[settingsetpoint];
+		settingsValueBox.text = "color: " + settingsHighlightColor[settingsetpoint];
                 break;
              }
 	 case 2: {
@@ -416,7 +416,7 @@ Item {
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
 		settingsValueBox.color = settingsBackgroundColor[settingsetpoint];
-		settingsValueBox.text = "Set it to this color?: " + settingsBackgroundColor[settingsetpoint];
+		settingsValueBox.text = "color: " + settingsBackgroundColor[settingsetpoint];
                 break;
              }
          case 3: {
@@ -428,9 +428,9 @@ Item {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsScrollSpeed[settingsetpoint] == 200) { settingsValueBox.text = "Set it to SLOW?";}
-		if (settingsScrollSpeed[settingsetpoint] == 300) { settingsValueBox.text = "Set it to MEDIUM?";}
-		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "Set it to FAST?";}
+		if (settingsScrollSpeed[settingsetpoint] == 200) { settingsValueBox.text = "SLOW";}
+		if (settingsScrollSpeed[settingsetpoint] == 300) { settingsValueBox.text = "MEDIUM";}
+		if (settingsScrollSpeed[settingsetpoint] == 500) { settingsValueBox.text = "FAST";}
                  break;
              }
 	 case 4: {
@@ -442,10 +442,10 @@ Item {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsBackgroundArt[settingsetpoint] == "Default") { settingsValueBox.text = "Set it to Default Background?";}
-		if (settingsBackgroundArt[settingsetpoint] == "FanArt") { settingsValueBox.text = "Set it to Fan Art Background?";}
-		if (settingsBackgroundArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot Background?";}
-        if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "Set it to Color Background?";}
+		if (settingsBackgroundArt[settingsetpoint] == "Default") { settingsValueBox.text = "DEFAULT IMAGE";}
+		if (settingsBackgroundArt[settingsetpoint] == "FanArt") { settingsValueBox.text = "FAN ART";}
+		if (settingsBackgroundArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "SCREENSHOT";}
+        if (settingsBackgroundArt[settingsetpoint] == "Color") { settingsValueBox.text = "COLOR";}
 		break;
              }
 	 case 5: {
@@ -457,11 +457,11 @@ Item {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsGridTileArt[settingsetpoint] == "Tile") { settingsValueBox.text = "Set it to Tile art?";}
-		if (settingsGridTileArt[settingsetpoint] == "Wheel") { settingsValueBox.text = "Set it to Wheel art?";}
-		if (settingsGridTileArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "Set it to Screenshot art?";}
-        	if (settingsGridTileArt[settingsetpoint] == "BoxArt") { settingsValueBox.text = "Set it to Box art?";}
-		if (settingsGridTileArt[settingsetpoint] == "Cartridge") { settingsValueBox.text = "Set it to Cartridge?";}
+		if (settingsGridTileArt[settingsetpoint] == "Tile") { settingsValueBox.text = "STEAM TILE";}
+		if (settingsGridTileArt[settingsetpoint] == "Wheel") { settingsValueBox.text = "WHEEL ART";}
+		if (settingsGridTileArt[settingsetpoint] == "Screenshot") { settingsValueBox.text = "SCREENSHOT";}
+        	if (settingsGridTileArt[settingsetpoint] == "BoxArt") { settingsValueBox.text = "BOX ART";}
+		if (settingsGridTileArt[settingsetpoint] == "Cartridge") { settingsValueBox.text = "CARTRIDGE";}
 		break;
              }
          case 6: {
@@ -473,8 +473,8 @@ Item {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO, do not update.";}
-		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES update now.";}
+		if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO";}
+		if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES";}
                  break;
              }
          default: {
@@ -497,7 +497,7 @@ Item {
 		 gamesettings.favorites = false;
 		 if (settingsetpoint == 1) { gamesettings.favorites = true; }
 		 api.memory.set('settingsFavorites', gamesettings.favorites)
-		 settingsValueBox.text = "Setting Saved!  Now please switch your theme and\n" + "switch it back to lock in the changes.";
+		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
              }

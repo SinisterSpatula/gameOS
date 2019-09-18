@@ -84,20 +84,18 @@ FocusScope {
     focus: true
 
     anchors {
-      top: parent.top; topMargin: vpx(20) //- gridItemSpacing
+      top: parent.top; topMargin: 0 //- gridItemSpacing  vpx(28)
       bottom: parent.bottom
     }
 
     anchors.horizontalCenter: parent.horizontalCenter
 
     cellWidth: grid.width/numColumns
-    cellHeight: (numColumns == 2) ? vpx(300) : vpx(300)
+    cellHeight: vpx(325)
 
-    //highlightFollowsCurrentItem: false
-    preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(314)
+    preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(325)
     highlightRangeMode: GridView.StrictlyEnforceRange
-    displayMarginBeginning: 300
-    //snapMode: GridView.SnapOneItem
+    displayMarginBeginning: 325
 
     model: collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
