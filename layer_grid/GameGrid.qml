@@ -1,5 +1,6 @@
 import QtQuick 2.8
 import QtMultimedia 5.9
+import SortFilterProxyModel 0.2
 
 FocusScope {
   id: root
@@ -22,6 +23,16 @@ FocusScope {
   signal collectionNext
   signal collectionPrev
   signal gameChanged(int currentIdx)
+  
+  SortFilterProxyModel {
+    id: filteredGames // the new model's name
+    sourceModel: collectionData ? collectionData.games : [] //api.allGames // the original model
+    filters: ValueFilter { // the filtering condition(s)
+      roleName: "favorite"  // "compare this field of each Game"
+      value: true // "to this value, and include the Game in the new list if they match"
+      enabled: gamesettings.showfavorites // optional: turn on/off this filter depending on some variable
+    }
+}
 
   Keys.onPressed: {
       if (event.isAutoRepeat)
@@ -97,7 +108,7 @@ FocusScope {
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
 
-    model: collectionData ? collectionData.games : []
+    model: filteredGames //collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
       //if (api.currentCollection) api.currentCollection.games.index = currentIndex;
       //navSound.play()
