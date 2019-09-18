@@ -26,7 +26,7 @@ FocusScope {
   
   SortFilterProxyModel {
     id: filteredGames // the new model's name
-    sourceModel: api.collections.get(collectionIndex) //collectionData ? collectionData.games : [] //api.allGames // the original model
+    sourceModel: collectionData ? collectionData.games : [] //api.allGames // the original model
     filters: ValueFilter { // the filtering condition(s)
       roleName: "favorite"  // "compare this field of each Game"
       value: true // "to this value, and include the Game in the new list if they match"
@@ -108,7 +108,7 @@ FocusScope {
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
 
-    model: (gamesettings.showfavorites) ? filteredGames :  api.collections.get(collectionIndex) //collectionData ? collectionData.games : []
+    model: (gamesettings.showfavorites) ? filteredGames :  collectionData ? collectionData.games : [] //collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
       //if (api.currentCollection) api.currentCollection.games.index = currentIndex;
       //navSound.play()
