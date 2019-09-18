@@ -26,7 +26,7 @@ FocusScope {
   
   SortFilterProxyModel {
     id: filteredGames // the new model's name
-    sourceModel: collectionData ? collectionData.games : [] //api.allGames // the original model
+    sourceModel: api.collections.get(collectionIndex) //collectionData ? collectionData.games : [] //api.allGames // the original model
     filters: ValueFilter { // the filtering condition(s)
       roleName: "favorite"  // "compare this field of each Game"
       value: true // "to this value, and include the Game in the new list if they match"
@@ -69,15 +69,15 @@ FocusScope {
   }
 
   function toggleFilters() {
-    if (api.filters.favorite) {
-      api.filters.playerCount = 1
-      api.filters.favorite = false
-      api.filters.current.enabled = false
-    } else {
-      api.filters.playerCount = 1
-      api.filters.favorite = true
-      api.filters.current.enabled = true
-    }
+  //  if (api.filters.favorite) {
+  //  api.filters.playerCount = 1
+  //    api.filters.favorite = false
+  //    api.filters.current.enabled = false
+  //  } else {
+  //   api.filters.playerCount = 1
+  //    api.filters.favorite = true
+  //    api.filters.current.enabled = true
+  //  }
 
     //api.filters.index = 0
 
@@ -108,7 +108,7 @@ FocusScope {
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
 
-    model: filteredGames //collectionData ? collectionData.games : []
+    model: (gamesettings.showfavorites) filteredGames :  api.collections.get(collectionIndex) //collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
       //if (api.currentCollection) api.currentCollection.games.index = currentIndex;
       //navSound.play()
@@ -119,6 +119,7 @@ FocusScope {
     Component.onCompleted: {
       positionViewAtIndex(currentIndex, GridView.Contain);
     }
+    
 
     Keys.onPressed: {
         if (api.keys.isAccept(event) && !event.isAutoRepeat) {
