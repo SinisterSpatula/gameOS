@@ -33,7 +33,7 @@ Item {
     //border.color: (selected) ? "white" : "transparent"
     //border.width: vpx(6)
 
-    scale: selected ? 1.14 : 1.0
+    scale: selected ? 1.25 : 1.0
     Behavior on scale { PropertyAnimation { duration: 200; easing.type: Easing.OutQuart; easing.amplitude: 2.0; } }
 
     // DropShadow
