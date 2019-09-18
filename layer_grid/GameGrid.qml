@@ -11,6 +11,7 @@ FocusScope {
   property alias gridWidth: grid.width
   property int gridItemSpacing: (numColumns == 2) ? vpx(14) : vpx(10) // it will double this
   property var collectionData
+  property var collectionDataFavorites
   property var gameData
   property int currentGameIdx
   property string jumpToPattern: ''
@@ -188,7 +189,7 @@ FocusScope {
       //collection: api.currentCollection
 
       game: modelData
-      collection: collectionData
+      collection: (gamesettings.showfavorites) ? collectionDataFavorites : collectionData 
       z: (selected) ? 100 : 1
 
       onDetails: detailsRequested();
