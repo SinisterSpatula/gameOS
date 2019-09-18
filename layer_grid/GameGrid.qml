@@ -91,7 +91,7 @@ FocusScope {
     anchors.horizontalCenter: parent.horizontalCenter
 
     cellWidth: grid.width/numColumns
-    cellHeight: (numColumns == 2) ? vpx(300) : vpx(300)
+    cellHeight: grid.height/numColums //(numColumns == 2) ? vpx(300) : vpx(300)
 
     preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(300)
     highlightRangeMode: GridView.StrictlyEnforceRange
