@@ -3,6 +3,7 @@
 import QtQuick 2.8
 import QtGraphicalEffects 1.0
 import QtMultimedia 5.9
+import SortFilterProxyModel 0.2
 import "qrc:/qmlutils" as PegasusUtils
 import "layer_grid"
 import "layer_menu"
@@ -25,9 +26,18 @@ FocusScope {
   }
 
   property int collectionIndex: 0
-  property var currentCollection: api.collections.get(collectionIndex)
+  property var currentCollection: filteredGames
   
-  
+    // Favorites filter
+    SortFilterProxyModel {
+    id: filteredGames // the new model's name
+    sourceModel: api.collections.get(collectionIndex) // the original model
+    filters: ValueFilter { // the filtering condition(s)
+      roleName: "favorite"  // "compare this field of each Game"
+      value: true // "to this value, and include the Game in the new list if they match"
+      enabled: gamesettings.showfavorites // optional: turn on/off this filter depending on some variable
+      }
+  }
 
   function nextCollection () {
     jumpToCollection(collectionIndex + 1);
