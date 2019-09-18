@@ -108,7 +108,7 @@ FocusScope {
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
 
-    model: (gamesettings.showfavorites) filteredGames :  api.collections.get(collectionIndex) //collectionData ? collectionData.games : []
+    model: (gamesettings.showfavorites) ? filteredGames :  api.collections.get(collectionIndex) //collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
       //if (api.currentCollection) api.currentCollection.games.index = currentIndex;
       //navSound.play()
