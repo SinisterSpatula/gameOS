@@ -177,7 +177,6 @@ FocusScope {
 
       game: modelData
       collection: collectionData
-      visible: (gamesettings.showfavorites) ? modelData.favorite : true
       z: (selected) ? 100 : 1
 
       onDetails: detailsRequested();
