@@ -39,7 +39,7 @@ Rectangle {
     width: parent.width
     text: collection.name
     color: "white"
-    font.pixelSize: vpx(70)
+    font.pixelSize: vpx(140) //vpx(70)
     font.family: titleFont.name
     font.bold: true
     font.capitalization: Font.AllUppercase
