@@ -45,16 +45,7 @@ Rectangle {
             family: globalFonts.sans
             bold: root.focus
         }
-        // DropShadow
-        /*layer.enabled: (root.focus || mouseArea.containsMouse)
-        layer.effect: DropShadow {
-            horizontalOffset: 0
-            verticalOffset: 2
-            radius: 3.0
-            samples: 17
-            color: "#80000000"
-            transparentBorder: true
-        }*/
+        
         anchors.centerIn: parent
 
     }
