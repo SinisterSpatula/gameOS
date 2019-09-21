@@ -7,7 +7,7 @@ Item {
   id: root
 
   property bool selected: false
-  property var game
+  property var game // points to the grid's modelData
   property int cornerradius: vpx(3)
   property var collection//: api.currentCollection
   property bool steam: false
