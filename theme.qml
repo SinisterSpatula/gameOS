@@ -16,6 +16,11 @@ FocusScope {
   FontLoader { id: subtitleFont; source: "fonts/Gotham-Bold.otf" }
 
   property bool menuactive: false
+  property var gCurrentGame: null
+  property var gCurrentCollection: api.collections.get(gCollectionIndex)
+  property int gCollectionIndex: 0
+  property int gCurrentGameIndex: 0
+  readonly property var gCurrentGame: gCurrentCollection.games.get(gCurrentGameIndex)
 
   //////////////////////////
   // Collection switching //
@@ -24,22 +29,18 @@ FocusScope {
     return (a % n + n) % n;
   }
 
-  property int collectionIndex: 0
-  property var currentCollection: api.collections.get(collectionIndex)
-  
-
   function nextCollection () {
-    jumpToCollection(collectionIndex + 1);
+    jumpToCollection(gCollectionIndex + 1);
   }
 
   function prevCollection() {
-    jumpToCollection(collectionIndex - 1);
+    jumpToCollection(gCollectionIndex - 1);
   }
 
   function jumpToCollection(idx) {
-    api.memory.set('gameCollIndex' + collectionIndex, currentGameIndex); // save game index of current collection
-    collectionIndex = modulo(idx, api.collections.count); // new collection index
-    currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0; // restore game index for newly selected collection
+    api.memory.set('gameCollIndex' + gCollectionIndex, gCurrentGameIndex); // save game index of current collection
+    gCollectionIndex = modulo(idx, api.collections.count); // new collection index
+    gCurrentGameIndex = api.memory.get('gameCollIndex' + gCollectionIndex) || 0; // restore game index for newly selected collection
   }
 
   // End collection switching //
@@ -47,9 +48,6 @@ FocusScope {
 
   ////////////////////
   // Game switching //
-
-  property int currentGameIndex: 0
-  readonly property var currentGame: currentCollection.games.get(currentGameIndex)
 
   function changeGameIndex (idx) {
     currentGameIndex = idx
@@ -65,8 +63,8 @@ FocusScope {
   // Launching game //
 
   Component.onCompleted: {
-    collectionIndex = api.memory.get('collectionIndex') || 0;
-    currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0;
+    gCollectionIndex = api.memory.get('collectionIndex') || 0;
+    gCurrentGameIndex = api.memory.get('gameCollIndex' + gCollectionIndex) || 0;
     gamesettings.highlight = api.memory.get('settingsHighlight') || "#FF9E12";
     gamesettings.backcolor = api.memory.get('settingsBackgroundColor') || "#CC7700";
     gamesettings.scrollSpeed = api.memory.get('settingScrollSpeed') || 300;
@@ -84,9 +82,9 @@ FocusScope {
   
 
   function launchGame() {
-    api.memory.set('collectionIndex', collectionIndex);
-    api.memory.set('gameCollIndex' + collectionIndex, currentGameIndex);
-    currentGame.launch();
+    api.memory.set('collectionIndex', gCollectionIndex);
+    api.memory.set('gameCollIndex' + gCollectionIndex, gCurrentGameIndex);
+    gCurrentGame.launch();
   }
 
   // End launching game //
@@ -165,7 +163,6 @@ FocusScope {
 
     BackgroundImage {
       id: backgroundimage
-      gameData: currentGame
       anchors {
         left: parent.left; right: parent.right
         top: parent.top; bottom: parent.bottom
@@ -209,13 +206,10 @@ FocusScope {
         Behavior on opacity { NumberAnimation { duration: 100 } }
 
         width: parent.width
-        //  text: (api.filters.current.enabled) ? api.currentCollection.name + " | Favorites" : api.currentCollection.name
         color: "white"
         font.pixelSize: vpx(16)
         font.family: globalFonts.sans
-        //font.capitalization: Font.AllUppercase
         elide: Text.ElideRight
-        //opacity: 0.5
 
         // DropShadow
         layer.enabled: true
@@ -233,8 +227,6 @@ FocusScope {
       // Game details
       GameGridDetails {
         id: content
-
-        gameData: currentGame
 
         height: vpx(200)
         width: parent.width - vpx(182)
@@ -264,10 +256,6 @@ FocusScope {
         GameGrid {
           id: gamegrid
 
-          collectionData: currentCollection
-          gameData: currentGame
-          currentGameIdx: currentGameIndex
-
           focus: true
           Behavior on opacity { OpacityAnimator { duration: 100 } }
           gridWidth: parent.width - vpx(80) //- vpx(164)
@@ -294,7 +282,6 @@ FocusScope {
         id: gamedetails
 
         property bool active : false
-        gameData: currentGame
 
         anchors {
           left: parent.left; right: parent.right
@@ -337,8 +324,7 @@ FocusScope {
 
   PlatformMenu {
     id: platformmenu
-    collection: currentCollection
-    collectionIdx: collectionIndex
+
     anchors {
       left: parent.left; right: parent.right
       top: parent.top; bottom: parent.bottom
@@ -347,13 +333,13 @@ FocusScope {
     height: parent.height
     backgroundcontainer: everythingcontainer
     onMenuCloseRequested: toggleMenu()
-    onSwitchCollection: jumpToCollection(collectionIdx)
+    onSwitchCollection: jumpToCollection(gCollectionIndex)
   }
 
   // Switch collection overlay
   GameGridSwitcher {
     id: switchoverlay
-    collection: currentCollection
+
     anchors.fill: parent
     width: parent.width
     height: parent.height
