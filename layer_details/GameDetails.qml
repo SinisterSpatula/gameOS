@@ -9,12 +9,11 @@ import "../utils.js" as Utils
 Item {
   id: root
 
-  property var gameData//: api.currentGame
   property bool isSteam: false
   property int padding: vpx(50)
   property int cornerradius: vpx(8)
   property bool showVideo: false
-  property bool boxAvailable: gameData.assets.boxFront
+  property bool boxAvailable: gCurrentGame.assets.boxFront
   property int videooffset: vpx(330)
   property int numbuttons: boxAvailable ? 4 : 3
 
@@ -63,8 +62,8 @@ Item {
     }
     if (api.keys.isDetails(event)) {
       event.accepted = true;
-      if (gameData)
-          gameData.favorite = !gameData.favorite;
+      if (gCurrentGame)
+          gCurrentGame.favorite = !gCurrentGame.favorite;
 
       toggleSound.play()
       return;
@@ -93,7 +92,7 @@ Item {
     id: videoDelay
     interval: 100
     onTriggered: {
-      if (gameData.assets.videos.length) {
+      if (gCurrentGame.assets.videos.length) {
         videoPreviewLoader.sourceComponent = videoPreviewWrapper;
         fadescreenshot.restart();
       }
@@ -104,14 +103,14 @@ Item {
     id: fadescreenshot
     interval: 500
     onTriggered: {
-      if (gameData.assets.videos.length) {
+      if (gCurrentGame.assets.videos.length) {
           screenshot.opacity = 0;
       }
     }
   }
 
   function toggleVideo() {
-    //if (gameData.assets.videos.length && (boxart.opacity == 0 || boxart.opacity == 1)) {
+    //if (gCurrentGame.assets.videos.length && (boxart.opacity == 0 || boxart.opacity == 1)) {
     if (boxAvailable && (boxart.opacity == 0 || boxart.opacity == 1)) {
       if (showVideo) {
         // BOXART
@@ -180,7 +179,7 @@ Item {
         Component {
           id: videoPreviewWrapper
           Video {
-            source: gameData.assets.videos.length ? gameData.assets.videos[0] : ""
+            source: gCurrentGame.assets.videos.length ? gCurrentGame.assets.videos[0] : ""
             anchors.fill: parent
             fillMode: VideoOutput.PreserveAspectCrop
             muted: false
@@ -217,7 +216,7 @@ Item {
           id: screenshot
           width: parent.width
           height: parent.height
-          source: gameData.assets.screenshots[0] || gameData.assets.boxFront || ""
+          source: gCurrentGame.assets.screenshots[0] || gCurrentGame.assets.boxFront || ""
           fillMode: Image.PreserveAspectCrop
           anchors {
             top: parent.top;
@@ -280,11 +279,11 @@ Item {
         Image {
           id: boxart
           width: vpx(300)
-          source: gameData.assets.boxFront || gameData.assets.screenshots[0] || ""
+          source: gCurrentGame.assets.boxFront || gCurrentGame.assets.screenshots[0] || ""
           sourceSize { width: vpx(512); height: vpx(512) }
           fillMode: Image.PreserveAspectFit
           asynchronous: true
-          visible: gameData.assets.boxFront || gameData.assets.screenshots[0] || ""
+          visible: gCurrentGame.assets.boxFront || gCurrentGame.assets.screenshots[0] || ""
           smooth: true
           Behavior on opacity { NumberAnimation { duration: 100 } }
           Behavior on x { NumberAnimation { duration: 100;  easing.type: Easing.InQuad } }
@@ -294,7 +293,7 @@ Item {
           Item {
             id: favetag
             anchors { fill: parent; }
-            opacity: gameData.favorite ? 1 : 0
+            opacity: gCurrentGame.favorite ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: 100 } }
 
             Image {
@@ -361,7 +360,7 @@ Item {
             anchors { top: parent.top; topMargin: vpx(15) }
 
             width: parent.width - wreath.width
-            text: gameData.title
+            text: gCurrentGame.title
             color: "white"
             font.pixelSize: vpx(60)
             font.family: titleFont.name
@@ -377,7 +376,7 @@ Item {
 
           Image {
             id: wreath
-            source: (gameData.rating > 0.89) ? "../assets/images/wreath-gold.svg" : "../assets/images/wreath.svg"
+            source: (gCurrentGame.rating > 0.89) ? "../assets/images/wreath-gold.svg" : "../assets/images/wreath.svg"
             anchors { top: parent.top; right: parent.right; rightMargin: vpx(0) }
             asynchronous: false
             fillMode: Image.PreserveAspectFit
@@ -385,13 +384,13 @@ Item {
             width: vpx(100)
             height: vpx(100)
 
-            opacity: (gameData.rating != "" && !showVideo) ? 1 : 0.1
+            opacity: (gCurrentGame.rating != "" && !showVideo) ? 1 : 0.1
             Behavior on opacity { NumberAnimation { duration: 100 } }
 
             Text {
               id: metarating
-              text: (gameData.rating == "") ? "NA" : Math.round(gameData.rating * 100)
-              color: (gameData.rating > 0.89) ? "#FFCE00" : "white"
+              text: (gCurrentGame.rating == "") ? "NA" : Math.round(gCurrentGame.rating * 100)
+              color: (gCurrentGame.rating > 0.89) ? "#FFCE00" : "white"
               font.pixelSize: vpx(55)
               font.family: globalFonts.condensed
               font.bold: true
@@ -433,7 +432,7 @@ Item {
 	        TextEdit {
 	        id: textBox
 	        horizontalAlignment: Text.AlignJustify
-                text: (gameData.summary || gameData.description) ? gameData.summary || gameData.description : "No description available"
+                text: (gCurrentGame.summary || gCurrentGame.description) ? gCurrentGame.summary || gCurrentGame.description : "No description available"
                 font.pixelSize: vpx(40)
                 font.family: "Open Sans"
 		width: gameDescription.width
@@ -556,7 +555,7 @@ Item {
             // Favourite button
             GamePanelButton {
               id: faveBtn
-              property bool isFavorite: (gameData && gameData.favorite) || false
+              property bool isFavorite: (gCurrentGame && gCurrentGame.favorite) || false
               text: isFavorite ? "Unfavorite" : "Favorite"
               width: parent.width/numbuttons
               height: parent.height
@@ -567,8 +566,8 @@ Item {
               }
 
               function toggleFav() {
-                  if (gameData)
-                      gameData.favorite = !gameData.favorite;
+                  if (gCurrentGame)
+                      gCurrentGame.favorite = !gCurrentGame.favorite;
 
                   toggleSound.play()
               }
