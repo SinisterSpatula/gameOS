@@ -5,7 +5,7 @@ import QtMultimedia 5.9
 
 Rectangle {
   id: root
-  property var collection//: api.collections.current
+  property var collection: gCurrentCollection
   property var backgroundcontainer
 
   color: "black"
