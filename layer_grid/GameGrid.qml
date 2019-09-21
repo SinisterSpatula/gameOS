@@ -9,8 +9,6 @@ FocusScope {
 
   property alias gridWidth: grid.width
   property int gridItemSpacing: (numColumns == 2) ? vpx(14) : vpx(10) // it will double this
-  property var collectionData
-  property var gameData
   property int currentGameIdx
   property string jumpToPattern: ''
 
@@ -48,10 +46,10 @@ FocusScope {
 
 
 
-  //property bool isFavorite: (gameData && gameData.favorite) || false
+  //property bool isFavorite: (gCurrentGame && gCurrentGame.favorite) || false
   function toggleFav() {
-      if (gameData)
-          gameData.favorite = !gameData.favorite;
+      if (gCurrentGame)
+          gCurrentGame.favorite = !gCurrentGame.favorite;
 
       toggleSound.play()
 
@@ -73,7 +71,7 @@ FocusScope {
   }
 
   onCurrentGameIdxChanged: {
-    grid.currentIndex = currentGameIdx
+    grid.currentIndex = gCurrentGameIndex
   }
 
 
@@ -97,10 +95,9 @@ FocusScope {
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
 
-    model: collectionData ? collectionData.games : []
+    model: gCurrentCollection ? gCurrentCollection.games : []
     onCurrentIndexChanged: {
-      //if (api.currentCollection) api.currentCollection.games.index = currentIndex;
-      //navSound.play()
+
       gameChanged(currentIndex)
 
     }
