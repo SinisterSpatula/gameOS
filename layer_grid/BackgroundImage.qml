@@ -3,7 +3,7 @@ import QtGraphicalEffects 1.0
 
 Item {
   id: root
-  property var gameData//: currentCollection.games.get(gameList.currentIndex)
+  
   property real dimopacity: 0.54 //0.96
 
   property string bgDefault: '../assets/images/defaultbg.png'
@@ -18,7 +18,7 @@ Item {
     Image {
         id: rect
         anchors.fill: parent
-        visible: gameData
+        visible: gCurrentGame
         asynchronous: true
         source: bgSource
         sourceSize { width: 320; height: 240 }
