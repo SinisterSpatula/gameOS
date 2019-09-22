@@ -22,8 +22,8 @@ Item {
   //Keys.onDownPressed: api.collections.incrementIndex()
 
   Component.onCompleted {
-  root.gameList.collectionList.append({"name": "Favorite Games", "shortName":"Favorite Games"})
-  root.gameList.collectionList.append({"name": "Last Played", "shortName":"Last Played"})
+  gameList.append({"name": "Favorite Games", "shortName":"Favorite Games"})
+  gameList.append({"name": "Last Played", "shortName":"Last Played"})
   }
   
   Keys.onPressed: {
