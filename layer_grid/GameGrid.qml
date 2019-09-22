@@ -24,21 +24,19 @@ FocusScope {
 
 
     SortFilterProxyModel {
-        id: favoriteGames
+        id: filteredGames
         sourceModel: gCurrentCollection.games
         filters: ValueFilter {
             roleName: "favorite"
             value: true
+            enabled: (gamesettings.Filters == "Favorites")
+        }
+        sorters: RoleSorter {
+            roleName: "lastPlayed"
+            enabled: (gamesettings.Filters == "LastPlayed")
         }
     }
     
-    SortFilterProxyModel {
-        id: lastPlayedGames
-        sourceModel: gCurrentCollection.games
-        sorters: RoleSorter {
-            roleName: "lastPlayed"
-        }
-    }
   
   Keys.onPressed: {
       if (event.isAutoRepeat)
@@ -114,7 +112,7 @@ FocusScope {
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
 
-    model: (gamesettings.filters == "All") ? gCurrentCollection.games : (gamesettings.filters == "Favorites") ? favoriteGames : (gamesettings.filters == "LastPlayed") ? lastPlayedGames : []
+    model: (filteredGames) ? filteredGames : []
     onCurrentIndexChanged: {
 
       gameChanged(currentIndex)
