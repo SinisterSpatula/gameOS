@@ -21,10 +21,6 @@ Item {
   //Keys.onUpPressed: api.collections.decrementIndex()
   //Keys.onDownPressed: api.collections.incrementIndex()
 
-  Component.onCompleted {
-  gameList.append({"name": "Favorite Games", "shortName":"Favorite Games"})
-  gameList.append({"name": "Last Played", "shortName":"Last Played"})
-  }
   
   Keys.onPressed: {
       if (event.isAutoRepeat)
@@ -163,6 +159,11 @@ Item {
         highlight: highlight
         highlightFollowsCurrentItem: true
         focus: true
+      }
+      
+      Component.onCompleted: {
+        gameList.get(0).collectionList.append({"name": "Last Played", "shortName":"Last Played"})
+        gameList.get(0).collectionList.append({"name": "Favorites", "shortName":"Favorites"})
       }
 
       // Menu item
