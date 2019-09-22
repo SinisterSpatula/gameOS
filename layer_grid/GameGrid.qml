@@ -173,7 +173,7 @@ FocusScope {
       //collection: api.currentCollection
 
       game: modelData
-      collection: collectionData
+      collection: gCurrentCollection
       z: (selected) ? 100 : 1
 
       onDetails: detailsRequested();
