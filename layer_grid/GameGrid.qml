@@ -113,11 +113,7 @@ FocusScope {
     displayMarginBeginning: 325
 
     model: (filteredGames) ? filteredGames : []
-    onModelChanged: {
-      gCalculatedIndex = filteredGames.mapToSource(currentIndex)
-      gCurrentGame = gCurrentCollection.games.get(gCalculatedIndex)
-      gameChanged(currentIndex)
-    }
+    
     onCurrentIndexChanged: {
 
       gCalculatedIndex = filteredGames.mapToSource(currentIndex)
