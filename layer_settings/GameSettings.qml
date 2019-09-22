@@ -502,6 +502,7 @@ Item {
 		 grid.currentIndex = 0;
 		 gCurrentIndex = 0;
 		 grid.positionViewAtIndex(0, GridView.Contain);
+		 grid.dataChanged();
                  break;
              }
 	 case 1: {
