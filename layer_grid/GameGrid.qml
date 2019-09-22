@@ -116,7 +116,8 @@ FocusScope {
     onCurrentIndexChanged: {
 
       gCalculatedIndex = filteredGames.mapToSource(currentIndex)
-      gameChanged(gCalculatedIndex)//used to be currentIndex
+      gCurrentGame = gCurrentCollection.games.get(gCalculatedIndex)
+      gameChanged(currentIndex)
 
     }
 
