@@ -381,17 +381,18 @@ Item {
 	function toggleSetting() {
 	switch (currentsetting) {
 	 case 0: {
-                 // Display ONLY Favorite Games? toggle
-		if (settingsetpoint < (settingsFavorites.length)) {
+                 // Game Filtering: All, Favorites, LastPlayed
+		if (settingsetpoint <= (settingsFilters.length - 1)) {
 		settingsetpoint++;
 		}
-		if (settingsetpoint == settingsFavorites.length) {
+		if (settingsetpoint == settingsFilters.length) {
 		settingsetpoint = 0;
 		}
 		settingsDescBox.text = settingsDescription[currentsetting];
-		if (settingsFavorites[settingsetpoint] == 0) { settingsValueBox.text = "NO";}
-		if (settingsFavorites[settingsetpoint] == 1) { settingsValueBox.text = "YES";}
-                 break;
+		if (settingsFilters[settingsetpoint] == "All") { settingsValueBox.text = "ALL (no filter)";}
+		if (settingsFilters[settingsetpoint] == "Favorites") { settingsValueBox.text = "FAVORITES";}
+		if (settingsFilters[settingsetpoint] == "LastPlayed") { settingsValueBox.text = "LASTPLAYED";}
+		break;
              }
 	 case 1: {
                  // Change Highlight Color toggle
@@ -493,10 +494,9 @@ Item {
 		if (settingsetpoint == -1) {return;}
 		switch (currentsetting) {
 	 case 0: {
-                 // Display ONLY Favorite Games Apply and save
-		 gamesettings.showfavorites = false;
-		 if (settingsetpoint == 1) { gamesettings.showfavorites = true; }
-		 api.memory.set('settingsFavorites', gamesettings.showfavorites)
+                 // Filtering Apply and save
+		 gamesettings.filters = settingsFilters[settingsetpoint];
+		 api.memory.set('settingsFilters', gamesettings.filters)
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
                  break;
