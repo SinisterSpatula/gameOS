@@ -323,7 +323,8 @@ FocusScope {
 
   PlatformMenu {
     id: platformmenu
-
+    collection: currentCollection
+    collectionIdx: collectionIndex
     anchors {
       left: parent.left; right: parent.right
       top: parent.top; bottom: parent.bottom
@@ -332,7 +333,7 @@ FocusScope {
     height: parent.height
     backgroundcontainer: everythingcontainer
     onMenuCloseRequested: toggleMenu()
-    onSwitchCollection: jumpToCollection(gCollectionIndex)
+    onSwitchCollection: jumpToCollection(collectionIdx)
   }
 
   // Switch collection overlay
