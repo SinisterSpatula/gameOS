@@ -282,7 +282,7 @@ FocusScope {
         id: gamedetails
 
         property bool active : false
-        gameTitleText: gCurrentGame.name
+        root.gameTitleText: gCurrentGame.name
 
         anchors {
           left: parent.left; right: parent.right
