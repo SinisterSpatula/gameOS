@@ -21,6 +21,11 @@ Item {
   //Keys.onUpPressed: api.collections.decrementIndex()
   //Keys.onDownPressed: api.collections.incrementIndex()
 
+  Component.onCompleted {
+  gameList.collectionList.append({"name": "Favorite Games", "shortName":"Favorite Games"})
+  gameList.collectionList.append({"name": "Last Played", "shortName":"Last Played"})
+  }
+  
   Keys.onPressed: {
       if (event.isAutoRepeat)
           return;
