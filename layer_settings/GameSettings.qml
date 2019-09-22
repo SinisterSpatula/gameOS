@@ -502,6 +502,7 @@ Item {
 		 gCurrentIndex = 0;
 		 gCurrentGame = null;
 		 gCurrentGameIndex = 0;
+		 switchCollection();
                  break;
              }
 	 case 1: {
