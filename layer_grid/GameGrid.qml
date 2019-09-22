@@ -117,7 +117,6 @@ FocusScope {
 
       gCalculatedIndex = filteredGames.mapToSource(currentIndex)
       gCurrentGame = gCurrentCollection.games.get(gCalculatedIndex)
-      root.gameTitleText = gCurrentGame.name; 
       gameChanged(currentIndex)
 
     }
