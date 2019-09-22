@@ -16,7 +16,6 @@ FocusScope {
   FontLoader { id: subtitleFont; source: "fonts/Gotham-Bold.otf" }
 
   property bool menuactive: false
-  property var gCurrentGame: null
   property var gCurrentCollection: api.collections.get(gCollectionIndex)
   property int gCollectionIndex: 0
   property int gCurrentGameIndex: 0
