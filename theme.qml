@@ -49,7 +49,7 @@ FocusScope {
   // Game switching //
 
   function changeGameIndex (idx) {
-    currentGameIndex = idx
+    gCurrentGameIndex = idx
     if (collectionIndex && idx) {
       api.memory.set('gameIndex' + collectionIndex, idx);
     }
