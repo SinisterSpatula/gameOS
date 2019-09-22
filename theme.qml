@@ -20,7 +20,7 @@ FocusScope {
   property int gCollectionIndex: 0
   property int gCurrentGameIndex: 0
   property int gCalculatedIndex: 0 //This hold the calculated index from the proxy sort filter in gamegrid.
-  readonly property var gCurrentGame: gCurrentCollection.games.get(gCurrentGameIndex)
+  property var gCurrentGame //: gCurrentCollection.games.get(gCurrentGameIndex)
 
   //////////////////////////
   // Collection switching //
