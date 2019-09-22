@@ -161,10 +161,6 @@ Item {
         focus: true
       }
       
-      Component.onCompleted: {
-        gameList.collectionList.append({"name": "Last Played", "shortName":"Last Played"})
-        gameList.collectionList.append({"name": "Favorites", "shortName":"Favorites"})
-      }
 
       // Menu item
       Component {
