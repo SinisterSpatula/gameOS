@@ -499,6 +499,9 @@ Item {
 		 api.memory.set('settingsFilters', gamesettings.filters)
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
+		 grid.currentIndex = 0;
+		 gCurrentIndex = 0;
+		 grid.positionViewAtIndex(0, GridView.Contain);
                  break;
              }
 	 case 1: {
