@@ -18,8 +18,7 @@ Item {
   Keys.onRightPressed: closeMenu()
   Keys.onUpPressed: gameList.decrementCurrentIndex()
   Keys.onDownPressed: gameList.incrementCurrentIndex()
-  //Keys.onUpPressed: api.collections.decrementIndex()
-  //Keys.onDownPressed: api.collections.incrementIndex()
+
 
   
   Keys.onPressed: {
