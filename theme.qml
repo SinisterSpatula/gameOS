@@ -260,7 +260,6 @@ FocusScope {
           Behavior on opacity { OpacityAnimator { duration: 100 } }
           gridWidth: parent.width - vpx(80) //- vpx(164)
           height: parent.height
-          gameTitleText: gCurrentGame.name
 
           anchors {
             top: parent.top; topMargin: vpx(10)
@@ -283,6 +282,7 @@ FocusScope {
         id: gamedetails
 
         property bool active : false
+        gameTitleText: gCurrentGame.name
 
         anchors {
           left: parent.left; right: parent.right
