@@ -19,6 +19,7 @@ FocusScope {
   property var gCurrentCollection: api.collections.get(gCollectionIndex)
   property int gCollectionIndex: 0
   property int gCurrentGameIndex: 0
+  property int gCalculatedIndex: 0
   readonly property var gCurrentGame: gCurrentCollection.games.get(gCurrentGameIndex)
 
   //////////////////////////
