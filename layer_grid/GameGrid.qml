@@ -123,6 +123,9 @@ FocusScope {
 
     Component.onCompleted: {
       positionViewAtIndex(currentIndex, GridView.Contain);
+      gCalculatedIndex = filteredGames.mapToSource(currentIndex)
+      gCurrentGame = gCurrentCollection.games.get(gCalculatedIndex)
+      gameChanged(currentIndex)
     }
 
     Keys.onPressed: {
