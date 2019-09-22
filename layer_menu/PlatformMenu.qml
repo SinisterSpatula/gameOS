@@ -11,6 +11,7 @@ Item {
 
   property alias menuwidth: menubar.width
   property int collectionIdx
+  property var collection
   property bool showSystemMenu: true
 
   Keys.onLeftPressed: closeMenu()
