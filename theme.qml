@@ -50,8 +50,8 @@ FocusScope {
 
   function changeGameIndex (idx) {
     gCurrentGameIndex = idx
-    if (collectionIndex && idx) {
-      api.memory.set('gameIndex' + collectionIndex, idx);
+    if (gCollectionIndex && idx) {
+      api.memory.set('gameIndex' + gCollectionIndex, idx);
     }
   }
 
