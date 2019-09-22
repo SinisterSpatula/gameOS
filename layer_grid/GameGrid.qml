@@ -1,5 +1,6 @@
 import QtQuick 2.8
 import QtMultimedia 5.9
+import SortFilterProxyModel 0.2
 
 FocusScope {
   id: root
@@ -21,6 +22,24 @@ FocusScope {
   signal collectionPrev
   signal gameChanged(int currentIdx)
 
+
+    SortFilterProxyModel {
+        id: favoriteGames
+        sourceModel: gCurrentCollection.games
+        filters: ValueFilter {
+            roleName: "favorite"
+            value: true
+        }
+    }
+    
+    SortFilterProxyModel {
+        id: lastPlayedGames
+        sourceModel: gCurrentCollection.games
+        sorters: RoleSorter {
+            roleName: "lastPlayed"
+        }
+    }
+  
   Keys.onPressed: {
       if (event.isAutoRepeat)
           return;
@@ -95,7 +114,7 @@ FocusScope {
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
 
-    model: gCurrentCollection ? gCurrentCollection.games : []
+    model: (gamesettings.filters == "All") ? gCurrentCollection.games : (gamesettings.filters == "Favorites") ? favoriteGames : (gamesettings.filters == "LastPlayed") ? lastPlayedGames : []
     onCurrentIndexChanged: {
 
       gameChanged(currentIndex)
