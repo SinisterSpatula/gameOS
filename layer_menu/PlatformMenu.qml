@@ -10,7 +10,6 @@ Item {
   signal switchCollection(int collectionIdx)
 
   property alias menuwidth: menubar.width
-  property var collection
   property int collectionIdx
   property bool showSystemMenu: true
 
