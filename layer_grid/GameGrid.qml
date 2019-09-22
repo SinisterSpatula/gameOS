@@ -172,7 +172,6 @@ FocusScope {
       selected: GridView.isCurrentItem
 
       game: modelData
-      collection: gCurrentCollection
       z: (selected) ? 100 : 1
 
       onDetails: detailsRequested();
