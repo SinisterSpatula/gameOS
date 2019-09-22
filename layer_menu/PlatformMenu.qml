@@ -162,8 +162,8 @@ Item {
       }
       
       Component.onCompleted: {
-        gameList.get(0).collectionList.append({"name": "Last Played", "shortName":"Last Played"})
-        gameList.get(0).collectionList.append({"name": "Favorites", "shortName":"Favorites"})
+        gameList.collectionList.append({"name": "Last Played", "shortName":"Last Played"})
+        gameList.collectionList.append({"name": "Favorites", "shortName":"Favorites"})
       }
 
       // Menu item
