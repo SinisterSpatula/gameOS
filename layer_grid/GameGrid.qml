@@ -29,11 +29,11 @@ FocusScope {
         filters: ValueFilter {
             roleName: "favorite"
             value: true
-            enabled: (gamesettings.Filters == "Favorites")
+            enabled: (gamesettings.filters == "Favorites")
         }
         sorters: RoleSorter {
             roleName: "lastPlayed"
-            enabled: (gamesettings.Filters == "LastPlayed")
+            enabled: (gamesettings.filters == "LastPlayed")
         }
     }
     
