@@ -231,7 +231,7 @@ FocusScope {
         height: vpx(200)
         width: parent.width - vpx(182)
         anchors { top: menuicon.bottom; topMargin: vpx(-20)}
-
+        gameTitleText: gCurrentGame.name
         // Text doesn't look so good blurred so fade it out when blurring
         opacity: 1
         Behavior on opacity { OpacityAnimator { duration: 100 } }
@@ -282,7 +282,6 @@ FocusScope {
         id: gamedetails
 
         property bool active : false
-        root.gameTitleText: gCurrentGame.name
 
         anchors {
           left: parent.left; right: parent.right
