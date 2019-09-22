@@ -324,6 +324,7 @@ FocusScope {
   PlatformMenu {
     id: platformmenu
     collectionIdx: collectionIndex
+    collection: gCurrentCollection
     anchors {
       left: parent.left; right: parent.right
       top: parent.top; bottom: parent.bottom
