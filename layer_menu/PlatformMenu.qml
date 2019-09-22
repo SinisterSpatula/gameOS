@@ -10,8 +10,8 @@ Item {
   signal switchCollection(int collectionIdx)
 
   property alias menuwidth: menubar.width
-  property var collection: gCurrentCollection
-  property int collectionIdx: gCollectionIndex
+  property var collection
+  property int collectionIdx
   property bool showSystemMenu: true
 
   Keys.onLeftPressed: closeMenu()
