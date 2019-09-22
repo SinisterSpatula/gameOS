@@ -23,10 +23,10 @@ Item {
   property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
   property var settingsGridTileArt: ["Wheel", "Tile", "Screenshot", "BoxArt", "Cartridge"] //What to show on the grid tiles, Tile, Wheel art, Screenshots, or box art.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
-  property var settingsFavorites: [0, 1] //show only favorite games, 0 = no, 1 = yes.
+  property var settingsFilters: ["All", "Favorites", "LastPlayed"] //Optional game grid filtering.
   property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: ["Favorites", "HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "GridTileArt", "UpdateTheme"]
-  property var settingsDescription: ["Favorites: (show only favorite games)", "Highlight Color: (Accent color)", "Background Color: (When background art is Color)", "Description Scrolling: (speed)", "Background Art: (What art for background)", "Game Grid Art: (What art for grid)", "Updating the theme: (info about updating)"]
+  property var settingsList: ["Filters", "HighlightColor", "BackdroundColor", "Scrollspeed", "BackgroundArt", "GridTileArt", "UpdateTheme"]
+  property var settingsDescription: ["Filter by: (Game Sorting/Filtering)", "Highlight Color: (Accent color)", "Background Color: (When background art is Color)", "Description Scrolling: (speed)", "Background Art: (What art for background)", "Game Grid Art: (What art for grid)", "Updating the theme: (info about updating)"]
   
   signal settingsCloseRequested
 
