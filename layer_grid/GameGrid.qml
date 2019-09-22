@@ -170,7 +170,6 @@ FocusScope {
       width: GridView.view.cellWidth
       height: GridView.view.cellHeight
       selected: GridView.isCurrentItem
-      //collection: api.currentCollection
 
       game: modelData
       collection: gCurrentCollection
