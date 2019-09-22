@@ -10,8 +10,8 @@ Item {
   signal switchCollection(int collectionIdx)
 
   property alias menuwidth: menubar.width
-  property var collection
-  property int collectionIdx
+  property var collection: gCurrentCollection
+  property int collectionIdx: gCollectionIndex
   property bool showSystemMenu: true
 
   Keys.onLeftPressed: closeMenu()
@@ -68,31 +68,6 @@ Item {
   width: parent.width
   height: parent.height
 
-  /*Item {
-    id: bgblur
-    anchors.fill: parent
-    opacity: 0
-    Behavior on opacity {
-      OpacityAnimator {
-        duration: 100;
-        easing.type: Easing.InOutQuad;
-      }
-    }
-
-    ShaderEffectSource {
-      id: effectSource
-      sourceItem: backgroundcontainer
-      anchors.fill: parent
-    }
-
-    FastBlur  {
-      id: blur
-      anchors.fill: effectSource
-      source: effectSource
-      radius: 64
-    }
-
-  }*/
 
   Item {
     id: menubg
@@ -224,16 +199,6 @@ Item {
             verticalAlignment: Text.AlignVCenter
             elide: Text.ElideRight
 
-            // DropShadow
-            /*layer.enabled: selected
-            layer.effect: DropShadow {
-                horizontalOffset: 0
-                verticalOffset: 2
-                radius: 0
-                samples: 17
-                color: "#32000000"
-                transparentBorder: true
-            }*/
           }
 
           MouseArea {
