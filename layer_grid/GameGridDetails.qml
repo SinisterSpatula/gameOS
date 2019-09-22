@@ -6,6 +6,7 @@ import "../utils.js" as Utils
 Item {
   id: root
 
+  property alias gameTitleText : gameTitle.text
   property bool issteam: false
   anchors.horizontalCenter: parent.horizontalCenter
   clip: true
@@ -22,7 +23,7 @@ Item {
       //topMargin: vpx(10)
     }
     width: vpx(1080) //vpx(850)
-    text: gCurrentGame.title
+    text: ""
     color: "white"
     font.pixelSize: vpx(100) //vpx(70)
     font.family: titleFont.name
