@@ -499,7 +499,6 @@ Item {
 		 api.memory.set('settingsFilters', gamesettings.filters)
 		 settingsValueBox.text = "Setting Saved!";
 		 settingsetpoint = -1;
-		 switchCollection();
                  break;
              }
 	 case 1: {
