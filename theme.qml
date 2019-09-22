@@ -304,7 +304,7 @@ FocusScope {
         property int scrollSpeed
         property var backgroundart
         property var gridart
-        property bool showfavorites
+        property var filters
         
         anchors {
           left: parent.left; right: parent.right
