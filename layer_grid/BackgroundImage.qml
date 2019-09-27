@@ -7,7 +7,7 @@ Item {
   property real dimopacity: 0.54 //0.96
 
   property string bgDefault: '../assets/images/defaultbg.png'
-  property string bgSource: (gamesettings.backgroundart == "FanArt" && gCurrentGame.assets.background) ? gCurrentGame.assets.background : (gamesettings.backgroundart == "Screenshot" && gCurrentGame.assets.screenshots[0]) ? gCurrentGame.assets.screenshots[0] : (gamesettings.backgroundart == "Default") ? bgDefault : (gamesettings.backgroundart == "Color") ? "" : bgDefault
+  //property string bgSource: (gamesettings.backgroundart == "FanArt" && gCurrentGame.assets.background) ? gCurrentGame.assets.background : (gamesettings.backgroundart == "Screenshot" && gCurrentGame.assets.screenshots[0]) ? gCurrentGame.assets.screenshots[0] : (gamesettings.backgroundart == "Default") ? bgDefault : (gamesettings.backgroundart == "Color") ? "" : bgDefault
 
   Item {
     id: bg
@@ -20,7 +20,7 @@ Item {
         anchors.fill: parent
         visible: gCurrentGame
         asynchronous: true
-        source: bgSource
+        source: bgDefault
         sourceSize { width: 320; height: 240 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
