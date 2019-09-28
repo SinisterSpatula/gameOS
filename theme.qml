@@ -26,7 +26,9 @@ FocusScope {
 
   property int collectionIndex: 0
   property var currentCollection: api.collections.get(collectionIndex)
-  
+  property var backgndImage
+  property string bgDefault: '../assets/images/defaultbg.png'
+  property string bgArtSetting: api.memory.get('settingsBackgroundArt') || "Default";
 
   function nextCollection () {
     jumpToCollection(collectionIndex + 1);
@@ -54,7 +56,7 @@ FocusScope {
   function changeGameIndex (idx) {
     currentGameIndex = idx
     if (collectionIndex && idx) {
-      api.memory.set('gameIndex' + collectionIndex, idx);
+    api.memory.set('gameIndex' + collectionIndex, idx);
     }
   }
 
@@ -72,14 +74,12 @@ FocusScope {
     gamesettings.scrollSpeed = api.memory.get('settingScrollSpeed') || 300;
     gamesettings.backgroundart = api.memory.get('settingsBackgroundArt') || "Default";
     gamesettings.gridart = api.memory.get('settingsGridTileArt') || "Screenshot";
-    gamesettings.showfavorites = api.memory.get('settingsFavorites') || false;
     
     if (!api.memory.has('settingsHighlight')) {api.memory.set('settingsHighlight', gamesettings.highlight)}
     if (!api.memory.has('settingsBackgroundColor')) {api.memory.set('settingsBackgroundColor', gamesettings.backcolor)}
     if (!api.memory.has('settingScrollSpeed')) {api.memory.set('settingScrollSpeed', gamesettings.scrollSpeed)}
     if (!api.memory.has('settingsBackgroundArt')) {api.memory.set('settingsBackgroundArt', gamesettings.backgroundart)}
     if (!api.memory.has('settingsGridTileArt')) {api.memory.set('settingsGridTileArt', gamesettings.gridart)}
-    if (!api.memory.has('settingsFavorites')) {api.memory.set('settingsFavorites', gamesettings.showfavorites)}
   }
   
 
@@ -92,6 +92,15 @@ FocusScope {
   // End launching game //
   ////////////////////////
 
+    function setBackground() {
+    //set the background Art to user preference.
+    if (bgArtSetting == "FanArt" && currentGame.assets.background) { backgndImage = currentGame.assets.background }
+    else if (bgArtSetting == "Screenshot" && currentGame.assets.screenshots[0]) { backgndImage = currentGame.assets.screenshots[0] }
+    else if (bgArtSetting == "Color") { backgndImage = "" }
+    else {backgndImage = bgDefault }
+    return;
+    }
+  
   function toggleMenu() {
 
     if (platformmenu.focus) {
@@ -165,11 +174,11 @@ FocusScope {
 
     BackgroundImage {
       id: backgroundimage
-      gameData: currentGame
       anchors {
         left: parent.left; right: parent.right
         top: parent.top; bottom: parent.bottom
       }
+      backgndImageinternal: backgndImage
 
     }
 
@@ -234,7 +243,7 @@ FocusScope {
       GameGridDetails {
         id: content
 
-        gameData: currentGame
+        collectionData: currentCollection
 
         height: vpx(200)
         width: parent.width - vpx(182)

@@ -13,12 +13,12 @@ FocusScope {
   property var gameData
   property int currentGameIdx
   property string jumpToPattern: ''
+  property var backgndImage
 
   signal launchRequested
   signal menuRequested
   signal detailsRequested
   signal settingsRequested
-  //signal filtersRequested
   signal collectionNext
   signal collectionPrev
   signal gameChanged(int currentIdx)
@@ -37,16 +37,14 @@ FocusScope {
           menuRequested();
           return;
         }
-      if (api.keys.isFilters(event)) {
-          event.accepted = true;
-          toggleFilters()
-
-          //filtersRequested();
-          return;
-      }
+      return;
   }
 
-
+  onFocusChanged: {
+    if(focus) {
+      setBackground()
+    }
+  }
 
   //property bool isFavorite: (gameData && gameData.favorite) || false
   function toggleFav() {
@@ -57,20 +55,6 @@ FocusScope {
 
   }
 
-  function toggleFilters() {
-    if (api.filters.favorite) {
-      api.filters.playerCount = 1
-      api.filters.favorite = false
-      api.filters.current.enabled = false
-    } else {
-      api.filters.playerCount = 1
-      api.filters.favorite = true
-      api.filters.current.enabled = true
-    }
-
-    //api.filters.index = 0
-
-  }
 
   onCurrentGameIdxChanged: {
     grid.currentIndex = currentGameIdx
@@ -96,17 +80,29 @@ FocusScope {
     preferredHighlightBegin: vpx(0); preferredHighlightEnd: vpx(325)
     highlightRangeMode: GridView.StrictlyEnforceRange
     displayMarginBeginning: 325
+    cacheBuffer: 9000
 
     model: collectionData ? collectionData.games : []
     onCurrentIndexChanged: {
-      //if (api.currentCollection) api.currentCollection.games.index = currentIndex;
-      //navSound.play()
-      gameChanged(currentIndex)
-
+      tmrArt.restart();
+      return;
+    }
+    
+    Timer{
+      id : tmrArt
+      running: true;
+      repeat: false;
+      interval:200;
+      onTriggered: {gameChanged(grid.currentIndex); setBackground();}
     }
 
     Component.onCompleted: {
       positionViewAtIndex(currentIndex, GridView.Contain);
+      setBackground(); // Set the background artwork to user preference.
+    }
+
+    onMovementEnded:{
+      setBackground(); // Set the background artwork to user preference.        
     }
 
     Keys.onPressed: {
@@ -173,11 +169,10 @@ FocusScope {
       width: GridView.view.cellWidth
       height: GridView.view.cellHeight
       selected: GridView.isCurrentItem
-      //collection: api.currentCollection
 
       game: modelData
       collection: collectionData
-      z: (selected) ? 100 : 1
+      //z: (selected) ? 100 : 1
 
       onDetails: detailsRequested();
       onClicked: GridView.view.currentIndex = index
