@@ -11,13 +11,21 @@ import "layer_details"
 import "layer_settings"
 
 FocusScope {
-  
+
   SortFilterProxyModel {
-    id: lastPlayedGames
+    id: lastPlayedFilter
     sourceModel: api.allGames
     sorters: RoleSorter {
       roleName: "lastPlayed"
-      enabled: true
+      sortOrder: Qt.DescendingOrder
+    }
+  }
+
+  SortFilterProxyModel {
+    id: lastPlayedGames
+    sourceModel: lastPlayedFilter
+    filters: IndexFilter {
+      maximumIndex: 49
     }
   }
 
@@ -46,7 +54,7 @@ FocusScope {
     }
   }
   //form a collection which contains our favorites, last played, and all real collections.
-  property var dynamicCollections: [favoritesCollection, ...api.collections.toVarArray()]
+  property var dynamicCollections: [favoritesCollection, lastPlayedCollection, ...api.collections.toVarArray()]
   
   
   // Loading the fonts here makes them usable in the rest of the theme
@@ -64,7 +72,7 @@ FocusScope {
   }
 
   property int collectionIndex: 0
-  property var currentCollection: (collectionIndex >= 1) ? api.collections.get((collectionIndex - 1)) : favoritesCollection
+  property var currentCollection: (collectionIndex >= 2) ? api.collections.get((collectionIndex - 2)) : (collectionIndex == 0) ? favoritesCollection : lastPlayedCollection
   property var backgndImage
   property string bgDefault: '../assets/images/defaultbg.png'
   property string bgArtSetting: api.memory.get('settingsBackgroundArt') || "Default";
@@ -90,7 +98,17 @@ FocusScope {
   // Game switching //
 
   property int currentGameIndex: 0
-  readonly property var currentGame: currentCollection.games.get(currentGameIndex)
+  readonly property var currentGame: (collectionIndex >= 2) ? currentCollection.games.get(currentGameIndex) : api.allGames.get(findCurrentGameFromProxy(currentGameIndex, collectionIndex))
+
+  function findCurrentGameFromProxy (idx, collidx) {
+    if (collidx == 0) {
+      return favoriteGames.mapToSource(idx);
+    }
+    if (collidx == 1) {
+      return lastPlayedFilter.mapToSource((lastPlayedGames.mapToSource(idx)));
+    }
+    return;
+  }
 
   function changeGameIndex (idx) {
     currentGameIndex = idx
@@ -133,7 +151,11 @@ FocusScope {
 
     function setBackground() {
     //set the background Art to user preference.
-    if (bgArtSetting == "FanArt" && currentGame.assets.background) { backgndImage = currentGame.assets.background }
+    if (!currentGame) {
+      backgndImage = (bgArtSetting == "Color") ? "" : bgDefault; 
+      return;
+    }
+    else if (bgArtSetting == "FanArt" && currentGame.assets.background) { backgndImage = currentGame.assets.background }
     else if (bgArtSetting == "Screenshot" && currentGame.assets.screenshots[0]) { backgndImage = currentGame.assets.screenshots[0] }
     else if (bgArtSetting == "Color") { backgndImage = "" }
     else {backgndImage = bgDefault }
@@ -157,6 +179,28 @@ FocusScope {
       content.opacity = 0.3
       contentcontainer.opacity = 0.3
       contentcontainer.x = platformmenu.menuwidth
+      collectiontitle.opacity = 0
+    }
+
+  }
+
+  function toggleAlpha() {
+
+    if (alphamenu.focus) {
+      // Close the alphabet menu
+      gamegrid.focus = true
+      alphamenu.outro()
+      content.opacity = 1
+      contentcontainer.opacity = 1
+      contentcontainer.x = 0
+      collectiontitle.opacity = 1
+    } else {
+      // Open the menu
+      alphamenu.focus = true
+      alphamenu.intro()
+      content.opacity = 0.3
+      contentcontainer.opacity = 0.3
+      contentcontainer.x = alphamenu.alphawidth
       collectiontitle.opacity = 0
     }
 
@@ -331,6 +375,7 @@ FocusScope {
           onCollectionNext: nextCollection()
           onCollectionPrev: prevCollection()
           onMenuRequested: toggleMenu()
+          onAlphaRequested: toggleAlpha()
           onDetailsRequested: toggleDetails()
           onSettingsRequested: toggleSettings()
           onGameChanged: changeGameIndex(currentIdx)
@@ -396,6 +441,18 @@ FocusScope {
     backgroundcontainer: everythingcontainer
     onMenuCloseRequested: toggleMenu()
     onSwitchCollection: jumpToCollection(collectionIdx)
+  }
+  
+  AlphaMenu {
+    id: alphamenu
+    anchors {
+      left: parent.left; right: parent.right
+      top: parent.top; bottom: parent.bottom
+    }
+    width: parent.width
+    height: parent.height
+    backgroundcontainer: everythingcontainer
+    onAlphaCloseRequested: toggleAlpha()
   }
 
   // Switch collection overlay
