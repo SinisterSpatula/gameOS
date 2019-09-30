@@ -60,8 +60,6 @@ FocusScope {
     grid.currentIndex = currentGameIdx
   }
 
-
-
   GridView {
     id: grid
 

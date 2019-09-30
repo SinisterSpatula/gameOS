@@ -11,7 +11,22 @@ Item {
   anchors.horizontalCenter: parent.horizontalCenter
   clip: true
 
+  Image {
+        id: collectionlogo
 
+        width: parent.width * 0.75
+        height: parent.height
+
+        fillMode: Image.PreserveAspectFit
+        source: "../assets/images/logos/" + collectionData.shortName + ".svg"
+        asynchronous: true
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        //anchors.topMargin: vpx(80)
+        opacity: 1
+      }
+  
+  
   Text {
     id: collectionName
 
@@ -34,6 +49,7 @@ Item {
     lineHeight: vpx(90)
     //visible: (collectionData.assets.logo == "") ? true : false
     style: Text.Outline; styleColor: "#cc000000"
+    visible: (collectionlogo.progress < 1)
   }
 
   
