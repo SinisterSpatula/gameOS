@@ -89,6 +89,7 @@ FocusScope {
     api.memory.set('gameCollIndex' + collectionIndex, currentGameIndex); // save game index of current collection
     collectionIndex = modulo(idx, (api.collections.count + 2)); // new collection index
     currentGameIndex = api.memory.get('gameCollIndex' + collectionIndex) || 0; // restore game index for newly selected collection
+    api.memory.set('collectionIndex', collectionIndex); //save the new collection index.
   }
 
   // End collection switching //
@@ -357,7 +358,7 @@ FocusScope {
           id: gamegrid
 
           collectionData: currentCollection
-          gameData: currentGame
+          gameData: (currentGame) ? currentGame : api.allGames.get(0)
           currentGameIdx: currentGameIndex
 
           focus: true
@@ -387,7 +388,7 @@ FocusScope {
         id: gamedetails
 
         property bool active : false
-        gameData: currentGame
+        gameData: (currentGame) ? currentGame : api.allGames.get(0)
 
         anchors {
           left: parent.left; right: parent.right
