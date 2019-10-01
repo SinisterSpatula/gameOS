@@ -23,9 +23,9 @@ Item {
   property var settingsBackgroundArt: ["Default", "FanArt", "Screenshot", "Color"] //What to show in backgrounds, Default, FanArt, Screenshot, or highlight color.
   property var settingsGridTileArt: ["Wheel", "Tile", "Screenshot", "BoxArt", "Cartridge"] //What to show on the grid tiles, Tile, Wheel art, Screenshots, or box art.
   property var settingsUpdate: [0, 1] //perform theme update, 0 = no, 1 = yes.
-  property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/gameOS && git pull"
-  property var settingsList: ["GridTileArt", "BackgroundArt", "BackgroundColor", "HighlightColor", "Scrollspeed", "UpdateTheme"]
-  property var settingsDescription: ["Game Grid Art: (What art for grid)", "Background Art: (What art for background)", "Background Color: (When background art is Color)", "Highlight Color: (Accent color)", "Description Scrolling: (speed)", "Updating the theme: (info about updating)"]
+  property var settingsUpdateCommand: "cd && cd /home/pi/.config/pegasus-frontend/themes/pegasus-theme-gpiOS && git pull"
+  property var settingsList: ["GridTileArt", "BackgroundArt", "BackgroundColor", "HighlightColor", "Scrollspeed", "UpdateTheme", "About"]
+  property var settingsDescription: ["Game Grid Art: (What art for grid)", "Background Art: (What art for background)", "Background Color: (When background art is Color)", "Highlight Color: (Accent color)", "Description Scrolling: (speed)", "Updating the theme: (info about updating)", "About this theme"]
   
   signal settingsCloseRequested
 
@@ -464,6 +464,19 @@ Item {
 		    if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES";}
         break;
       }
+      case 6: {
+        //Show About information? toggle
+		    if (settingsetpoint < (settingsUpdate.length)) {
+		      settingsetpoint++;
+		    }
+		    if (settingsetpoint == settingsUpdate.length) {
+		      settingsetpoint = 0;
+		    }
+		    settingsDescBox.text = settingsDescription[currentsetting];
+		    if (settingsUpdate[settingsetpoint] == 0) { settingsValueBox.text = "NO";}
+		    if (settingsUpdate[settingsetpoint] == 1) { settingsValueBox.text = "YES";}
+        break;
+      }
       default: {
 	 	    settingsValueBox.color = "white";
 	 	    settingsValueBox.text = "Something Went Wrong!";
@@ -525,6 +538,12 @@ Item {
       case 5: {
         //Perform Theme Update? Apply and save
 		    settingsValueBox.text = "Please manually update by running the command:\n" + settingsUpdateCommand;
+		    settingsetpoint = -1;
+        break;
+      }
+      case 6: {
+        //Display About Information?
+		    settingsValueBox.text = "Original by PlayingKarrde, modded for Gpi by SinisterSpatula\nGithub.com/SinisterSpatula\nfacebook.com/groups/GPiUsers";
 		    settingsetpoint = -1;
         break;
       }

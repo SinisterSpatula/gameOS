@@ -88,8 +88,8 @@ FocusScope {
         for (var idx = 0; idx < model.count; idx++) {
           var lowTitle = model.get(idx).title.toLowerCase();
           if (lowTitle.indexOf(jumpletter) != -1) {
-          currentIndex = idx;
-          break;
+            currentIndex = idx;
+            break;
           }
         }
       }
